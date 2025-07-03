@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Orbitron', monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00f7ff, #d94bff);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #00d9c0, #c42eff);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(0, 247, 255, 0.5);
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.8), 0 0 30px rgba(217, 75, 255, 0.3);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Enhanced focus states */
+input:focus, textarea:focus, button:focus {
+  outline: none;
+}
+
+/* Text selection */
+::selection {
+  background: rgba(0, 247, 255, 0.3);
+  color: white;
+}
+
+/* Prevent zoom on iOS */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Loading animation for images */
+img {
+  transition: opacity 0.3s ease;
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur-lg {
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Fallback for older browsers */
+@supports not (backdrop-filter: blur(10px)) {
+  .backdrop-blur-lg {
+    background-color: rgba(0, 0, 0, 0.95);
+  }
+}
+
+/* Chat bubble hover effects */
+.chat-bubble:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 247, 255, 0.15);
+}
+
+/* Typing indicator animation */
+@keyframes typing-dot {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+}
+
+.typing-dot {
+  animation: typing-dot 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .chat-container {
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+button, input, .chat-bubble {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glowing border animation */
+@keyframes border-glow {
+  0%, 100% {
+    border-color: rgba(0, 247, 255, 0.3);
+    box-shadow: 0 0 5px rgba(0, 247, 255, 0.2);
+  }
+  50% {
+    border-color: rgba(0, 247, 255, 0.6);
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.4);
+  }
+}
+
+.animate-border-glow {
+  animation: border-glow 2s ease-in-out infinite;
+}
+
+/* Message bubble entrance animation */
+@keyframes message-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.message-enter {
+  animation: message-enter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
