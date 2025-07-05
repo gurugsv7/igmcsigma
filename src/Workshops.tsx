@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Stethoscope, Heart, Brain, Microscope, Plus, Users, BookOpen, Clock } from "lucide-react";
+import { Stethoscope, Heart, Brain, Microscope, Plus, Users, BookOpen, Clock, HeartPulse, AlertTriangle, Cpu } from "lucide-react";
 
 interface WorkshopsSectionProps {
   setRegistrationItem: (item: any) => void;
@@ -12,7 +12,7 @@ const WorkshopsSection = ({
   setRegistrationType,
   setShowRegistration
 }: WorkshopsSectionProps) => {
-  const [expandedWorkshop, setExpandedWorkshop] = useState<string | null>(null);
+  const [activeWorkshop, setActiveWorkshop] = useState<string | null>(null);
 
   const workshops = [
     {
@@ -173,85 +173,300 @@ const WorkshopsSection = ({
     setShowRegistration(true);
   };
 
-  return (
-    <div className="min-h-screen pt-8 pb-24 px-6">
-      <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent mb-4">
-        CORTEX CRAFTS
-      </h2>
-      <p className="text-center text-gray-400 mb-8 max-w-2xl mx-auto">
-        Hands-on workshops designed to enhance your practical medical skills and knowledge
-      </p>
-      
-      <div className="max-w-4xl mx-auto space-y-4">
-        {workshops.map((workshop) => {
-          const Icon = workshop.icon;
-          const isExpanded = expandedWorkshop === workshop.id;
-          
-          return (
-            <div key={workshop.id} className={`bg-gradient-to-r ${getColorClasses(workshop.color)} border rounded-lg overflow-hidden transition-all duration-300`}>
+  if (activeWorkshop) {
+    const workshop = workshops.find(w => w.id === activeWorkshop)!;
+    const Icon = workshop.icon;
+    return (
+      <div className="min-h-screen pt-8 pb-24 px-6">
+        <button
+          onClick={() => setActiveWorkshop(null)}
+          className="mb-6 text-cyan-400 hover:text-cyan-300 transition-colors flex items-center space-x-2"
+        >
+          <span className="text-lg">&#8592;</span>
+          <span>Back to Workshops</span>
+        </button>
+        <div className="mb-8 flex flex-col items-center">
+          <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wide bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent text-center mb-1" style={{letterSpacing: "0.06em"}}>
+            {workshop.title}
+          </h2>
+          <div className="text-sm md:text-base text-white/70 font-medium text-center">
+            {workshop.description}
+          </div>
+        </div>
+        <div className="space-y-6 max-w-3xl mx-auto">
+          <div
+            className={`
+              relative bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl
+              border-2 border-cyan-400/40
+              transition-all duration-200
+              flex flex-col
+              before:absolute before:inset-0 before:rounded-2xl before:pointer-events-none
+              before:shadow-[inset_0_2px_24px_0_rgba(0,255,255,0.10)]
+            `}
+            style={{
+              boxShadow: "0 4px 32px 0 rgba(0,255,255,0.08), 0 2px 24px 0 rgba(180,0,255,0.10) inset",
+            }}
+          >
+            {/* Title */}
+            <h3 className="font-extrabold text-lg md:text-xl uppercase tracking-wide mb-2 text-cyan-200" style={{
+              textShadow: "0 0 8px #0ff8, 0 0 2px #fff8",
+              letterSpacing: "0.04em",
+            }}>
+              <span className="inline-flex items-center gap-2">
+                <Icon size={22} className="inline-block" />
+                {workshop.title}
+              </span>
+            </h3>
+            {/* Workshop Content */}
+            <div className="mb-3">
+              <ul className="list-disc list-inside text-sm text-white/70 mb-1 leading-relaxed pl-2">
+                {workshop.details.map((detail, index) => (
+                  <li key={index}>{detail}</li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-4 mt-2">
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-cyan-900/30 text-cyan-200 text-xs">
+                  <Clock size={14} /> {workshop.duration}
+                </span>
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-teal-900/30 text-teal-200 text-xs">
+                  <Users size={14} /> {workshop.capacity}
+                </span>
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-purple-900/30 text-purple-200 text-xs">
+                  <BookOpen size={14} /> {workshop.prerequisites}
+                </span>
+              </div>
+            </div>
+            {/* CTA Button */}
+            <button
+              onClick={() => handleRegister(workshop)}
+              className={`
+                flex items-center justify-center gap-2 px-5 py-2 rounded-full
+                border-2 border-cyan-400/60 text-cyan-200 font-bold text-sm
+                bg-white/10 backdrop-blur-md
+                shadow-[0_0_12px_2px_rgba(0,255,255,0.10)]
+                transition-all duration-200
+                hover:scale-105 hover:shadow-[0_0_24px_4px_rgba(0,255,255,0.18)]
+                hover:border-cyan-300/90
+                active:scale-95
+                focus:outline-none
+              `}
+              style={{
+                boxShadow: "0 0 12px 2px rgba(0,255,255,0.10)",
+              }}
+            >
+              <span role="img" aria-label="register">📝</span>
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Group workshops by theme with Lucide icons
+  const groups = [
+    {
+      id: "clinical",
+      icon: Stethoscope,
+      name: "Clinical Skills",
+      color: "from-cyan-400 to-blue-400",
+      workshops: workshops.filter(w =>
+        ["suturing", "sonic-shift", "ophthalmology"].includes(w.id)
+      ),
+    },
+    {
+      id: "maternal",
+      icon: HeartPulse,
+      name: "Maternal & Neonatal Care",
+      color: "from-pink-400 to-orange-300",
+      workshops: workshops.filter(w =>
+        ["obstetrics", "neonatology"].includes(w.id)
+      ),
+    },
+    {
+      id: "emergency",
+      icon: AlertTriangle,
+      name: "Emergency & Wilderness Medicine",
+      color: "from-red-400 to-emerald-400",
+      workshops: workshops.filter(w =>
+        ["disaster-x", "code-wild"].includes(w.id)
+      ),
+    },
+    {
+      id: "tech",
+      icon: Cpu,
+      name: "Tech & Research",
+      color: "from-fuchsia-400 to-cyan-400",
+      workshops: workshops.filter(w =>
+        ["ai-research"].includes(w.id)
+      ),
+    },
+  ];
+
+  const [activeGroup, setActiveGroup] = useState<string | null>(null);
+
+  // Main page: show group cards
+  if (!activeGroup) {
+    return (
+      <div className="min-h-screen pt-8 pb-24 px-2 sm:px-6 relative overflow-x-hidden">
+        {/* Sci-fi grid + faint orbit lines */}
+        <div
+          className="pointer-events-none fixed inset-0 z-0"
+          aria-hidden="true"
+          style={{
+            background:
+              "repeating-linear-gradient(90deg,rgba(80,255,255,0.04) 0 1px,transparent 1px 32px),repeating-linear-gradient(180deg,rgba(80,255,255,0.04) 0 1px,transparent 1px 32px)",
+            maskImage:
+              "radial-gradient(circle at 50% 30%,rgba(255,255,255,0.18) 60%,transparent 100%)",
+          }}
+        />
+        {/* Faint orbit lines */}
+        <svg className="pointer-events-none fixed left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2" width="600" height="600" style={{opacity:0.08}} aria-hidden="true">
+          <ellipse cx="300" cy="300" rx="220" ry="80" fill="none" stroke="#00fff7" strokeWidth="2"/>
+          <ellipse cx="300" cy="300" rx="140" ry="220" fill="none" stroke="#b388ff" strokeWidth="2"/>
+        </svg>
+        <h2 className="relative z-10 text-3xl font-bold text-center bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent mb-4">
+          CORTEX CRAFTS
+        </h2>
+        <p className="relative z-10 text-center text-gray-400 mb-8 max-w-2xl mx-auto">
+          Hands-on workshops designed to enhance your practical medical skills and knowledge
+        </p>
+        <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6 relative z-10">
+          {groups.map(group => {
+            const GroupIcon = group.icon;
+            return (
               <button
-                onClick={() => setExpandedWorkshop(isExpanded ? null : (workshop.id as string))}
-                className="w-full p-4 text-left flex items-center justify-between hover:bg-white/5 transition-colors duration-300"
+                key={group.id}
+                onClick={() => setActiveGroup(group.id)}
+                className={`
+                  relative group flex items-center justify-between overflow-hidden
+                  rounded-2xl p-5 min-h-[120px] bg-white/10 backdrop-blur-md
+                  border border-white/20 shadow-[0_0_24px_2px_rgba(0,255,255,0.08)]
+                  transition-all duration-200
+                  hover:scale-[1.04] hover:shadow-[0_0_32px_4px_rgba(0,255,255,0.25)]
+                  hover:border-cyan-400/60
+                  before:absolute before:inset-0 before:rounded-2xl
+                  before:pointer-events-none
+                  before:border-2 before:border-transparent
+                  before:transition-all before:duration-200
+                  hover:before:border-cyan-400/80
+                `}
+                style={{
+                  boxShadow:
+                    "0 0 24px 2px rgba(0,255,255,0.10), 0 2px 24px 0 rgba(180,0,255,0.10)",
+                  background:
+                    "linear-gradient(135deg, rgba(30,30,60,0.55) 60%, rgba(60,0,80,0.35) 100%)",
+                }}
               >
-                <div className="flex items-center space-x-3">
-                  <Icon size={24} />
-                  <div>
-                    <h3 className="font-semibold text-sm md:text-base">{workshop.title}</h3>
-                    <p className="text-xs opacity-75 mt-1">{workshop.description}</p>
-                  </div>
-                </div>
-                <div className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-45' : ''}`}>
-                  <Plus size={20} />
+                {/* Unique icon left */}
+                <span
+                  className={`
+                    flex items-center justify-center mr-4 min-w-[56px] min-h-[56px]
+                    rounded-xl bg-gradient-to-br ${group.color}
+                    border border-white/20
+                    shadow-[0_0_24px_4px_rgba(0,255,255,0.18)]
+                  `}
+                  style={{
+                    filter: "drop-shadow(0 0 8px #0ff8) drop-shadow(0 0 2px #fff8)",
+                  }}
+                >
+                  <GroupIcon size={32} strokeWidth={2.5} className="text-white drop-shadow-[0_0_4px_cyan]" />
+                </span>
+                {/* Right stack */}
+                <div className="flex-1 flex flex-col items-start">
+                  <span className="font-extrabold text-base md:text-lg uppercase tracking-wide text-white">
+                    {group.name}
+                  </span>
+                  <span className="text-xs mt-1 text-white/60 font-medium">{group.workshops.length} Workshops</span>
                 </div>
               </button>
-              
-              {isExpanded && (
-                <div className="px-4 pb-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <h4 className="font-semibold text-sm mb-2">Workshop Content:</h4>
-                      <ul className="space-y-1">
-                        {workshop.details.map((detail, index) => (
-                          <li key={index} className="text-xs bg-black/20 rounded p-2 flex items-start">
-                            <span className="text-cyan-400 mr-2">•</span>
-                            {detail}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="bg-black/20 rounded-lg p-3">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <Clock size={14} />
-                          <span className="text-xs font-medium">Duration</span>
-                        </div>
-                        <p className="text-sm">{workshop.duration}</p>
-                      </div>
-                      <div className="bg-black/20 rounded-lg p-3">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <Users size={14} />
-                          <span className="text-xs font-medium">Capacity</span>
-                        </div>
-                        <p className="text-sm">{workshop.capacity}</p>
-                      </div>
-                      <div className="bg-black/20 rounded-lg p-3">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <BookOpen size={14} />
-                          <span className="text-xs font-medium">Prerequisites</span>
-                        </div>
-                        <p className="text-sm">{workshop.prerequisites}</p>
-                      </div>
-                      <button
-                        onClick={() => handleRegister(workshop)}
-                        className="w-full bg-gradient-to-r from-cyan-500/20 to-teal-500/20 border border-cyan-400/30 text-cyan-300 py-2 px-4 rounded-lg hover:border-cyan-400/50 transition-all duration-300 text-sm font-medium"
-                      >
-                        Register for Workshop
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  // Detail page: show workshops in the selected group
+  const group = groups.find(g => g.id === activeGroup)!;
+  return (
+    <div className="min-h-screen pt-8 pb-24 px-2 sm:px-6 relative overflow-x-hidden">
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        aria-hidden="true"
+        style={{
+          background:
+            "repeating-linear-gradient(90deg,rgba(80,255,255,0.04) 0 1px,transparent 1px 32px),repeating-linear-gradient(180deg,rgba(80,255,255,0.04) 0 1px,transparent 1px 32px)",
+          maskImage:
+            "radial-gradient(circle at 50% 30%,rgba(255,255,255,0.18) 60%,transparent 100%)",
+        }}
+      />
+      <button
+        onClick={() => setActiveGroup(null)}
+        className="mb-6 text-cyan-400 hover:text-cyan-300 transition-colors flex items-center space-x-2"
+      >
+        <span className="text-lg">&#8592;</span>
+        <span>Back to Workshops</span>
+      </button>
+      <div className="mb-8 flex flex-col items-center">
+        <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wide bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent text-center mb-1" style={{letterSpacing: "0.06em"}}>
+          {group.name}
+        </h2>
+        <div className="text-sm md:text-base text-white/70 font-medium text-center">
+          {group.id === "clinical"
+            ? "Workshops focused on hands-on clinical skills and procedures."
+            : group.id === "maternal"
+            ? "Maternal and neonatal care workshops for all levels."
+            : group.id === "emergency"
+            ? "Emergency response and wilderness medicine workshops."
+            : "Technology and research workshops for the future of medicine."}
+        </div>
+      </div>
+      <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6">
+        {group.workshops.map(workshop => {
+          const Icon = workshop.icon;
+          return (
+            <button
+              key={workshop.id}
+              onClick={() => setActiveWorkshop(workshop.id)}
+              className={`
+                relative group flex items-center justify-between overflow-hidden
+                rounded-2xl p-5 min-h-[120px] bg-white/10 backdrop-blur-md
+                border border-white/20 shadow-[0_0_24px_2px_rgba(0,255,255,0.08)]
+                transition-all duration-200
+                hover:scale-[1.04] hover:shadow-[0_0_32px_4px_rgba(0,255,255,0.25)]
+                hover:border-cyan-400/60
+                before:absolute before:inset-0 before:rounded-2xl
+                before:pointer-events-none
+                before:border-2 before:border-transparent
+                before:transition-all before:duration-200
+                hover:before:border-cyan-400/80
+              `}
+              style={{
+                boxShadow:
+                  "0 0 24px 2px rgba(0,255,255,0.10), 0 2px 24px 0 rgba(180,0,255,0.10)",
+                background:
+                  "linear-gradient(135deg, rgba(30,30,60,0.55) 60%, rgba(60,0,80,0.35) 100%)",
+              }}
+            >
+              {/* Icon left */}
+              <span
+                className={`
+                  flex items-center justify-center mr-4 min-w-[56px] min-h-[56px]
+                  rounded-xl bg-gradient-to-br ${getColorClasses(workshop.color)}
+                  border border-white/20
+                `}
+              >
+                <Icon size={32} strokeWidth={2.5} className="text-white" />
+              </span>
+              {/* Right stack */}
+              <div className="flex-1 flex flex-col items-start">
+                <span className="font-extrabold text-base md:text-lg uppercase tracking-wide text-white">
+                  {workshop.title}
+                </span>
+                <span className="text-xs mt-1 text-white/60 font-medium">{workshop.description}</span>
+              </div>
+            </button>
           );
         })}
       </div>

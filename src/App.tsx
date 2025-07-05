@@ -681,25 +681,25 @@ interface HomeSectionProps {
   setActiveTab: (tab: string) => void;
 }
 const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
-  <div className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
+  <div className="min-h-screen flex flex-col items-center justify-start text-center px-6 pt-8 relative">
     <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20 pointer-events-none"></div>
     <div className="relative z-10">
-      <div className="mb-8">
+      <div className="mb-0 mt-[-80px]">
         <img
           src={stratiumLogo}
           alt="Striatum Logo"
-          className="mx-auto mb-4 w-32 h-32 object-contain drop-shadow-2xl animate-pulse"
+          className="mx-auto mb-0 w-64 h-64 object-contain drop-shadow-2xl animate-pulse"
         />
-        <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-2 drop-shadow-2xl">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-wide bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-0 drop-shadow-2xl max-w-[12ch] mx-auto">
           STRIATUM
         </h1>
-        <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-4 drop-shadow-2xl">
+        <div className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-4 mt-4 drop-shadow-2xl">
           3.0
         </div>
-        <p className="text-lg md:text-xl text-cyan-200 mb-2 font-light">
+        <p className="text-lg md:text-xl text-cyan-200 mb-2 font-light mt-1 leading-relaxed">
           Connecting Knowledge, Sparking Innovation
         </p>
-        <p className="text-sm text-purple-300 mb-6">
+        <p className="text-sm text-purple-300 mb-6 leading-relaxed">
           Indira Gandhi Medical College and Research Institute
         </p>
       </div>
@@ -714,7 +714,7 @@ const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
           Register Now
         </button>
         <button
-          className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500/10 font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-400/25"
+          className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500/10 font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-400/25 mt-1"
           onClick={() => setActiveTab('workshops')}
         >
           Explore Workshops
