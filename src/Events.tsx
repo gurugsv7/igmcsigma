@@ -17,17 +17,23 @@ const eventSections = [
       {
         title: 'Senior Quiz',
         description: 'Advanced medical quiz for final year students and interns',
-        details: 'Comprehensive quiz covering all medical subjects with focus on clinical scenarios'
+        details: 'Comprehensive quiz covering all medical subjects with focus on clinical scenarios',
+        date: '12/10/25',
+        time: 'Prelims: Afternoon, Finals: Evening'
       },
       {
         title: 'Junior Quiz',
         description: 'Medical quiz for 1st to 3rd year students',
-        details: 'Foundation medical knowledge quiz covering basic sciences and early clinical subjects'
+        details: 'Foundation medical knowledge quiz covering basic sciences and early clinical subjects',
+        date: '12/10/25',
+        time: 'Prelims: Afternoon, Finals: Evening'
       },
       {
         title: 'Online Quiz',
         description: 'Open quiz for all participants',
-        details: 'General medical knowledge quiz accessible to all registered participants'
+        details: 'General medical knowledge quiz accessible to all registered participants',
+        date: '11/10/25',
+        time: 'Semi Finals, Finals on 12/10/25'
       }
     ]
   },
@@ -40,12 +46,16 @@ const eventSections = [
       {
         title: 'Inside the ICU: What They Don\'t Teach You in Undergrad',
         description: 'Real-world ICU scenarios and critical care insights',
-        details: 'Expert panel discussion on practical ICU management and critical decision making'
+        details: 'Expert panel discussion on practical ICU management and critical decision making',
+        date: '11/10/25',
+        time: 'Afternoon'
       },
       {
         title: 'The Road to Residency: USMLE, PLAB, MRCP, MRCS',
         description: 'Career guidance for international medical examinations',
-        details: 'Comprehensive guidance on international medical career pathways and exam strategies'
+        details: 'Comprehensive guidance on international medical career pathways and exam strategies',
+        date: '11/10/25',
+        time: 'Afternoon'
       }
     ]
   },
@@ -58,27 +68,37 @@ const eventSections = [
       {
         title: 'Case Presentation: Case Pulse',
         description: 'Present interesting clinical cases',
-        details: 'Platform for presenting unique and challenging clinical cases with expert feedback'
+        details: 'Platform for presenting unique and challenging clinical cases with expert feedback',
+        date: '12/10/25',
+        time: 'Afternoon'
       },
       {
         title: 'Poster Presentation: Axon Alley',
         description: 'Research poster presentations',
-        details: 'Showcase your research work through professional poster presentations'
+        details: 'Showcase your research work through professional poster presentations',
+        date: '12/10/25',
+        time: 'Afternoon'
       },
       {
         title: 'Paper Presentation: Nexus',
         description: 'Scientific paper presentations',
-        details: 'Present your research papers and findings to a panel of expert judges'
+        details: 'Present your research papers and findings to a panel of expert judges',
+        date: '12/10/25',
+        time: 'Afternoon'
       },
       {
         title: 'Body Painting: Pulsating Palettes',
         description: 'Creative medical art competition',
-        details: 'Artistic representation of medical concepts through body painting'
+        details: 'Artistic representation of medical concepts through body painting',
+        date: '11/10/25',
+        time: 'Forenoon'
       },
       {
         title: 'Short Film: Cineplexus',
         description: 'Medical themed short film competition',
-        details: 'Create and present short films on medical themes and healthcare topics'
+        details: 'Create and present short films on medical themes and healthcare topics',
+        date: '11/10/25',
+        time: 'Afternoon'
       }
     ]
   }
@@ -176,31 +196,28 @@ const SectionPage = ({
               <div className="mb-3">
                 <p className="text-sm text-white/70 mb-1 leading-relaxed">{event.description}</p>
                 <p className="text-sm text-white/60 leading-relaxed">{event.details}</p>
+                <div className="mt-2 flex items-center space-x-3">
+                  <div className="px-2 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30">
+                    <p className="text-xs text-cyan-300">📅 {event.date}</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-full bg-purple-500/10 border border-purple-400/30">
+                    <p className="text-xs text-purple-300">⏰ {event.time}</p>
+                  </div>
+                </div>
               </div>
               {/* CTA Button */}
               <button
-                onClick={() => {
-                  setRegistrationItem(event);
-                  setRegistrationType('event');
-                  setShowRegistration(true);
-                }}
+                disabled
                 className={`
                   flex items-center justify-center gap-2 px-5 py-2 rounded-full
-                  border-2 border-cyan-400/60 text-cyan-200 font-bold text-sm
-                  bg-white/10 backdrop-blur-md
-                  shadow-[0_0_12px_2px_rgba(0,255,255,0.10)]
-                  transition-all duration-200
-                  hover:scale-105 hover:shadow-[0_0_24px_4px_rgba(0,255,255,0.18)]
-                  hover:border-cyan-300/90
-                  active:scale-95
-                  focus:outline-none
+                  border-2 border-gray-500/60 text-gray-400 font-bold text-sm
+                  bg-white/5 backdrop-blur-md
+                  shadow-[0_0_12px_2px_rgba(0,255,255,0.05)]
+                  cursor-not-allowed
                 `}
-                style={{
-                  boxShadow: "0 0 12px 2px rgba(0,255,255,0.10)",
-                }}
               >
-                <span role="img" aria-label="register">📝</span>
-                Register
+                <span role="img" aria-label="register">⏳</span>
+                Registration Soon
               </button>
             </div>
           );

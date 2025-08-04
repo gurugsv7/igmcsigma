@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Home, Calendar, BookOpen, Users, Phone, Heart, Plus, Brain, Stethoscope, Microscope, Award, MessageSquare, MapPin, Mail, Clock, Send, Bot, X, MessageCircle, Wrench, ArrowLeft, CheckCircle, Loader } from 'lucide-react';
+import { Home, Calendar, BookOpen, Users, Phone, Heart, Plus, Brain, Stethoscope, Microscope, Award, MessageSquare, MapPin, Mail, Clock, Send, Bot, X, MessageCircle, Wrench, ArrowLeft, CheckCircle, Loader, HeartPulse, TestTube } from 'lucide-react';
+import { Dna } from 'lucide-react';
 import stratiumLogo from './images/stratium.png';
 import EventSection from './Events';
 import WorkshopsSection from './Workshops';
@@ -71,7 +72,7 @@ const FloatingChatbot = () => {
     }
     
     if (message.includes('schedule') || message.includes('program') || message.includes('timeline')) {
-      return "📅 Striatum 3.0 Schedule:\n\n🗓️ August 21-24, 2024\n\nDay 1: Opening Ceremony & Workshops\nDay 2: Quizzes & Panel Discussions\nDay 3: Presentations & Competitions\nDay 4: Awards & Closing Ceremony\n\nDetailed schedule will be shared with registered participants! ⚡";
+      return "📅 Striatum 3.0 Schedule:\n\n🗓️ October 8-12, 2025\n\nDay 1: Inauguration & Medical Expo\nDay 2: Radiology & Obstetric Workshops\nDay 3: Basic Suturing & AI Workshop\nDay 4: Ophthalmology & Panel Discussions\nDay 5: Quiz Finals & Closing Ceremony\n\nDetailed schedule will be shared with registered participants! ⚡";
     }
     
     if (message.includes('fee') || message.includes('cost') || message.includes('price')) {
@@ -311,7 +312,7 @@ const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const targetDate = new Date('2025-08-21T00:00:00');
+    const targetDate = new Date('2025-10-08T00:00:00');
     
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -684,23 +685,27 @@ const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
   <div className="min-h-screen flex flex-col items-center justify-start text-center px-6 pt-8 relative">
     <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20 pointer-events-none"></div>
     <div className="relative z-10">
-      <div className="mb-0 mt-[-80px]">
-        <img
-          src={stratiumLogo}
-          alt="Striatum Logo"
-          className="mx-auto mb-0 w-64 h-64 object-contain drop-shadow-2xl animate-pulse"
-        />
-        <h1 className="text-5xl md:text-7xl font-bold tracking-wide bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-0 drop-shadow-2xl max-w-[12ch] mx-auto">
+      <div className="relative mb-0 mt-[-80px]">
+          <img
+            src={stratiumLogo}
+            alt="Striatum Logo"
+            loading="eager"
+            width={288}
+            height={288}
+            style={{ willChange: 'transform' }}
+            className="relative mx-auto mb-0 w-72 h-72 object-contain drop-shadow-2xl animate-float translate-z-0"
+          />
+        <h1 className="relative text-5xl md:text-7xl font-bold tracking-wide bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-0 drop-shadow-2xl max-w-[12ch] mx-auto animate-gradient-x">
           STRIATUM
         </h1>
         <div className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-4 mt-4 drop-shadow-2xl">
           3.0
         </div>
-        <p className="text-lg md:text-xl text-cyan-200 mb-2 font-light mt-1 leading-relaxed">
-          Connecting Knowledge, Sparking Innovation
-        </p>
-        <p className="text-sm text-purple-300 mb-6 leading-relaxed">
+        <p className="text-xl md:text-2xl text-purple-300 mb-2 font-medium mt-1 leading-relaxed">
           Indira Gandhi Medical College and Research Institute
+        </p>
+        <p className="text-lg md:text-xl text-cyan-200 mb-6 font-light leading-relaxed">
+          Connecting Knowledge, Sparking Innovation
         </p>
       </div>
 
@@ -708,10 +713,10 @@ const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
 
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
         <button
-          className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
-          onClick={() => setActiveTab('event')}
+          disabled
+          className="bg-gradient-to-r from-gray-600 to-gray-700 text-gray-400 font-semibold py-3 px-8 rounded-full cursor-not-allowed"
         >
-          Register Now
+          Registration Soon ⏳
         </button>
         <button
           className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500/10 font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-400/25 mt-1"
@@ -854,6 +859,110 @@ function App() {
   const [showRegistration, setShowRegistration] = useState(false);
   const [registrationItem, setRegistrationItem] = useState(null);
   const [registrationType, setRegistrationType] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // Show loading screen for 3 seconds
+  }, []);
+
+  // Preload logo image
+  useEffect(() => {
+    // Create a new image and start loading it immediately
+    const img = new Image();
+    img.src = stratiumLogo;
+    
+    // Force the browser to load and cache the image
+    const preloadImage = () => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = stratiumLogo;
+      document.head.appendChild(link);
+    };
+    preloadImage();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#0a0e1a] flex items-center justify-center overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0">
+          {/* Radial Gradient */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,236,249,0.03)_0%,transparent_60%)]"></div>
+          
+          {/* Stars */}
+          {[...Array(50)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white/20 rounded-full animate-twinkle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 4}s`
+              }}
+            />
+          ))}
+          
+          {/* Glowing Stars */}
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`
+              }}
+            >
+              <div className="w-1 h-1 bg-cyan-300/40 rounded-full shadow-[0_0_8px_2px_rgba(0,255,255,0.2)]" />
+            </div>
+          ))}
+        </div>
+        
+        <div className="relative w-full h-screen flex flex-col items-center justify-center px-6 font-['Space_Grotesk']">
+          {/* Clean, Minimal Content */}
+          <div className="text-center">
+            {/* Title and Loading Line */}
+            <div className="space-y-6">
+              <h1 className="text-[40px] font-bold tracking-tight bg-gradient-to-r from-purple-300/90 to-[#4ef0f9] bg-clip-text text-transparent">
+                STRIATUM 3.0
+              </h1>
+              <p className="text-[16px] tracking-[0.2em] text-[#9ffcff] font-normal">
+                INITIALIZING BIO-NEURAL INTERFACE...
+              </p>
+              {/* Hidden Preloaded Logo */}
+              <div className="hidden">
+                <img
+                  src={stratiumLogo}
+                  alt="Striatum Logo"
+                  width={288}
+                  height={288}
+                  onLoad={(e) => {
+                    // Ensure the image is fully loaded and cached
+                    const img = e.target as HTMLImageElement;
+                    if (img.decode) {
+                      img.decode().catch(() => {});
+                    }
+                  }}
+                />
+              </div>
+              {/* Loading Bar */}
+              <div className="w-[280px] mx-auto mt-8">
+                <div className="h-[3px] bg-[#4ef0f9]/20 rounded-full overflow-hidden">
+                  <div className="h-full w-full bg-gradient-to-r from-purple-400 to-[#4ef0f9] origin-left animate-loading-bar"></div>
+                </div>
+                <div className="mt-3 text-[#9ffcff] text-sm tracking-[0.2em] font-light">
+                  LOADING...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const handleBackFromRegistration = () => {
     setShowRegistration(false);
@@ -903,10 +1012,55 @@ function App() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#00d9c0_0%,transparent_50%)] animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      {/* Circuit Pattern Overlay */}
-      <div className="fixed inset-0 opacity-5 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 border border-cyan-400 rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
-        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 border border-purple-400 rounded-full animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
+      {/* Removed Medical Icons */}
+
+      {/* Animated Stars Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {/* Static Stars */}
+        <div className="absolute inset-0">
+          {[...Array(50)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 4}s`
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Shooting Stars */}
+        {[...Array(5)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-0.5 h-0.5 bg-white animate-shooting-star"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 8}s`,
+              opacity: 0.7
+            }}
+          >
+            <div className="w-8 h-0.5 bg-gradient-to-r from-white via-white to-transparent transform -rotate-45" />
+          </div>
+        ))}
+        
+        {/* Glowing Stars */}
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`
+            }}
+          >
+            <div className="w-1 h-1 bg-cyan-300 rounded-full shadow-[0_0_8px_2px_rgba(0,255,255,0.3)]" />
+          </div>
+        ))}
       </div>
 
       {/* Main Content */}
