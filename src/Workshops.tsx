@@ -1,18 +1,55 @@
 import React, { useState } from "react";
-import { Stethoscope, Heart, Brain, Microscope, Plus, Users, BookOpen, Clock, HeartPulse, AlertTriangle, Cpu } from "lucide-react";
+import { Stethoscope, Heart, Brain, Microscope, Plus, Users, BookOpen, Clock, HeartPulse, AlertTriangle, Cpu, X } from "lucide-react";
 
-interface WorkshopsSectionProps {
-  setRegistrationItem: (item: any) => void;
-  setRegistrationType: (type: string) => void;
-  setShowRegistration: (show: boolean) => void;
-}
+// Dialog Component
+const RegistrationDialog = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  if (!isOpen) return null;
 
-const WorkshopsSection = ({
-  setRegistrationItem,
-  setRegistrationType,
-  setShowRegistration
-}: WorkshopsSectionProps) => {
-  const [activeWorkshop, setActiveWorkshop] = useState<string | null>(null);
+  return (
+    <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
+      {/* Backdrop with blur */}
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
+      
+      {/* Dialog Content */}
+      <div 
+        className="relative bg-gradient-to-b from-gray-900/90 to-gray-800/90 rounded-2xl p-6 max-w-sm w-full backdrop-blur-xl border-2 border-cyan-500/20 shadow-[0_0_25px_-5px_rgba(0,255,255,0.3)]"
+        style={{
+          boxShadow: "0 8px 32px -4px rgba(0,255,255,0.2), 0 4px 16px -2px rgba(180,0,255,0.15)"
+        }}
+      >
+        {/* Close button */}
+        <button 
+          onClick={onClose}
+          className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors"
+        >
+          <X size={20} />
+        </button>
+
+        {/* Content */}
+        <div className="text-center space-y-4">
+          <div className="w-16 h-16 mx-auto bg-cyan-500/10 rounded-full flex items-center justify-center border border-cyan-500/20">
+            <span className="text-2xl" role="img" aria-label="timer">⏳</span>
+          </div>
+          <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300">
+            Registration Opening Soon
+          </h3>
+          <p className="text-gray-300 text-sm">
+            Workshop registrations will be available shortly. Stay tuned for updates!
+          </p>
+          <button
+            onClick={onClose}
+            className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-300 border border-cyan-500/30 hover:from-cyan-500/30 hover:to-purple-500/30 transition-all duration-200 font-medium"
+          >
+            Got it
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const WorkshopsSection = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const workshops = [
     {
@@ -240,103 +277,6 @@ const WorkshopsSection = ({
     return colors[color];
   };
 
-  const handleRegister = (workshop: any) => {
-    setRegistrationItem(workshop);
-    setRegistrationType('workshop');
-    setShowRegistration(true);
-  };
-
-  if (activeWorkshop) {
-    const workshop = workshops.find(w => w.id === activeWorkshop)!;
-    const Icon = workshop.icon;
-    return (
-      <div className="min-h-screen pt-8 pb-24 px-6">
-        <button
-          onClick={() => setActiveWorkshop(null)}
-          className="mb-6 text-cyan-400 hover:text-cyan-300 transition-colors flex items-center space-x-2"
-        >
-          <span className="text-lg">&#8592;</span>
-          <span>Back to Workshops</span>
-        </button>
-        <div className="mb-8 flex flex-col items-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wide bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent text-center mb-1" style={{letterSpacing: "0.06em"}}>
-            {workshop.title}
-          </h2>
-          <div className="text-sm md:text-base text-white/70 font-medium text-center">
-            {workshop.description}
-          </div>
-        </div>
-        <div className="space-y-6 max-w-3xl mx-auto">
-          <div
-            className={`
-              relative bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl
-              border-2 border-cyan-400/40
-              transition-all duration-200
-              flex flex-col
-              before:absolute before:inset-0 before:rounded-2xl before:pointer-events-none
-              before:shadow-[inset_0_2px_24px_0_rgba(0,255,255,0.10)]
-            `}
-            style={{
-              boxShadow: "0 4px 32px 0 rgba(0,255,255,0.08), 0 2px 24px 0 rgba(180,0,255,0.10) inset",
-            }}
-          >
-            {/* Title */}
-            <h3 className="font-extrabold text-lg md:text-xl uppercase tracking-wide mb-2 text-cyan-200" style={{
-              textShadow: "0 0 8px #0ff8, 0 0 2px #fff8",
-              letterSpacing: "0.04em",
-            }}>
-              <span className="inline-flex items-center gap-2">
-                <Icon size={22} className="inline-block" />
-                {workshop.title}
-              </span>
-            </h3>
-            {/* Workshop Content */}
-            <div className="mb-3">
-              <ul className="list-disc list-inside text-sm text-white/70 mb-1 leading-relaxed pl-2">
-                {workshop.details.map((detail, index) => (
-                  <li key={index}>{detail}</li>
-                ))}
-              </ul>
-              <div className="flex flex-wrap gap-4 mt-2">
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-cyan-900/30 text-cyan-200 text-xs">
-                  <Clock size={14} /> {workshop.duration}
-                </span>
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-teal-900/30 text-teal-200 text-xs">
-                  <Users size={14} /> {workshop.capacity}
-                </span>
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-purple-900/30 text-purple-200 text-xs">
-                  <BookOpen size={14} /> {workshop.prerequisites}
-                </span>
-              </div>
-              <div className="flex gap-4 mt-3">
-                <div className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30">
-                  <p className="text-xs text-cyan-300">📅 {workshop.date}</p>
-                </div>
-                <div className="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-400/30">
-                  <p className="text-xs text-purple-300">⏰ {workshop.time}</p>
-                </div>
-              </div>
-            </div>
-            {/* CTA Button */}
-            <button
-              disabled
-              className={`
-                flex items-center justify-center gap-2 px-5 py-2 rounded-full
-                border-2 border-gray-500/60 text-gray-400 font-bold text-sm
-                bg-white/5 backdrop-blur-md
-                shadow-[0_0_12px_2px_rgba(0,255,255,0.05)]
-                cursor-not-allowed
-              `}
-            >
-              <span role="img" aria-label="register">⏳</span>
-              Registration Soon
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   // Group workshops by theme with Lucide icons
   const groups = [
     {
@@ -511,7 +451,7 @@ const WorkshopsSection = ({
           return (
             <button
               key={workshop.id}
-              onClick={() => setActiveWorkshop(workshop.id)}
+              onClick={() => setIsDialogOpen(true)}
               className={`
                 relative group flex items-center justify-between overflow-hidden
                 rounded-2xl p-5 min-h-[120px] bg-white/10 backdrop-blur-md
@@ -553,6 +493,10 @@ const WorkshopsSection = ({
           );
         })}
       </div>
+      <RegistrationDialog 
+        isOpen={isDialogOpen} 
+        onClose={() => setIsDialogOpen(false)} 
+      />
     </div>
   );
 };

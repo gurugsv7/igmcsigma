@@ -997,13 +997,7 @@ function App() {
           setShowRegistration={setShowRegistration}
         />
       );
-      case 'workshops': return (
-        <WorkshopsSection
-          setRegistrationItem={setRegistrationItem}
-          setRegistrationType={setRegistrationType}
-          setShowRegistration={setShowRegistration}
-        />
-      );
+      case 'workshops': return <WorkshopsSection />;
       case 'blog': return <BlogSection />;
       case 'about': return <AboutSection />;
       default: return <HomeSection setActiveTab={setActiveTab} />;
