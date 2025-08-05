@@ -196,14 +196,16 @@ const SectionPage = ({
               <div className="mb-3">
                 <p className="text-sm text-white/70 mb-1 leading-relaxed">{event.description}</p>
                 <p className="text-sm text-white/60 leading-relaxed">{event.details}</p>
-                <div className="mt-2 flex items-center space-x-3">
-                  <div className="px-2 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30">
-                    <p className="text-xs text-cyan-300">📅 {event.date}</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-full bg-purple-500/10 border border-purple-400/30">
-                    <p className="text-xs text-purple-300">⏰ {event.time}</p>
-                  </div>
-                </div>
+<div className="mt-2 grid grid-cols-2 gap-2 w-full max-w-[300px]">
+  <div className="px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-400/30 flex items-center">
+    <span className="mr-1.5">📅</span>
+    <p className="text-xs text-cyan-300 font-medium">{event.date}</p>
+  </div>
+  <div className="px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-400/30 flex items-center">
+    <span className="mr-1.5">⏰</span>
+    <p className="text-xs text-purple-300 font-medium">{event.time}</p>
+  </div>
+</div>
               </div>
               {/* CTA Button */}
               <button
