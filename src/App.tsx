@@ -695,15 +695,22 @@ const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
             style={{ willChange: 'transform' }}
             className="relative mx-auto mb-0 w-72 h-72 object-contain drop-shadow-2xl animate-float translate-z-0"
           />
-        <h1 className="relative text-5xl md:text-7xl font-bold tracking-wide bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-0 drop-shadow-2xl max-w-[12ch] mx-auto animate-gradient-x">
-          STRIATUM
-        </h1>
-        <div className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-4 mt-4 drop-shadow-2xl">
-          3.0
+        <div className="flex flex-col items-center justify-center mb-0">
+          <div className="flex flex-col items-center mb-8">
+            <div className="text-base md:text-lg font-semibold text-cyan-200 mb-1 tracking-wide uppercase text-center">
+              Indira Gandhi Medical College and Research Institute
+            </div>
+            <span className="text-base md:text-lg font-medium text-purple-300 tracking-wide uppercase text-center">
+              presents
+            </span>
+          </div>
+          <h1 className="relative text-5xl md:text-7xl font-bold tracking-wide bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-0 drop-shadow-2xl max-w-[12ch] mx-auto animate-gradient-x">
+            STRIATUM
+          </h1>
+          <div className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-4 mt-4 drop-shadow-2xl">
+            3.0
+          </div>
         </div>
-        <p className="text-xl md:text-2xl text-purple-300 mb-2 font-medium mt-1 leading-relaxed">
-          Indira Gandhi Medical College and Research Institute
-        </p>
         <p className="text-lg md:text-xl text-cyan-200 mb-6 font-light leading-relaxed">
           Connecting Knowledge, Sparking Innovation
         </p>
