@@ -279,7 +279,6 @@ const BottomNav = ({ activeTab, setActiveTab, showNav = true }: BottomNavProps) 
     { id: 'home', label: 'Home', icon: Home },
     { id: 'event', label: 'Events', icon: Calendar },
     { id: 'workshops', label: 'Workshops', icon: Wrench },
-    { id: 'blog', label: 'Blog', icon: BookOpen },
     { id: 'about', label: 'About', icon: Users },
   ];
 
@@ -748,56 +747,6 @@ const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
 // Removed inline WorkshopsSection component. Use import from './Workshops'.
 
 // Blog Section Component
-const BlogSection = () => {
-  const blogPosts = [
-    {
-      title: 'Abstract Submission Guidelines 2024',
-      excerpt: 'Complete guide to submitting your research abstracts for Striatum 3.0...',
-      date: 'March 15, 2024',
-      category: 'Guidelines'
-    },
-    {
-      title: 'Featured Speaker: Dr. Sarah Chen',
-      excerpt: 'Meet our keynote speaker, renowned neurosurgeon and researcher...',
-      date: 'March 12, 2024',
-      category: 'Speakers'
-    },
-    {
-      title: 'Workshop Preparation Tips',
-      excerpt: 'How to get the most out of your workshop experience at Striatum 3.0...',
-      date: 'March 10, 2024',
-      category: 'Tips'
-    }
-  ];
-
-  return (
-    <div className="min-h-screen pt-8 pb-24 px-6">
-      <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent mb-8">
-        Latest Updates
-      </h2>
-      <div className="max-w-4xl mx-auto space-y-6">
-        {blogPosts.map((post, index) => (
-          <article key={index} className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 border border-cyan-400/20 rounded-lg p-6 hover:border-cyan-400/40 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/10">
-            <div className="flex items-center space-x-2 mb-3">
-              <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full border border-purple-400/30">
-                {post.category}
-              </span>
-              <span className="text-xs text-gray-400 flex items-center">
-                <Clock size={12} className="mr-1" />
-                {post.date}
-              </span>
-            </div>
-            <h3 className="text-xl font-semibold text-cyan-300 mb-2">{post.title}</h3>
-            <p className="text-gray-300 text-sm leading-relaxed mb-4">{post.excerpt}</p>
-            <button className="text-teal-400 hover:text-teal-300 text-sm font-medium transition-colors duration-300">
-              Read More →
-            </button>
-          </article>
-        ))}
-      </div>
-    </div>
-  );
-};
 
 // About Section Component
 const AboutSection = () => (
@@ -807,35 +756,74 @@ const AboutSection = () => (
     </h2>
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-400/20 rounded-lg p-6">
-        <h3 className="text-xl font-semibold text-cyan-300 mb-4">Indira Gandhi Medical College and Research Institute</h3>
+        <h3 className="text-xl font-semibold text-cyan-300 mb-4">About Striatum 3.0</h3>
         <p className="text-gray-300 leading-relaxed mb-4">
-          IGMCRI stands as a beacon of medical education excellence, fostering innovation and research in healthcare. 
-          Our institution is committed to developing future medical professionals who will shape the healthcare landscape.
+          After two successful editions that set the benchmark for undergraduate academic conferences, 
+          STRIATUM returns—bolder, brighter, and more electrifying than ever. This year's conference 
+          celebrates the connections that spark innovation, collaboration, and knowledge transfer—just like the 
+          synaptic bridges in the human brain.
+        </p>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          From immersive workshops hosted by diverse departments to dynamic panel discussions and a 
+          splash of creative fun, STRIATUM 3.0 boasts entirely reformed and brand-new concepts that the 
+          young and eager minds of our nation have the chance to utilise. This is more than a conference—it's 
+          a convergence of minds, a celebration of curiosity, and a platform where ideas ignite and futures take 
+          shape.
+        </p>
+        <p className="text-gray-300 leading-relaxed">
+          Get ready to open your mind to new possibilities of what could be held in a grand academic 
+          conference as you venture into the upcoming pages, mark the dates on your calendars, gather your 
+          colleagues and gear up for what could be the most productive and energetic week of your academic 
+          year.
         </p>
       </div>
 
       <div className="bg-gradient-to-r from-purple-500/10 to-teal-500/10 border border-purple-400/20 rounded-lg p-6">
-        <h3 className="text-xl font-semibold text-purple-300 mb-4">SIGMA Academic Team</h3>
-        <p className="text-gray-300 leading-relaxed mb-4">
-          The SIGMA academic team comprises dedicated faculty members and student leaders passionate about 
-          advancing medical knowledge through collaborative learning and research initiatives.
+        <h3 className="text-xl font-semibold text-purple-300 mb-4">About IGMC&RI</h3>
+        <p className="text-gray-300 leading-relaxed">
+          Indira Gandhi Medical College and Research Institute (IGMC&RI), Puducherry, stands as a beacon of 
+          academic excellence and compassionate care. Revered for shaping the brightest young minds in 
+          medicine, this institution is more than just a college—it's a crucible of transformation. 
+          Here, aspiring doctors embark on a journey defined by rigorous training, and unyielding dedication 
+          under the guidance of an exceptional faculty. Utilising each lecture, clinical posting, and hands-on 
+          experience as a crucial building block, our students evolve into skilled professionals rooted in 
+          empathy, integrity, and innovation—ready to serve, heal, and lead in the ever-evolving world of 
+          healthcare.
         </p>
       </div>
 
       <div className="bg-gradient-to-r from-teal-500/10 to-pink-500/10 border border-teal-400/20 rounded-lg p-6">
-        <h3 className="text-xl font-semibold text-teal-300 mb-4">HELIOS Society</h3>
-        <p className="text-gray-300 leading-relaxed mb-4">
-          HELIOS Society is our student-led organization dedicated to organizing academic events, 
-          workshops, and symposiums that bridge the gap between theoretical knowledge and practical application.
+        <h3 className="text-xl font-semibold text-teal-300 mb-4">About SIGMA '25 - Meet Our Team</h3>
+        <p className="text-gray-300 leading-relaxed">
+          The Students of IGMC&RI Association (SIGMA) 2025 are thrilled to be at your service and are 
+          striving to provide you with a smooth and productive experience here at IGMC&RI, and are just one 
+          call or text message away from helping everyone with any queries or problems.
         </p>
       </div>
 
       <div className="bg-gradient-to-r from-pink-500/10 to-cyan-500/10 border border-pink-400/20 rounded-lg p-6">
-        <h3 className="text-xl font-semibold text-pink-300 mb-4">Mission of Striatum</h3>
+        <h3 className="text-xl font-semibold text-pink-300 mb-4">Acknowledgement and Thank You</h3>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          It brings us immense joy and pride to welcome you to STRIATUM 3.0, the third edition of our undergraduate 
+          academic conference, now returning with renewed energy, a broader vision, and a deeper purpose.
+        </p>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          We extend our heartfelt gratitude to our Director, Dr. C. Udayashankar, for his 
+          unwavering support and invaluable approval, which made this event possible. We are equally thankful to our 
+          Dean, Dr. Ramachandra Bhat, for his consistent encouragement and wise guidance. A special note of 
+          appreciation goes out to our dedicated staff advisor, Dr. Niraimathi, whose feedback and support have been 
+          instrumental throughout this journey.
+        </p>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          We express our deepest appreciation to all the Faculty Members and Heads of Departments for their active 
+          participation, enthusiastic involvement, and continued dedication to the academic growth of undergraduate 
+          students. We are especially grateful to Dr. Surendar and Dr. Aswin for their creativity and contribution in 
+          designing the academic events and workshops that form the heart of this conference.
+        </p>
         <p className="text-gray-300 leading-relaxed">
-          Striatum 3.0 aims to create a platform where medical professionals, students, and researchers 
-          converge to share knowledge, discuss innovations, and collaborate on solutions for modern healthcare challenges. 
-          Our mission is to spark innovation through meaningful connections and transformative learning experiences.
+          As we prepare to host participants from across the nation, we look forward to fostering a space of meaningful 
+          dialogue, academic innovation, and collaborative learning. With Synapse as our theme, we hope this 
+          conference sparks connections that go beyond the event—between ideas, institutions, and individuals.
         </p>
       </div>
 
@@ -998,7 +986,6 @@ function App() {
         />
       );
       case 'workshops': return <WorkshopsSection />;
-      case 'blog': return <BlogSection />;
       case 'about': return <AboutSection />;
       default: return <HomeSection setActiveTab={setActiveTab} />;
     }
