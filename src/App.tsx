@@ -4,6 +4,9 @@ import { Dna } from 'lucide-react';
 import stratiumLogo from './images/stratium.png';
 import EventSection from './Events';
 import WorkshopsSection from './Workshops';
+import Contact from './Contact';
+import { eventSections } from './Events';
+import WorkshopsSectionDefault from './Workshops';
 
 // Chatbot Component
 interface Message {
@@ -38,15 +41,39 @@ const FloatingChatbot = () => {
 
   const getBotResponse = (userMessage: string): string => {
     const message = userMessage.toLowerCase();
-    
+
     if (message.includes('register') || message.includes('registration')) {
       return "🎯 Registration is now open!\n\n• Visit our official website\n• Fill out the registration form\n• Pay the symposium fee\n• Receive confirmation email\n\nEarly bird discounts available until August 10th! 💫";
     }
-    
+
     if (message.includes('workshop') || message.includes('cortex crafts')) {
-      return "🧠 WORKSHOPS (CORTEX CRAFTS):\n\n• Disaster Management: Disaster X\n• Obstetrics Workshop\n• Wilderness Medicine: CODE WILD\n• Ophthalmology\n• Basic Anesthesiology: The Sonic Shift\n• Basic Suturing Skills\n• Neonatology Resuscitation\n• Computational AI for Research\n\nAll workshops include hands-on training! ⚡";
+      // Dynamically list all workshops
+      try {
+        // Import workshops array from WorkshopsSection file
+        // If not exported, fallback to static
+        // @ts-ignore
+        const workshops = WorkshopsSectionDefault?.__workshops || [];
+        let workshopList = workshops.length
+          ? workshops.map((w: any) => `• ${w.title.split("•").pop()?.trim() || w.title}`).join('\n')
+          : "Workshop details are currently unavailable.";
+        return `🧠 WORKSHOPS (CORTEX CRAFTS):\n\n${workshopList}\n\nAll workshops include hands-on training! ⚡`;
+      } catch {
+        return "Workshop details are currently unavailable.";
+      }
     }
-    
+
+    if (message.includes('event') || message.includes('events') || message.includes('competition')) {
+      // Dynamically list all events
+      let eventList = eventSections
+        .map(
+          (section: any) =>
+            `\n${section.title}:\n` +
+            section.events.map((e: any) => `• ${e.title} (${e.date}, ${e.time})`).join('\n')
+        )
+        .join('\n');
+      return `📅 EVENTS & COMPETITIONS:${eventList}`;
+    }
+
     if (message.includes('location') || message.includes('where') || message.includes('venue')) {
       return "📍 Event Location:\n\nIndira Gandhi Medical College and Research Institute (IGMCRI)\nPuducherry, India\n\nThe symposium will be held across multiple venues within the campus including:\n• Main Auditorium\n• Workshop Labs\n• Conference Halls\n\nDetailed venue maps will be provided upon registration! 🗺️";
     }
@@ -280,6 +307,7 @@ const BottomNav = ({ activeTab, setActiveTab, showNav = true }: BottomNavProps) 
     { id: 'event', label: 'Events', icon: Calendar },
     { id: 'workshops', label: 'Workshops', icon: Wrench },
     { id: 'about', label: 'About', icon: Users },
+    { id: 'contact', label: 'Contact', icon: Phone },
   ];
 
   if (!showNav) return null;
@@ -736,7 +764,7 @@ const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
         <Heart size={16} className="text-pink-400" />
         <Plus size={12} className="text-white" />
         <Stethoscope size={16} className="text-pink-400" />
-        <span className="text-sm font-medium">Events for Paramedics also included!</span>
+        <span className="text-sm font-medium">Events for Paramedics and Nursing also included!</span>
       </div>
     </div>
   </div>
@@ -987,6 +1015,7 @@ function App() {
       );
       case 'workshops': return <WorkshopsSection />;
       case 'about': return <AboutSection />;
+      case 'contact': return <Contact />;
       default: return <HomeSection setActiveTab={setActiveTab} />;
     }
   };

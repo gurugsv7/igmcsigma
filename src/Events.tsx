@@ -372,4 +372,5 @@ const EventSection = ({
   );
 };
 
+export { eventSections };
 export default EventSection;
