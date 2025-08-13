@@ -764,7 +764,7 @@ const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
         <Heart size={16} className="text-pink-400" />
         <Plus size={12} className="text-white" />
         <Stethoscope size={16} className="text-pink-400" />
-        <span className="text-sm font-medium">Events for Paramedics and Nursing also included!</span>
+        <span className="text-sm font-medium">Events for Paramedics and Dental also included!</span>
       </div>
     </div>
   </div>
