@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Award, MessageSquare, Microscope, Plus } from "lucide-react";
+import EventDetails from "./EventDetails";
 
 interface EventSectionProps {
   setRegistrationItem: (item: any) => void;
@@ -16,24 +17,24 @@ const eventSections = [
     events: [
       {
         title: 'Senior Quiz',
-        description: 'Advanced medical quiz for final year students and interns',
-        details: 'Comprehensive quiz covering all medical subjects with focus on clinical scenarios',
+        description: 'Advanced quiz on Gastroenterology',
+        details: 'Senior level quiz for final year students and interns focusing on gastroenterology topics',
         date: '12/10/25',
-        time: 'Prelims: Afternoon, Finals: Evening'
+        time: 'Sunday'
       },
       {
         title: 'Junior Quiz',
-        description: 'Medical quiz for 1st to 3rd year students',
-        details: 'Foundation medical knowledge quiz covering basic sciences and early clinical subjects',
+        description: 'Quiz on Anatomy and Pathology',
+        details: 'Junior level quiz covering foundational medical subjects - anatomy and pathology',
         date: '12/10/25',
-        time: 'Prelims: Afternoon, Finals: Evening'
+        time: 'Sunday'
       },
       {
         title: 'Online Quiz',
-        description: 'Open quiz for all participants',
-        details: 'General medical knowledge quiz accessible to all registered participants',
-        date: '11/10/25',
-        time: 'Semi Finals, Finals on 12/10/25'
+        description: 'Diabetes Mellitus Quiz',
+        details: 'Three-round quiz with online prelims, offline semifinals and finals',
+        date: 'Prelims: 28/09/25',
+        time: 'Semifinals & Finals: 12/10/25'
       }
     ]
   },
@@ -44,14 +45,14 @@ const eventSections = [
     color: 'teal',
     events: [
       {
-        title: 'Inside the ICU: What They Don\'t Teach You in Undergrad',
+        title: 'Inside the ICU: What They Don\'t Teach You in Undergrad Medicine',
         description: 'Real-world ICU scenarios and critical care insights',
         details: 'Expert panel discussion on practical ICU management and critical decision making',
         date: '11/10/25',
         time: 'Afternoon'
       },
       {
-        title: 'The Road to Residency: USMLE, PLAB, MRCP, MRCS',
+        title: 'The Road to Residency: USMLE, UKMLE, MRCP, MRCS',
         description: 'Career guidance for international medical examinations',
         details: 'Comprehensive guidance on international medical career pathways and exam strategies',
         date: '11/10/25',
@@ -61,7 +62,7 @@ const eventSections = [
   },
   {
     id: 'presentations',
-    title: 'PRESENTATIONS & OTHER SCIENTIFIC EVENTS',
+    title: 'PRESENTATIONS',
     icon: Microscope,
     color: 'pink',
     events: [
@@ -70,35 +71,43 @@ const eventSections = [
         description: 'Present interesting clinical cases',
         details: 'Platform for presenting unique and challenging clinical cases with expert feedback',
         date: '12/10/25',
-        time: 'Afternoon'
+        time: 'Sunday morning'
       },
       {
         title: 'Poster Presentation: Axon Alley',
         description: 'Research poster presentations',
         details: 'Showcase your research work through professional poster presentations',
         date: '12/10/25',
-        time: 'Afternoon'
+        time: 'Sunday morning'
       },
       {
         title: 'Paper Presentation: Nexus',
         description: 'Scientific paper presentations',
         details: 'Present your research papers and findings to a panel of expert judges',
         date: '12/10/25',
-        time: 'Afternoon'
-      },
+        time: 'Sunday morning'
+      }
+    ]
+  },
+  {
+    id: 'otherevents',
+    title: 'OTHER EVENTS',
+    icon: Plus,
+    color: 'teal',
+    events: [
       {
         title: 'Body Painting: Pulsating Palettes',
-        description: 'Creative medical art competition',
-        details: 'Artistic representation of medical concepts through body painting',
+        description: 'Anatomy oriented body painting competition',
+        details: 'Creative artistic representation of anatomical concepts through body painting',
         date: '11/10/25',
-        time: 'Forenoon'
+        time: 'Saturday morning'
       },
       {
         title: 'Short Film: Cineplexus',
         description: 'Medical themed short film competition',
         details: 'Create and present short films on medical themes and healthcare topics',
         date: '11/10/25',
-        time: 'Afternoon'
+        time: 'Saturday morning'
       }
     ]
   }
@@ -126,7 +135,37 @@ const SectionPage = ({
   setRegistrationType: (type: string) => void,
   setShowRegistration: (show: boolean) => void
 }) => {
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
   const Icon = section.icon;
+
+  const handleEventSelect = (event: any) => {
+    // Get the base title for EventDetails matching
+    let strippedTitle = event.title;
+    if (event.title.includes(":")) {
+      const [first] = event.title.split(":");
+      strippedTitle = first.trim();
+    }
+    if (event.title.includes(" - ")) {
+      strippedTitle = event.title.split(" - ")[0].trim();
+    }
+    // Get just the main title without any subtitles
+    strippedTitle = strippedTitle.split(/[\-:]/)[0].trim();
+    
+    setSelectedEvent({
+      ...event,
+      originalTitle: event.title, // keep full title for reference
+      title: strippedTitle // simplified title for matching
+    });
+  };
+
+  if (selectedEvent) {
+    return (
+      <EventDetails
+        event={selectedEvent}
+        onBack={() => setSelectedEvent(null)}
+      />
+    );
+  }
   return (
     <div className="min-h-screen pt-8 pb-24 px-6">
       <button
@@ -209,17 +248,17 @@ const SectionPage = ({
               </div>
               {/* CTA Button */}
               <button
-                disabled
+                onClick={() => handleEventSelect(event)}
                 className={`
                   flex items-center justify-center gap-2 px-5 py-2 rounded-full
-                  border-2 border-gray-500/60 text-gray-400 font-bold text-sm
-                  bg-white/5 backdrop-blur-md
+                  border-2 border-cyan-500/60 text-cyan-300 font-bold text-sm
+                  bg-white/5 backdrop-blur-md hover:bg-white/10
                   shadow-[0_0_12px_2px_rgba(0,255,255,0.05)]
-                  cursor-not-allowed
+                  transition-all duration-200
                 `}
               >
-                <span role="img" aria-label="register">⏳</span>
-                Registration Soon
+                <span role="img" aria-label="register">📝</span>
+                View Details & Register
               </button>
             </div>
           );

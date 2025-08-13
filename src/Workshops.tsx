@@ -1,31 +1,25 @@
 import React, { useState } from "react";
 import { Stethoscope, Heart, Brain, Microscope, Plus, Users, BookOpen, Clock, HeartPulse, AlertTriangle, Cpu, X } from "lucide-react";
 
-// Dialog Component
+// [Previous Dialog Component Code]
 const RegistrationDialog = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
-      {/* Backdrop with blur */}
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      
-      {/* Dialog Content */}
       <div 
         className="relative bg-gradient-to-b from-gray-900/90 to-gray-800/90 rounded-2xl p-6 max-w-sm w-full backdrop-blur-xl border-2 border-cyan-500/20 shadow-[0_0_25px_-5px_rgba(0,255,255,0.3)]"
         style={{
           boxShadow: "0 8px 32px -4px rgba(0,255,255,0.2), 0 4px 16px -2px rgba(180,0,255,0.15)"
         }}
       >
-        {/* Close button */}
         <button 
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors"
         >
           <X size={20} />
         </button>
-
-        {/* Content */}
         <div className="text-center space-y-4">
           <div className="w-16 h-16 mx-auto bg-cyan-500/10 rounded-full flex items-center justify-center border border-cyan-500/20">
             <span className="text-2xl" role="img" aria-label="timer">⏳</span>
@@ -54,7 +48,7 @@ const WorkshopsSection = () => {
   const workshops = [
     {
       id: 'radiology',
-      title: 'Radiology Workshop',
+      title: 'SONOSTRIKE • Radiology eFAST Workshop',
       icon: Brain,
       color: 'blue',
       description: 'Comprehensive training in radiological imaging and interpretation.',
@@ -73,7 +67,7 @@ const WorkshopsSection = () => {
     },
     {
       id: 'disaster-x',
-      title: 'Disaster Management: Disaster X',
+      title: 'DISASTER X • Disaster Management Workshop',
       icon: Stethoscope,
       color: 'red',
       description: 'Comprehensive training on emergency response and disaster management protocols.',
@@ -92,7 +86,7 @@ const WorkshopsSection = () => {
     },
     {
       id: 'obstetrics',
-      title: 'Obstetrics Workshop',
+      title: 'VIVANTIA • Obstetric Workshop',
       icon: Heart,
       color: 'pink',
       description: 'Hands-on training in obstetric procedures and maternal care.',
@@ -111,7 +105,7 @@ const WorkshopsSection = () => {
     },
     {
       id: 'code-wild',
-      title: 'Wilderness Medicine: CODE WILD',
+      title: 'CODE WILD • Wilderness Medicine',
       icon: Brain,
       color: 'green',
       description: 'Medical care in remote and challenging environments.',
@@ -130,7 +124,7 @@ const WorkshopsSection = () => {
     },
     {
       id: 'ophthalmology',
-      title: 'Ophthalmology Workshop',
+      title: 'OCCULEX • Ophthalmology Workshop',
       icon: Microscope,
       color: 'blue',
       description: 'Eye examination techniques and common ophthalmic procedures.',
@@ -149,7 +143,7 @@ const WorkshopsSection = () => {
     },
     {
       id: 'sonic-shift',
-      title: 'Basic Anesthesiology: The Sonic Shift',
+      title: 'THE SONIC SHIFT • Basic Anaesthesiology Workshop',
       icon: Stethoscope,
       color: 'purple',
       description: 'Introduction to anesthesia principles and airway management.',
@@ -168,7 +162,7 @@ const WorkshopsSection = () => {
     },
     {
       id: 'suturing',
-      title: 'Basic Suturing Skills',
+      title: 'ANASTAMOS • Basic Suturing Skills',
       icon: Plus,
       color: 'teal',
       description: 'Fundamental wound closure and suturing techniques.',
@@ -187,7 +181,7 @@ const WorkshopsSection = () => {
     },
     {
       id: 'neonatology',
-      title: 'Neonatology Resuscitation Practices',
+      title: 'REVIVA • Neonatology Resuscitation Practices',
       icon: Heart,
       color: 'orange',
       description: 'Newborn resuscitation and critical care procedures.',
@@ -206,7 +200,7 @@ const WorkshopsSection = () => {
     },
     {
       id: 'ai-research',
-      title: 'Role of Computational AI for Research',
+      title: 'SMART • AI for Research',
       icon: Brain,
       color: 'cyan',
       description: 'AI applications in medical research and clinical practice.',
@@ -225,7 +219,7 @@ const WorkshopsSection = () => {
     },
     {
       id: 'dental',
-      title: 'Dental Workshop',
+      title: "EXODONTIA'X • Dental Workshop",
       icon: Plus,
       color: 'pink',
       description: 'Basic dental procedures and oral health care.',
@@ -244,7 +238,7 @@ const WorkshopsSection = () => {
     },
     {
       id: 'paramedical',
-      title: 'Paramedical Workshop',
+      title: 'PARAMATRIX • Paramedical Workshop',
       icon: Heart,
       color: 'green',
       description: 'Essential paramedical skills and emergency care.',
@@ -263,6 +257,7 @@ const WorkshopsSection = () => {
     }
   ];
 
+  // [Rest of the component code remains the same]
   const getColorClasses = (color: string) => {
     const colors: { [key: string]: string } = {
       red: 'from-red-500/20 to-red-600/20 border-red-400/30 text-red-300',
@@ -277,7 +272,7 @@ const WorkshopsSection = () => {
     return colors[color];
   };
 
-  // Group workshops by theme with Lucide icons
+  // [Groups and rendering code remains the same]
   const groups = [
     {
       id: "clinical",
@@ -332,7 +327,6 @@ const WorkshopsSection = () => {
   if (!activeGroup) {
     return (
       <div className="min-h-screen pt-8 pb-24 px-2 sm:px-6 relative overflow-x-hidden">
-        {/* Sci-fi grid + faint orbit lines */}
         <div
           className="pointer-events-none fixed inset-0 z-0"
           aria-hidden="true"
@@ -343,12 +337,16 @@ const WorkshopsSection = () => {
               "radial-gradient(circle at 50% 30%,rgba(255,255,255,0.18) 60%,transparent 100%)",
           }}
         />
-        {/* Faint orbit lines */}
         <svg className="pointer-events-none fixed left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2" width="600" height="600" style={{opacity:0.08}} aria-hidden="true">
           <ellipse cx="300" cy="300" rx="220" ry="80" fill="none" stroke="#00fff7" strokeWidth="2"/>
           <ellipse cx="300" cy="300" rx="140" ry="220" fill="none" stroke="#b388ff" strokeWidth="2"/>
         </svg>
-        <h2 className="relative z-10 text-3xl font-bold text-center bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent mb-4">
+        <h2 
+          className="relative z-10 text-3xl font-bold text-center bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent mb-4"
+          style={{
+            filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3)) drop-shadow(0 0 2px rgba(255,255,255,0.3))"
+          }}
+        >
           CORTEX CRAFTS
         </h2>
         <p className="relative z-10 text-center text-gray-400 mb-8 max-w-2xl mx-auto">
@@ -381,7 +379,6 @@ const WorkshopsSection = () => {
                     "linear-gradient(135deg, rgba(30,30,60,0.55) 60%, rgba(60,0,80,0.35) 100%)",
                 }}
               >
-                {/* Unique icon left */}
                 <span
                   className={`
                     flex items-center justify-center mr-4 min-w-[56px] min-h-[56px]
@@ -395,7 +392,6 @@ const WorkshopsSection = () => {
                 >
                   <GroupIcon size={32} strokeWidth={2.5} className="text-white drop-shadow-[0_0_4px_cyan]" />
                 </span>
-                {/* Right stack */}
                 <div className="flex-1 flex flex-col items-start">
                   <span className="font-extrabold text-base md:text-lg uppercase tracking-wide text-white">
                     {group.name}
@@ -432,7 +428,13 @@ const WorkshopsSection = () => {
         <span>Back to Workshops</span>
       </button>
       <div className="mb-8 flex flex-col items-center">
-        <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wide bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent text-center mb-1" style={{letterSpacing: "0.06em"}}>
+        <h2 
+          className="text-2xl md:text-3xl font-extrabold uppercase tracking-wide bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent text-center mb-1" 
+          style={{
+            letterSpacing: "0.06em",
+            filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3)) drop-shadow(0 0 2px rgba(255,255,255,0.3))"
+          }}
+        >
           {group.name}
         </h2>
         <div className="text-sm md:text-base text-white/70 font-medium text-center">
@@ -472,7 +474,6 @@ const WorkshopsSection = () => {
                   "linear-gradient(135deg, rgba(30,30,60,0.55) 60%, rgba(60,0,80,0.35) 100%)",
               }}
             >
-              {/* Icon left */}
               <span
                 className={`
                   flex items-center justify-center mr-4 min-w-[56px] min-h-[56px]
@@ -482,12 +483,30 @@ const WorkshopsSection = () => {
               >
                 <Icon size={32} strokeWidth={2.5} className="text-white" />
               </span>
-              {/* Right stack */}
               <div className="flex-1 flex flex-col items-start">
-                <span className="font-extrabold text-base md:text-lg uppercase tracking-wide text-white">
-                  {workshop.title}
-                </span>
-                <span className="text-xs mt-1 text-white/60 font-medium">{workshop.description}</span>
+                {workshop.title.includes("•") ? (
+                  <div className="w-full flex flex-col items-center text-center">
+                    <span 
+                      className="font-extrabold text-base md:text-lg uppercase tracking-wide text-cyan-300"
+                      style={{
+                        filter: "drop-shadow(0 0 6px rgba(0,255,255,0.3))"
+                      }}
+                    >
+                      {workshop.title.split("•")[0].trim()}
+                    </span>
+                    <span className="font-extrabold text-base md:text-lg uppercase tracking-wide text-white/90">
+                      {workshop.title.split("•")[1].trim()}
+                    </span>
+                    <span className="text-xs mt-1 text-white/60 font-medium">{workshop.description}</span>
+                  </div>
+                ) : (
+                  <>
+                    <span className="font-extrabold text-base md:text-lg uppercase tracking-wide text-white/90 w-full text-center block">
+                      {workshop.title}
+                    </span>
+                    <span className="text-xs mt-1 text-white/60 font-medium">{workshop.description}</span>
+                  </>
+                )}
               </div>
             </button>
           );
