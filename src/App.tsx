@@ -860,7 +860,7 @@ const AboutSection = () => (
         <div className="space-y-4">
           <div className="flex items-center space-x-3">
             <Phone className="text-teal-400" size={20} />
-            <a href="tel:+919876543210" className="text-gray-300 hover:underline">=91 99522 60625</a>
+            <a href="tel:+919876543210" className="text-gray-300 hover:underline">+91 99522 60625</a>
           </div>
           <div className="flex items-center space-x-3">
             <Mail className="text-teal-400" size={20} />
