@@ -107,7 +107,7 @@ const FloatingChatbot = () => {
     }
     
     if (message.includes('contact') || message.includes('help') || message.includes('support')) {
-      return "📞 Need More Help?\n\nContact the Organizing Committee:\n\n📧 Email: striatum@igmcri.edu\n📱 Phone: +91 98765 43210\n🌐 Website: www.igmcri.edu/striatum\n\nOffice Hours: 9 AM - 6 PM (Mon-Fri)\n\nWe're here to help make your Striatum 3.0 experience amazing! ✨";
+      return "📞 Need More Help?\n\nContact the Organizing Committee:\n\n📧 Email: striatum.3.igmcri@gmail.com\n📱 Phone: +91 98765 43210\n🌐 Website: www.igmcri.edu/striatum\n\nOffice Hours: 9 AM - 6 PM (Mon-Fri)\n\nWe're here to help make your Striatum 3.0 experience amazing! ✨";
     }
     
     if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
@@ -860,11 +860,11 @@ const AboutSection = () => (
         <div className="space-y-4">
           <div className="flex items-center space-x-3">
             <Phone className="text-teal-400" size={20} />
-            <span className="text-gray-300">+91 98765 43210</span>
+            <a href="tel:+919876543210" className="text-gray-300 hover:underline">+91 98765 43210</a>
           </div>
           <div className="flex items-center space-x-3">
             <Mail className="text-teal-400" size={20} />
-            <span className="text-gray-300">striatum@igmcri.edu</span>
+            <a href="mailto:striatum@igmcri.edu" className="text-gray-300 hover:underline">striatum@igmcri.edu</a>
           </div>
           <div className="flex items-center space-x-3">
             <MapPin className="text-teal-400" size={20} />
