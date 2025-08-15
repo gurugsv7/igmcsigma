@@ -860,11 +860,11 @@ const AboutSection = () => (
         <div className="space-y-4">
           <div className="flex items-center space-x-3">
             <Phone className="text-teal-400" size={20} />
-            <a href="tel:+919876543210" className="text-gray-300 hover:underline">+91 99522 60625</a>
+            <a href="tel:+919952260625" className="text-gray-300 hover:underline">+91 99522 60625</a>
           </div>
           <div className="flex items-center space-x-3">
             <Mail className="text-teal-400" size={20} />
-            <a href="mailto:striatum@igmcri.edu" className="text-gray-300 hover:underline">striatum.3.igmcri@gmail.com</a>
+            <a href="mailto:striatum.3.igmcri@gmail.com" className="text-gray-300 hover:underline">striatum.3.igmcri@gmail.com</a>
           </div>
           <div className="flex items-center space-x-3">
             <MapPin className="text-teal-400" size={20} />
