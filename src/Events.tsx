@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Award, MessageSquare, Microscope, Plus } from "lucide-react";
 import EventDetails from "./EventDetails";
 
@@ -247,8 +248,20 @@ const SectionPage = ({
 </div>
               </div>
               {/* CTA Button */}
-              <button
-                onClick={() => handleEventSelect(event)}
+              <Link
+                to={
+                  event.title === "Senior Quiz" ? "/events/senior-quiz" :
+                  event.title === "Junior Quiz" ? "/events/junior-quiz" :
+                  event.title === "Online Quiz" ? "/events/online-quiz" :
+                  event.title.startsWith("Inside the ICU") ? "/events/inside-icu" :
+                  event.title.startsWith("The Road to Residency") ? "/events/road-to-residency" :
+                  event.title.startsWith("Case Presentation") ? "/events/case-pulse" :
+                  event.title.startsWith("Poster Presentation") ? "/events/axon-alley" :
+                  event.title.startsWith("Paper Presentation") ? "/events/nexus" :
+                  event.title.startsWith("Body Painting") ? "/events/pulsating-palettes" :
+                  event.title.startsWith("Short Film") ? "/events/cineplexus" :
+                  "#"
+                }
                 className={`
                   flex items-center justify-center gap-2 px-5 py-2 rounded-full
                   border-2 border-cyan-500/60 text-cyan-300 font-bold text-sm
@@ -259,7 +272,7 @@ const SectionPage = ({
               >
                 <span role="img" aria-label="register">📝</span>
                 View Details & Register
-              </button>
+              </Link>
             </div>
           );
         })}

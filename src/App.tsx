@@ -1,4 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+
+// BuyDelegatePassButton for client-side navigation
+const BuyDelegatePassButton = () => {
+  const navigate = useNavigate();
+  return (
+    <button
+      className="bg-gradient-to-r from-cyan-500 to-teal-500 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+      onClick={() => navigate('/delegate-pass')}
+    >
+      Buy Delegate Pass
+    </button>
+  );
+};
 import { Home, Calendar, BookOpen, Users, Phone, Heart, Plus, Brain, Stethoscope, Microscope, Award, MessageSquare, MapPin, Mail, Clock, Send, Bot, X, MessageCircle, Wrench, ArrowLeft, CheckCircle, Loader, HeartPulse, TestTube } from 'lucide-react';
 import { Dna } from 'lucide-react';
 import stratiumLogo from './images/stratium.png';
@@ -7,6 +21,30 @@ import WorkshopsSection from './Workshops';
 import Contact from './Contact';
 import { eventSections } from './Events';
 import WorkshopsSectionDefault from './Workshops';
+
+import SeniorQuiz from './events/SeniorQuiz';
+import JuniorQuiz from './events/JuniorQuiz';
+import OnlineQuiz from './events/OnlineQuiz';
+import InsideICU from './events/InsideICU';
+import RoadToResidency from './events/RoadToResidency';
+import CasePulse from './events/CasePulse';
+import AxonAlley from './events/AxonAlley';
+import Nexus from './events/Nexus';
+import PulsatingPalettes from './events/PulsatingPalettes';
+import Cineplexus from './events/Cineplexus';
+
+import Sonostrike from './workshops/Sonostrike';
+import DisasterX from './workshops/DisasterX';
+import Vivantia from './workshops/Vivantia';
+import CodeWild from './workshops/CodeWild';
+import Occulex from './workshops/Occulex';
+import SonicShift from './workshops/SonicShift';
+import Anastamos from './workshops/Anastamos';
+import Reviva from './workshops/Reviva';
+import SmartAI from './workshops/SmartAI';
+import ExodontiaX from './workshops/ExodontiaX';
+import Paramatrix from './workshops/Paramatrix';
+import DelegatePass from './DelegatePass';
 
 // Chatbot Component
 interface Message {
@@ -746,12 +784,7 @@ const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
       <CountdownTimer />
 
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
-        <button
-          disabled
-          className="bg-gradient-to-r from-gray-600 to-gray-700 text-gray-400 font-semibold py-3 px-8 rounded-full cursor-not-allowed"
-        >
-          Registration Soon ⏳
-        </button>
+        <BuyDelegatePassButton />
         <button
           className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500/10 font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-400/25 mt-1"
           onClick={() => setActiveTab('workshops')}
@@ -1021,76 +1054,101 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-x-hidden">
-      {/* Animated Background Pattern */}
-      <div className="fixed inset-0 opacity-10 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,#00f7ff_0%,transparent_50%)] animate-pulse"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,#d94bff_0%,transparent_50%)] animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#00d9c0_0%,transparent_50%)] animate-pulse" style={{ animationDelay: '2s' }}></div>
-      </div>
+    <Router>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-x-hidden">
+        {/* Animated Background Pattern */}
+        <div className="fixed inset-0 opacity-10 pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,#00f7ff_0%,transparent_50%)] animate-pulse"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,#d94bff_0%,transparent_50%)] animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#00d9c0_0%,transparent_50%)] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        </div>
 
-      {/* Removed Medical Icons */}
-
-      {/* Animated Stars Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Static Stars */}
-        <div className="absolute inset-0">
-          {[...Array(50)].map((_, i) => (
+        {/* Animated Stars Background */}
+        <div className="fixed inset-0 overflow-hidden pointer-events-none">
+          {/* Static Stars */}
+          <div className="absolute inset-0">
+            {[...Array(50)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 4}s`
+                }}
+              />
+            ))}
+          </div>
+          
+          {/* Shooting Stars */}
+          {[...Array(5)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+              className="absolute w-0.5 h-0.5 bg-white animate-shooting-star"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 4}s`
+                animationDelay: `${Math.random() * 8}s`,
+                opacity: 0.7
               }}
-            />
+            >
+              <div className="w-8 h-0.5 bg-gradient-to-r from-white via-white to-transparent transform -rotate-45" />
+            </div>
+          ))}
+          
+          {/* Glowing Stars */}
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`
+              }}
+            >
+              <div className="w-1 h-1 bg-cyan-300 rounded-full shadow-[0_0_8px_2px_rgba(0,255,255,0.3)]" />
+            </div>
           ))}
         </div>
-        
-        {/* Shooting Stars */}
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-0.5 h-0.5 bg-white animate-shooting-star"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 8}s`,
-              opacity: 0.7
-            }}
-          >
-            <div className="w-8 h-0.5 bg-gradient-to-r from-white via-white to-transparent transform -rotate-45" />
-          </div>
-        ))}
-        
-        {/* Glowing Stars */}
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`
-            }}
-          >
-            <div className="w-1 h-1 bg-cyan-300 rounded-full shadow-[0_0_8px_2px_rgba(0,255,255,0.3)]" />
-          </div>
-        ))}
+
+        {/* Main Content */}
+        <main className="relative z-10">
+          <Routes>
+            <Route path="/" element={renderActiveSection()} />
+            <Route path="/events/senior-quiz" element={<SeniorQuiz />} />
+            <Route path="/events/junior-quiz" element={<JuniorQuiz />} />
+            <Route path="/events/online-quiz" element={<OnlineQuiz />} />
+            <Route path="/events/inside-icu" element={<InsideICU />} />
+            <Route path="/events/road-to-residency" element={<RoadToResidency />} />
+            <Route path="/events/case-pulse" element={<CasePulse />} />
+            <Route path="/events/axon-alley" element={<AxonAlley />} />
+            <Route path="/events/nexus" element={<Nexus />} />
+            <Route path="/events/pulsating-palettes" element={<PulsatingPalettes />} />
+            <Route path="/events/cineplexus" element={<Cineplexus />} />
+            <Route path="/workshops/sonostrike" element={<Sonostrike />} />
+            <Route path="/workshops/disaster-x" element={<DisasterX />} />
+            <Route path="/workshops/vivantia" element={<Vivantia />} />
+            <Route path="/workshops/code-wild" element={<CodeWild />} />
+            <Route path="/workshops/occulex" element={<Occulex />} />
+            <Route path="/workshops/sonic-shift" element={<SonicShift />} />
+            <Route path="/workshops/anastamos" element={<Anastamos />} />
+            <Route path="/workshops/reviva" element={<Reviva />} />
+            <Route path="/workshops/smart-ai" element={<SmartAI />} />
+            <Route path="/workshops/exodontia-x" element={<ExodontiaX />} />
+            <Route path="/workshops/paramatrix" element={<Paramatrix />} />
+            <Route path="/delegate-pass" element={<DelegatePass />} />
+            {/* Add more event/workshop routes here */}
+          </Routes>
+        </main>
+
+        {/* Bottom Navigation */}
+        <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} showNav={!showRegistration} />
+
+        {/* Floating Chatbot */}
+        {!showRegistration && <FloatingChatbot />}
       </div>
-
-      {/* Main Content */}
-      <main className="relative z-10">
-        {renderActiveSection()}
-      </main>
-
-      {/* Bottom Navigation */}
-      <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} showNav={!showRegistration} />
-
-      {/* Floating Chatbot */}
-      {!showRegistration && <FloatingChatbot />}
-    </div>
+    </Router>
   );
 }
 

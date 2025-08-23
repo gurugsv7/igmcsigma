@@ -1,4 +1,13 @@
+/*
+TODO:
+- [x] Analyze requirements and extract all new event/workshop names and details from the provided DOCX.
+- [ ] Update main event and workshop listing pages (Events.tsx, Workshops.tsx).
+- [x] Update each individual event/workshop page with new content and names.
+- [x] Verify all changes and UI consistency.
+*/
+
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Stethoscope, Heart, Brain, Microscope, Plus, Users, BookOpen, Clock, HeartPulse, AlertTriangle, Cpu, X } from "lucide-react";
 
 // [Previous Dialog Component Code]
@@ -47,213 +56,246 @@ const WorkshopsSection = () => {
 
   const workshops = [
     {
-      id: 'radiology',
-      title: 'SONOSTRIKE • Radiology eFAST Workshop',
+      id: 'sonostrike',
+      title: 'SONOSTRIKE • Radiology EFAST Workshop',
       icon: Brain,
       color: 'blue',
-      description: 'Comprehensive training in radiological imaging and interpretation.',
+      description: 'E-FAST (Extended Focused Assessment with Sonography in Trauma) workshop for rapid ultrasound assessment in trauma care. Hands-on and clinical simulation practices.',
       details: [
-        'Basic radiological principles',
-        'X-ray interpretation',
-        'CT and MRI basics',
-        'Common radiological findings',
-        'Emergency radiology essentials'
+        'Indications and limitations of E-FAST',
+        'Patient and machine preparation',
+        'Systematic E-FAST exam sequence',
+        'Step by step ultrasound technique',
+        'Recognition of pathologies',
+        'EFAST exam interpretation',
+        'Algorithm-based decision making',
+        'Hands-on and clinical simulation'
       ],
-      duration: '4 hours',
-      prerequisites: 'Medical students (2nd year+)',
-      capacity: '40 participants',
+      duration: '4 hours (Forenoon session)',
+      prerequisites: 'Medical students',
+      capacity: 'N/A',
       date: '09/10/25',
       time: 'Forenoon'
     },
     {
       id: 'disaster-x',
-      title: 'DISASTER X • Disaster Management Workshop',
+      title: "DISASTER X • Disaster Management Workshop",
       icon: Stethoscope,
       color: 'red',
-      description: 'Comprehensive training on emergency response and disaster management protocols.',
+      description: 'Immersive scenario-based learning, triage drills, and evacuation planning for disaster preparedness in healthcare settings.',
       details: [
-        'Mass casualty incident management',
-        'Triage protocols and decision making',
-        'Emergency medical response coordination',
-        'Psychological first aid techniques',
-        'Resource allocation in crisis situations'
+        'Disaster scenario assessment and medical response coordination',
+        'Strategic planning for hospital fire evacuation',
+        'Chemical mass casualty incident management',
+        'Application of triage principles and victim prioritization',
+        'Critical thinking in emergency situations',
+        'Rapid clinical decision making',
+        'Spatial awareness for hospital evacuation logistics',
+        'Experiential learning through medical emergency simulations'
       ],
-      duration: '4 hours',
-      prerequisites: 'Basic medical knowledge',
-      capacity: '50 participants',
+      duration: '8:00 AM to 4:00 PM (Full day session)',
+      prerequisites: 'Medical students',
+      capacity: 'N/A',
       date: '10/10/25',
-      time: 'Evening'
+      time: 'Full day'
     },
     {
-      id: 'obstetrics',
+      id: 'vivantia',
       title: 'VIVANTIA • Obstetric Workshop',
       icon: Heart,
       color: 'pink',
-      description: 'Hands-on training in obstetric procedures and maternal care.',
+      description: 'Essential concepts and hands-on techniques for managing labor, including latest guidelines and intrapartum care.',
       details: [
-        'Normal delivery procedures',
-        'Emergency obstetric care',
-        'Neonatal resuscitation basics',
-        'Postpartum care protocols',
-        'High-risk pregnancy management'
+        'Mechanism and conduct of labour (DOAP)',
+        'LSCS',
+        'Episiotomy suturing (hands-on)',
+        'Postpartum hemorrhage management',
+        'Pap smear and IUCD insertion',
+        'Gynaecology examination',
+        'Manual vacuum aspiration'
       ],
-      duration: '6 hours',
-      prerequisites: 'Medical students (3rd year+)',
-      capacity: '30 participants',
+      duration: '4 hours (Afternoon session)',
+      prerequisites: 'Medical students',
+      capacity: 'N/A',
       date: '09/10/25',
       time: 'Afternoon'
     },
     {
-      id: 'code-wild',
+      id: 'codewild',
       title: 'CODE WILD • Wilderness Medicine',
       icon: Brain,
       color: 'green',
-      description: 'Medical care in remote and challenging environments.',
+      description: 'Wilderness medicine skills for emergencies in remote environments. Interactive simulations and hands-on challenges.',
       details: [
-        'Remote area medical assessment',
-        'Improvised medical equipment usage',
-        'Environmental injury management',
-        'Evacuation procedures',
-        'Survival medicine techniques'
+        'Wilderness medicine principles for remote environments',
+        'Improvised splinting using natural materials',
+        'Hemorrhage control: tourniquets and pressure dressing',
+        'Heat stroke, hypothermia, dehydration management',
+        'Identification and first aid for envenomation',
+        'Snakebite management simulation',
+        'Navigation and rescue signaling',
+        'Search and rescue triage',
+        'Survival kit essentials and emergency preparedness'
       ],
-      duration: '5 hours',
-      prerequisites: 'Open to all medical students',
-      capacity: '40 participants',
+      duration: '8:00 AM to 4:00 PM (Full day session)',
+      prerequisites: 'Medical students',
+      capacity: 'N/A',
       date: '09/10/25',
-      time: 'Evening'
+      time: 'Full day'
     },
     {
-      id: 'ophthalmology',
+      id: 'occulex',
       title: 'OCCULEX • Ophthalmology Workshop',
       icon: Microscope,
       color: 'blue',
-      description: 'Eye examination techniques and common ophthalmic procedures.',
+      description: 'Essentials of eye care, prevalent eye conditions, and latest developments in ophthalmology. Theory and demonstrations.',
       details: [
-        'Fundoscopy and slit lamp examination',
-        'Visual field testing',
-        'Common eye emergency management',
-        'Refractive error assessment',
-        'Basic surgical techniques'
+        'Visual and pupillary pathways and reflexes',
+        'Cataract surgeries (video demonstration)',
+        'A Scan and Keratometry',
+        'B scan and UBM',
+        'Direct and indirect ophthalmoscopy',
+        'Retinoscopy',
+        'Conjunctival and corneal foreign body removal',
+        'Sub-conjunctival, peri-bulbar, retrobulbar injections',
+        'Syringing of the nasolacrimal duct',
+        'Corneo-scleral button removal for corneal transplantation'
       ],
-      duration: '4 hours',
-      prerequisites: 'Medical students (2nd year+)',
-      capacity: '25 participants',
+      duration: '4 hours (Forenoon session)',
+      prerequisites: 'Medical students',
+      capacity: 'N/A',
       date: '11/10/25',
       time: 'Forenoon'
     },
     {
-      id: 'sonic-shift',
+      id: 'sonicshift',
       title: 'THE SONIC SHIFT • Basic Anaesthesiology Workshop',
       icon: Stethoscope,
       color: 'purple',
-      description: 'Introduction to anesthesia principles and airway management.',
+      description: 'Point-of-Care Ultrasound (POCUS) in anesthesia and critical care. Hands-on exposure to ultrasound techniques.',
       details: [
-        'Airway assessment and management',
-        'Basic anesthesia monitoring',
-        'Local anesthesia techniques',
-        'Pain management principles',
-        'Emergency airway procedures'
+        'Knobology and understanding of ultrasound machines',
+        'Ultrasonographic evaluation of blunt trauma abdomen',
+        'Ultrasound guided evaluation of breathlessness',
+        'Tips and tricks in thoracic ultrasound',
+        'Interactive video-based learning sessions'
       ],
-      duration: '5 hours',
-      prerequisites: 'Medical students (4th year+)',
-      capacity: '35 participants',
+      duration: '8:00 AM to 4:00 PM (Thursday)',
+      prerequisites: 'Medical students',
+      capacity: 'N/A',
       date: '09/10/25',
-      time: 'Evening'
+      time: 'Full day'
     },
     {
-      id: 'suturing',
+      id: 'anastamos',
       title: 'ANASTAMOS • Basic Suturing Skills',
       icon: Plus,
       color: 'teal',
-      description: 'Fundamental wound closure and suturing techniques.',
+      description: 'Suturing techniques, hand knotting, and operation theatre etiquette. Personal suturing kit provided.',
       details: [
-        'Wound assessment and preparation',
-        'Various suturing techniques',
-        'Knot tying and instrument handling',
-        'Wound care and follow-up',
-        'Complications and management'
+        'Universal precaution',
+        'Operation theatre etiquette',
+        'Patient preparation',
+        'Hand scrubbing',
+        'Gowning and gloving techniques',
+        'Basic suturing skills',
+        'Suturing',
+        'Hand knotting techniques'
       ],
-      duration: '3 hours',
-      prerequisites: 'Open to all medical students',
-      capacity: '60 participants',
+      duration: '4 hours (Forenoon session)',
+      prerequisites: 'Medical students',
+      capacity: 'N/A',
       date: '10/10/25',
       time: 'Forenoon'
     },
     {
-      id: 'neonatology',
+      id: 'reviva',
       title: 'REVIVA • Neonatology Resuscitation Practices',
       icon: Heart,
       color: 'orange',
-      description: 'Newborn resuscitation and critical care procedures.',
+      description: 'Neonatal resuscitation, routine newborn care, and positive pressure resuscitation.',
       details: [
-        'Neonatal assessment techniques',
-        'Resuscitation algorithms',
-        'Airway management in newborns',
-        'Medication administration',
-        'Family communication skills'
+        'Basic NRP',
+        'Routine care of newborn and preparation of birth',
+        'Initial steps of care',
+        'Brief ventilation',
+        'Chest compressions (cardiac arrest)',
+        'Prolonged ventilation – positive pressure resuscitation',
+        'Endotracheal tube intubation'
       ],
-      duration: '4 hours',
-      prerequisites: 'Medical students (3rd year+)',
-      capacity: '30 participants',
+      duration: '4 hours (Afternoon session)',
+      prerequisites: 'Medical students',
+      capacity: 'N/A',
       date: '10/10/25',
       time: 'Afternoon'
     },
     {
-      id: 'ai-research',
+      id: 'smartai',
       title: 'SMART • AI for Research',
       icon: Brain,
       color: 'cyan',
-      description: 'AI applications in medical research and clinical practice.',
+      description: 'AI tools for research proposal writing, literature review, data analysis, and academic writing.',
       details: [
-        'Introduction to medical AI',
-        'Data analysis and interpretation',
-        'Machine learning in diagnostics',
-        'Research methodology with AI',
-        'Ethical considerations in AI'
+        'Prompt engineering in protocol writing',
+        'Brainstorming research questions & objectives',
+        'Turbocharging literature review',
+        'Crafting robust methodology',
+        'Creating questionnaires, proformas, consent forms',
+        'Data analysis & visualization',
+        'Review and discussion writing',
+        'Writing references from scratch',
+        'AI content detection & management'
       ],
-      duration: '3 hours',
-      prerequisites: 'Basic computer knowledge',
-      capacity: '45 participants',
+      duration: '8:00 AM to 4:00 PM (Full day session)',
+      prerequisites: 'Medical students',
+      capacity: 'N/A',
       date: '10/10/25',
-      time: 'Evening'
+      time: 'Full day'
     },
     {
-      id: 'dental',
+      id: 'exodontiax',
       title: "EXODONTIA'X • Dental Workshop",
       icon: Plus,
       color: 'pink',
-      description: 'Basic dental procedures and oral health care.',
+      description: 'Emergency protocols in dental clinics, BLS, and handling medical emergencies during dental procedures.',
       details: [
-        'Dental examination techniques',
-        'Basic dental procedures',
-        'Oral hygiene practices',
-        'Common dental emergencies',
-        'Preventive dentistry'
+        'Identifying medical emergencies in dental settings',
+        'Managing syncope, hypoglycemia, chest pain',
+        'Using emergency drugs and clinical equipment',
+        'Performing basic life support (BLS)',
+        'Managing airway emergencies',
+        'Handling emergency medication kits',
+        'Responding to medical collapse during procedures',
+        'Solving practical challenges in emergency scenarios'
       ],
-      duration: '3 hours',
-      prerequisites: 'Open to all medical students',
-      capacity: '30 participants',
+      duration: '4 hours (Forenoon session)',
+      prerequisites: 'Dental students',
+      capacity: 'N/A',
       date: '11/10/25',
-      time: 'Evening'
+      time: 'Forenoon'
     },
     {
-      id: 'paramedical',
+      id: 'paramatrix',
       title: 'PARAMATRIX • Paramedical Workshop',
       icon: Heart,
       color: 'green',
-      description: 'Essential paramedical skills and emergency care.',
+      description: 'Emergency protocols for paramedical students, drug identification, crash cart management, and teamwork.',
       details: [
-        'Basic life support',
-        'Patient assessment',
-        'Emergency response protocols',
-        'Medical equipment handling',
-        'Patient transport techniques'
+        'Drug identification skills',
+        'Crash cart medication knowledge and handling',
+        'Infusion preparation and rate calculation',
+        'Emergency drug box organization',
+        'High alert medication safety practices',
+        'Scenario-based emergency medication administration',
+        'Hands-on clinical skills at rotating stations',
+        'Team and communication in emergencies',
+        'Professional development and knowledge retention'
       ],
-      duration: '4 hours',
-      prerequisites: 'Open to all medical students',
-      capacity: '35 participants',
+      duration: '4 hours (Forenoon session)',
+      prerequisites: 'Paramedical students',
+      capacity: 'N/A',
       date: '11/10/25',
-      time: 'Evening'
+      time: 'Forenoon'
     }
   ];
 
@@ -280,7 +322,7 @@ const WorkshopsSection = () => {
       name: "Clinical Skills",
       color: "from-cyan-400 to-blue-400",
       workshops: workshops.filter(w =>
-        ["suturing", "sonic-shift", "ophthalmology", "dental"].includes(w.id)
+        ["anastamos", "sonicshift", "occulex", "exodontiax"].includes(w.id)
       ),
     },
     {
@@ -289,7 +331,7 @@ const WorkshopsSection = () => {
       name: "Diagnostic & Imaging",
       color: "from-purple-400 to-blue-400",
       workshops: workshops.filter(w =>
-        ["radiology"].includes(w.id)
+        ["sonostrike"].includes(w.id)
       ),
     },
     {
@@ -298,7 +340,7 @@ const WorkshopsSection = () => {
       name: "Maternal & Neonatal Care",
       color: "from-pink-400 to-orange-300",
       workshops: workshops.filter(w =>
-        ["obstetrics", "neonatology"].includes(w.id)
+        ["vivantia", "reviva"].includes(w.id)
       ),
     },
     {
@@ -307,7 +349,7 @@ const WorkshopsSection = () => {
       name: "Emergency & Wilderness Medicine",
       color: "from-red-400 to-emerald-400",
       workshops: workshops.filter(w =>
-        ["disaster-x", "code-wild", "paramedical"].includes(w.id)
+        ["disaster-x", "codewild", "paramatrix"].includes(w.id)
       ),
     },
     {
@@ -316,7 +358,7 @@ const WorkshopsSection = () => {
       name: "Tech & Research",
       color: "from-fuchsia-400 to-cyan-400",
       workshops: workshops.filter(w =>
-        ["ai-research"].includes(w.id)
+        ["smartai"].includes(w.id)
       ),
     },
   ];
@@ -451,9 +493,9 @@ const WorkshopsSection = () => {
         {group.workshops.map(workshop => {
           const Icon = workshop.icon;
           return (
-            <button
+            <Link
               key={workshop.id}
-              onClick={() => setIsDialogOpen(true)}
+              to={`/workshops/${workshop.id}`}
               className={`
                 relative group flex items-center justify-between overflow-hidden
                 rounded-2xl p-5 min-h-[120px] bg-white/10 backdrop-blur-md
@@ -508,7 +550,7 @@ const WorkshopsSection = () => {
                   </>
                 )}
               </div>
-            </button>
+            </Link>
           );
         })}
       </div>
