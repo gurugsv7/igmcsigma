@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SeniorQuiz = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const SeniorQuiz = () => {
         <span className="block text-cyan-300 font-semibold">Rules and Regulations:</span>
         <ul className="list-disc pl-6 text-white/70">
           <li>Maximum of 3 Members per team</li>
-          <li>Eligibility: MBBS Students from 1st Year to CRMI are eligible (Only one CRMI from the 2020 Batch per team)</li>
+          <li>Eligibility: MBBS Students from 1st Year to CRRI are eligible (Only one CRRI from the 2020 Batch per team)</li>
           <li>Cross college teams are allowed</li>
           <li>On spot registrations allowed</li>
           <li>Prelims: 9:00 AM to 10:00 AM [12th October 2025]</li>
@@ -59,12 +59,13 @@ const SeniorQuiz = () => {
         </div>
       </div>
       <div className="flex justify-center mt-2 mb-4">
-        <a
-          href="/register?event=SeniorQuiz"
+        <Link
+          to="/register?event=SeniorQuiz"
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+          style={{ position: "relative", zIndex: 20 }}
         >
           Register Now
-        </a>
+        </Link>
       </div>
     </div>
   );

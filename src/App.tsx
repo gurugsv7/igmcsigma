@@ -24,9 +24,9 @@ import WorkshopsSectionDefault from './Workshops';
 
 import SeniorQuiz from './events/SeniorQuiz';
 import JuniorQuiz from './events/JuniorQuiz';
+import EventRegistration from './EventRegistration';
 import OnlineQuiz from './events/OnlineQuiz';
 import InsideICU from './events/InsideICU';
-import RoadToResidency from './events/RoadToResidency';
 import CasePulse from './events/CasePulse';
 import AxonAlley from './events/AxonAlley';
 import Nexus from './events/Nexus';
@@ -341,22 +341,26 @@ interface BottomNavProps {
 }
 const BottomNav = ({ activeTab, setActiveTab, showNav = true }: BottomNavProps) => {
   const tabs = [
-    { id: 'home', label: 'Home', icon: Home },
-    { id: 'event', label: 'Events', icon: Calendar },
-    { id: 'workshops', label: 'Workshops', icon: Wrench },
-    { id: 'about', label: 'About', icon: Users },
-    { id: 'contact', label: 'Contact', icon: Phone },
+    { id: 'home', label: 'Home', icon: Home, path: '/' },
+    { id: 'event', label: 'Events', icon: Calendar, path: '/' },
+    { id: 'workshops', label: 'Workshops', icon: Wrench, path: '/' },
+    { id: 'about', label: 'About', icon: Users, path: '/' },
+    { id: 'contact', label: 'Contact', icon: Phone, path: '/' },
   ];
+  const navigate = useNavigate();
 
   if (!showNav) return null;
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-cyan-500/30 z-40">
       <div className="flex justify-around items-center py-2 px-4">
-        {tabs.map(({ id, label, icon: Icon }) => (
+        {tabs.map(({ id, label, icon: Icon, path }) => (
           <button
             key={id}
-            onClick={() => setActiveTab(id)}
+            onClick={() => {
+              setActiveTab(id);
+              navigate(path);
+            }}
             className={`flex flex-col items-center p-2 rounded-lg transition-all duration-300 ${
               activeTab === id
                 ? 'text-cyan-400 bg-cyan-400/10 shadow-lg shadow-cyan-400/20'
@@ -915,12 +919,12 @@ function App() {
   const [showRegistration, setShowRegistration] = useState(false);
   const [registrationItem, setRegistrationItem] = useState(null);
   const [registrationType, setRegistrationType] = useState('');
+  // Only show loading screen on first SPA load, not on reload/direct visit
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000); // Show loading screen for 3 seconds
+    const timer = setTimeout(() => setIsLoading(false), 3000);
+    return () => clearTimeout(timer);
   }, []);
 
   // Preload logo image
@@ -1116,11 +1120,12 @@ function App() {
         <main className="relative z-10">
           <Routes>
             <Route path="/" element={renderActiveSection()} />
+            <Route path="/register" element={<EventRegistration />} />
             <Route path="/events/senior-quiz" element={<SeniorQuiz />} />
             <Route path="/events/junior-quiz" element={<JuniorQuiz />} />
             <Route path="/events/online-quiz" element={<OnlineQuiz />} />
             <Route path="/events/inside-icu" element={<InsideICU />} />
-            <Route path="/events/road-to-residency" element={<RoadToResidency />} />
+            {/* <Route path="/events/road-to-residency" element={<RoadToResidency />} /> */}
             <Route path="/events/case-pulse" element={<CasePulse />} />
             <Route path="/events/axon-alley" element={<AxonAlley />} />
             <Route path="/events/nexus" element={<Nexus />} />
@@ -1132,6 +1137,7 @@ function App() {
             <Route path="/workshops/code-wild" element={<CodeWild />} />
             <Route path="/workshops/occulex" element={<Occulex />} />
             <Route path="/workshops/sonic-shift" element={<SonicShift />} />
+            <Route path="/workshops/sonicshift" element={<SonicShift />} />
             <Route path="/workshops/anastamos" element={<Anastamos />} />
             <Route path="/workshops/reviva" element={<Reviva />} />
             <Route path="/workshops/smart-ai" element={<SmartAI />} />

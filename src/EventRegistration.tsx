@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-// Placeholder QR image (replace with actual QR later)
-const qrPlaceholder = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PAYMENT_PLACEHOLDER";
+const qrPlaceholder = "/src/images/qrpayment.jpg";
 
 // Event info map
 const EVENT_INFO: Record<string, { name: string; price: string; prize: string }> = {
@@ -125,9 +124,6 @@ const EventRegistration: React.FC = () => {
     <div className="min-h-screen pt-8 pb-24 px-6">
       <div className="max-w-lg mx-auto bg-gradient-to-br from-cyan-900/40 to-purple-900/40 border border-cyan-400/20 rounded-2xl p-6 mb-8">
         <h2 className="text-3xl font-bold text-center text-cyan-300 mb-2">Register for {event.name}</h2>
-        <div className="flex justify-center mb-4">
-          <img src={qrPlaceholder} alt="Payment QR" className="w-40 h-40 rounded-lg border border-cyan-400/30" />
-        </div>
         <div className="flex justify-center gap-4 mb-4">
           <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
             Entry Fee: {event.price}
@@ -205,6 +201,29 @@ const EventRegistration: React.FC = () => {
               <option value="faculty">Faculty/Doctor</option>
               <option value="external">External Participant</option>
             </select>
+          </div>
+          <div className="flex justify-center gap-4 my-4">
+            <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
+              Entry Fee: {event.price}
+            </div>
+            <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
+              Prize: {event.prize}
+            </div>
+          </div>
+          <div className="my-4">
+            <div className="bg-cyan-900/30 border border-cyan-400/20 rounded-lg p-3 mb-2 text-cyan-200 text-sm">
+              <strong>How to Pay:</strong>
+              <ol className="list-decimal pl-5 mt-1 mb-2">
+                <li>Scan the QR code below using any UPI app (Google Pay, PhonePe, Paytm, etc.).</li>
+                <li>Enter the correct amount as per your event/workshop.</li>
+                <li>Complete the payment and take a screenshot of the successful transaction.</li>
+                <li>Upload the screenshot using the button below.</li>
+              </ol>
+              <span className="text-yellow-300">Note: Registration is valid only after payment and screenshot upload.</span>
+            </div>
+            <div className="flex justify-center mb-2">
+              <img src={qrPlaceholder} alt="Payment QR" className="w-40 h-40 rounded-lg border border-cyan-400/30" />
+            </div>
           </div>
           <div>
             <label className="block text-sm text-cyan-300 mb-1">Upload Payment Screenshot</label>

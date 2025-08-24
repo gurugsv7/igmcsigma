@@ -20,7 +20,7 @@ const ScheduleSection = () => {
       slots: [
         {
           time: "FORENOON",
-          event: "INAUGUARATION OF STRIATUM 3.0"
+          event: "INAUGURATION CEREMONY"
         },
         {
           time: "AFTERNOON",
@@ -38,18 +38,15 @@ const ScheduleSection = () => {
       slots: [
         {
           time: "FORENOON",
-          event: "RADIOLOGY WORKSHOP"
+          event: "RADIOLOGY WORKSHOP (SONOSTRIKE)"
         },
         {
           time: "AFTERNOON",
-          event: "OBSTETRIC WORKSHOP"
+          event: "OBSTETRIC WORKSHOP (VIVANTIA)"
         },
         {
           time: "EVENING",
-          events: [
-            "WILDERNESS MEDICINE",
-            "BASIC ANAESTHESIOLOGY WORKSHOP"
-          ]
+          event: null
         }
       ]
     },
@@ -59,17 +56,17 @@ const ScheduleSection = () => {
       slots: [
         {
           time: "FORENOON",
-          event: "BASIC SUTURING SKILLS"
+          event: "BASIC SUTURING SKILLS (ANASTAMOS)"
         },
         {
           time: "AFTERNOON",
-          event: "NEONATAL RESUSCITATION PRACTICES"
+          event: "NEONATAL RESUSCITATION PRACTICES (REVIVA)"
         },
         {
           time: "EVENING",
           events: [
-            "DISASTER X: DISASTER MANAGEMENT WORKSHOP",
-            "AI IN RESEARCH WORKSHOP"
+            "DISASTER MANAGEMENT WORKSHOP (DISASTER X)",
+            "AI FOR RESEARCH (SMART)"
           ]
         }
       ]
@@ -81,26 +78,23 @@ const ScheduleSection = () => {
         {
           time: "FORENOON",
           events: [
-            "OPHTHALMOLOGY WORKSHOP",
-            "BODY PAINTING"
+            "OPHTHALMOLOGY WORKSHOP (OCCULEX)",
+            "BODY PAINTING (PULSATING PALETTES)",
+            "DENTAL WORKSHOP (EXODONTIA'X')",
+            "PARAMEDICAL WORKSHOP (PARAMATRIX)"
           ]
         },
         {
           time: "AFTERNOON",
           events: [
-            "SHORT FILM",
-            "ONLINE QUIZ SEMI FINALS",
-            "PANEL DISCUSSIONS:",
-            "INSIDE THE ICU",
-            "THE ROAD TO RESIDENCY"
+            "SHORT FILM (CINEPLEXUS)"
           ]
         },
         {
           time: "EVENING",
           events: [
-            "GALA NIGHT",
-            "DENTAL WORKSHOP",
-            "PARAMEDICAL WORKSHOP"
+            "PANEL DISCUSSION (INSIDE THE ICU: WHAT THEY DON'T TEACH YOU IN UNDERGRAD MEDICINE)",
+            "GALA NIGHT"
           ]
         }
       ]
@@ -112,7 +106,7 @@ const ScheduleSection = () => {
         {
           time: "FORENOON",
           events: [
-            "ONLINE QUIZ FINALS",
+            "ONLINE QUIZ SEMIFINALS",
             "SENIOR QUIZ (PRELIMS)",
             "JUNIOR QUIZ (PRELIMS)"
           ]
@@ -120,9 +114,9 @@ const ScheduleSection = () => {
         {
           time: "AFTERNOON",
           events: [
-            "POSTER PRESENTATION",
-            "CASE PRESENTATION",
-            "PAPER PRESENTATION"
+            "POSTER PRESENTATION (AXON ALLEY)",
+            "CASE PRESENTATION (CASE PULSE)",
+            "PAPER PRESENTATION (NEXUS)"
           ]
         },
         {
@@ -130,6 +124,7 @@ const ScheduleSection = () => {
           events: [
             "SENIOR QUIZ (FINALS)",
             "JUNIOR QUIZ (FINALS)",
+            "ONLINE QUIZ (FINALS)",
             "CLOSING CEREMONY AND AWARDS DISTRIBUTION"
           ]
         }

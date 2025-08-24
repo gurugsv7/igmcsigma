@@ -58,6 +58,13 @@ const PulsatingPalettes = () => {
         <a
           href="/register?event=PulsatingPalettes"
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+          style={{ position: "relative", zIndex: 20 }}
+          onClick={e => {
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+              document.body.style.overflow = '';
+            }, 1000);
+          }}
         >
           Register Now
         </a>

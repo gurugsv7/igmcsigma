@@ -28,7 +28,7 @@ const OnlineQuiz = () => {
         <span className="block text-cyan-300 font-semibold">Rules and Regulations:</span>
         <ul className="list-disc pl-6 text-white/70">
           <li>Maximum 3 members per team</li>
-          <li>Eligibility: MBBS Students from 1st Year to CRMI are eligible (Only one CRMI from the 2020 Batch per team)</li>
+          <li>Eligibility: MBBS Students from 1st Year to CRRI are eligible (Only one CRRI from the 2020 Batch per team)</li>
           <li>No cross college teams are allowed</li>
           <li>Quiz consists of 3 rounds</li>
           <li>Preliminary round will be conducted ONLINE on 28/09/2025 [4.00pm to 4.45pm]</li>
@@ -66,6 +66,13 @@ const OnlineQuiz = () => {
         <a
           href="/register?event=OnlineQuiz"
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+          style={{ position: "relative", zIndex: 20 }}
+          onClick={e => {
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+              document.body.style.overflow = '';
+            }, 1000);
+          }}
         >
           Register Now
         </a>
