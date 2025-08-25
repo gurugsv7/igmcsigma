@@ -11,13 +11,13 @@ export default function RevivaPage() {
     price: "₹500",
     date: "10/10/2025 (Friday)",
     time: "8:00 AM to 4:00 PM (Full day session)",
-    incharges: "Dr. Neonatologist, Dr. Resus",
+    incharges: "Jaganathan R, Karthik Raj Yuvaraj",
     prerequisites: "Medical students"
   };
 
   return (
     <>
-      <div className="min-h-screen pt-8 pb-24 px-6">
+      <div className="min-h-screen pt-16 pb-24 px-6">
         <button
           onClick={() => navigate(-1)}
           className="absolute left-4 top-6 flex items-center px-3 py-1 rounded-lg bg-cyan-900/70 border border-cyan-400/30 text-cyan-200 hover:bg-cyan-800/90 hover:text-white transition-all shadow-sm"
@@ -46,12 +46,12 @@ export default function RevivaPage() {
             ⏰ 8:00 AM to 4:00 PM (Full day session)
           </div>
         </div>
-        <div className="text-white/60 mb-2">Incharges: Dr. Neonatologist, Dr. Resus</div>
+        <div className="text-white/60 mb-2">Incharges: Jaganathan R, Karthik Raj Yuvaraj</div>
         <div className="text-white/60 mb-2">Prerequisites: Medical students</div>
 
         <div className="flex justify-center mt-4">
-          <button
-            onClick={() => navigate("/event-registration?event=Reviva")}
+<button
+            onClick={() => navigate("/register?event=Reviva")}
             className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
           >
             Register Now

@@ -45,13 +45,14 @@ const RoadToResidency = () => {
           ⏰ Afternoon
         </div>
       </div>
-      <div className="flex justify-center mt-2 mb-4">
-        <a
-          href="/delegate-pass"
+<div className="flex justify-center mt-2 mb-4">
+        <button
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+          onClick={() => navigate('/register?event=RoadToResidency')}
+          style={{ position: "relative", zIndex: 20 }}
         >
           Register Now
-        </a>
+        </button>
       </div>
     </div>
   );

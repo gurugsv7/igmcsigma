@@ -17,7 +17,7 @@ export default function AnastamosPage() {
 
   return (
     <>
-      <div className="min-h-screen pt-8 pb-24 px-6">
+      <div className="min-h-screen pt-16 pb-24 px-6">
         <button
           onClick={() => navigate(-1)}
           className="absolute left-4 top-6 flex items-center px-3 py-1 rounded-lg bg-cyan-900/70 border border-cyan-400/30 text-cyan-200 hover:bg-cyan-800/90 hover:text-white transition-all shadow-sm"
@@ -53,13 +53,13 @@ export default function AnastamosPage() {
         <div className="text-white/60 mb-2">Duration: 4 hours (Forenoon session)</div>
         <div className="text-white/60 mb-2">Prerequisites: Medical students</div>
         <div className="text-white/60 mb-2">Personal suturing kit provided.</div>
-        <div className="flex justify-center mt-2">
-          <a
-            href="/event-registration?event=Anastamos"
+<div className="flex justify-center mt-2">
+          <button
             className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+            onClick={() => navigate("/register?event=Anastamos")}
           >
             Register Now
-          </a>
+          </button>
         </div>
       </div>
     </>

@@ -16,31 +16,28 @@ const Nexus = () => {
         <span className="text-sm font-medium">Back</span>
       </button>
 <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Paper Presentation: Nexus</h2>
-      <p className="text-lg text-white/80 mb-2">Scientific paper presentations</p>
+      <p className="text-lg text-white/80 mb-2">Oral paper presentations</p>
       <p className="text-white/70 mb-4">
-        Present your research papers and findings to a panel of expert judges.
+        Present your research papers and studies to a panel of experts and peers.
       </p>
-      <div className="mb-4">
-        <span className="block text-cyan-300 font-semibold">Eligibility:</span>
-        <span className="text-white/80">Teams of up to 2 members. Individual presenters also accepted.</span>
-      </div>
       <div className="mb-4">
         <span className="block text-cyan-300 font-semibold">Rules:</span>
         <ul className="list-disc pl-6 text-white/70">
+          <li>Teams should consist of a maximum of two members. Individual presenters also accepted.</li>
           <li>Only one delegate in the team is allowed to present the paper. Questions can be answered by either member.</li>
-          <li>Abstracts (not more than 500 words) must be submitted before 24th September 2025 to striatum.3.igmcri@gmail.com as a Word document (.doc or .docx). Rename the file as Name_Nexus.</li>
+          <li>Abstracts (not more than 500 words) must be submitted by 24th September 2025 to striatum.3.igmcri@gmail.com in Word document (.doc or .docx) format. Rename the file as Name_Nexus.</li>
           <li>Abstract format: Title, Introduction, Background, Aims and Objectives, Materials and Methods, Results & analysis (as applicable), and References.</li>
-          <li>Informed consent form, study questionnaire and case study form must be uploaded separately if used.</li>
-          <li>All abstracts will be screened by a committee of senior faculty members. The committee's decision is final.</li>
-          <li>Selected delegates will be informed by email.</li>
-          <li>Presentation must be in PowerPoint (.ppt or .pptx) not exceeding 18 slides, submitted by 5th October 2025.</li>
+          <li>Informed consent form, study questionnaire and case study form must be uploaded separately if used for the study.</li>
+          <li>All abstracts will be screened by a committee of senior faculty members.</li>
+          <li>Selected abstracts will be presented in the oral paper presentation.</li>
+          <li>Presentation must be in PowerPoint (.ppt or .pptx) and submitted by 5th October 2025.</li>
           <li>Each presenter: 8 minutes (5 min presentation, 3 min Q&A).</li>
           <li>One winner per session, declared in the valedictory ceremony.</li>
         </ul>
       </div>
       <div className="mb-4">
         <span className="block text-cyan-300 font-semibold">Registration:</span>
-        <span className="text-white/80">Rs. 300 (Single member), Rs. 400 (Team of 2 members)</span>
+        <span className="text-white/80">Rs. 300/ Single member, Rs. 400/ Team of 2 members</span>
       </div>
       <div className="mb-4">
         <span className="block text-cyan-300 font-semibold">Prize Worth:</span>
@@ -50,6 +47,10 @@ const Nexus = () => {
         <span className="block text-cyan-300 font-semibold">Incharge:</span>
         <span className="text-white/80">Bhuwaneshwaran R</span>
       </div>
+      <div className="mb-4">
+        <span className="block text-cyan-300 font-semibold">Prerequisites:</span>
+        <span className="text-white/80">MBBS students</span>
+      </div>
       <div className="flex gap-4 mb-4">
         <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
           📅 12/10/25
@@ -58,20 +59,14 @@ const Nexus = () => {
           ⏰ Sunday morning
         </div>
       </div>
-      <div className="flex justify-center mt-2 mb-4">
-        <a
-          href="/register?event=Nexus"
+<div className="flex justify-center mt-2 mb-4">
+        <button
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
           style={{ position: "relative", zIndex: 20 }}
-          onClick={e => {
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => {
-              document.body.style.overflow = '';
-            }, 1000);
-          }}
+          onClick={() => navigate('/register?event=Nexus')}
         >
           Register Now
-        </a>
+        </button>
       </div>
     </div>
   );

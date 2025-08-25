@@ -40,13 +40,13 @@ function ExodontiaX({ onRegister }: { onRegister: () => void }) {
       </div>
       <div className="text-white/60 mb-2">Incharges: Sushmitha S, Abhinaya N</div>
       <div className="text-white/60 mb-2">Prerequisites: Dental students</div>
-      <div className="flex justify-center mt-4">
-        <a
-          href="/event-registration?event=ExodontiaX"
+<div className="flex justify-center mt-4">
+        <button
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+          onClick={() => navigate("/register?event=ExodontiaX")}
         >
           Register Now
-        </a>
+        </button>
       </div>
     </div>
   );

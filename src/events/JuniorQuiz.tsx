@@ -15,63 +15,43 @@ const JuniorQuiz = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Junior Quiz</h2>
-      <p className="text-lg text-white/80 mb-2">STRIATUM SCHOLAR TROPHY</p>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Junior Quiz: Striatum Scholar Trophy</h2>
+      <p className="text-lg text-white/80 mb-2">Topic: Anatomy and Pathology</p>
       <p className="text-white/70 mb-4">
-        Enter the arena where your fundamental skills serve as your most valuable assets! Are you prepared to decipher the intricacies of clinical knowledge? Strengthen your cognitive abilities and prepare for an exhilarating quiz competition.
+        Maximum 3 members per team. Eligibility: MBBS Students from 1st Year to 3rd year are eligible (Only one 3rd year from the batch of 2022 per team). Cross college teams are allowed. On spot registrations allowed. Prelims: 9:00 AM to 10:00 AM [12th October 2025]. Finals: 2:00 PM to 5:30 PM [12th October 2025]. No limitations on number of teams per college. Top 6 teams will qualify for Finals. Quizmaster’s decision will be final!
       </p>
-      <div className="mb-4">
-        <span className="block text-cyan-300 font-semibold">Topic:</span>
-        <span className="text-white/80">Anatomy and Pathology</span>
-      </div>
-      <div className="mb-4">
-        <span className="block text-cyan-300 font-semibold">Rules and Regulations:</span>
-        <ul className="list-disc pl-6 text-white/70">
-          <li>Maximum 3 members per team</li>
-          <li>Eligibility: MBBS Students from 1st Year to 3rd year are eligible (Only one 3rd year from the batch of 2022 per team)</li>
-          <li>Cross college teams are allowed</li>
-          <li>On spot registrations allowed</li>
-          <li>Prelims: 9:00 AM to 10:00 AM [12th October 2025]</li>
-          <li>Finals: 2:00 PM to 5:30 PM [12th October 2025]</li>
-          <li>No limitations on number of teams per college</li>
-          <li>Top 6 teams will qualify for Finals</li>
-          <li>Quizmaster’s decision will be final!</li>
-        </ul>
-      </div>
       <div className="mb-4">
         <span className="block text-cyan-300 font-semibold">Registration:</span>
         <span className="text-white/80">Rs. 600/ Team</span>
       </div>
       <div className="mb-4">
-        <span className="block text-cyan-300 font-semibold">Prize Worth:</span>
+        <span className="block text-cyan-300 font-semibold">Prizes Worth:</span>
         <span className="text-white/80">Rs. 30,000</span>
       </div>
       <div className="mb-4">
         <span className="block text-cyan-300 font-semibold">Incharge:</span>
         <span className="text-white/80">Boojasri R V</span>
       </div>
+      <div className="mb-4">
+        <span className="block text-cyan-300 font-semibold">Prerequisites:</span>
+        <span className="text-white/80">MBBS students 1st to 3rd year</span>
+      </div>
       <div className="flex gap-4 mb-4">
         <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
-          📅 12/10/25
+          📅 12/10/2025
         </div>
         <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-          ⏰ Sunday
+          ⏰ Prelims: 9:00 AM, Finals: 2:00 PM
         </div>
       </div>
-      <div className="flex justify-center mt-2 mb-4">
-        <a
-          href="/register?event=JuniorQuiz"
+<div className="flex justify-center mt-2 mb-4">
+        <button
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
           style={{ position: "relative", zIndex: 20 }}
-          onClick={e => {
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => {
-              document.body.style.overflow = '';
-            }, 1000);
-          }}
+          onClick={() => navigate('/register?event=JuniorQuiz')}
         >
           Register Now
-        </a>
+        </button>
       </div>
     </div>
   );

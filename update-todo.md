@@ -1,6 +1,5 @@
-- [x] Analyze requirements for loading screen logic
-- [x] Plan sessionStorage-based solution to show loading screen only on first SPA load
-- [ ] Update App.tsx to implement this logic
-- [ ] Test: Reload any page (should NOT show loading screen)
-- [ ] Test: Navigate client-side (should show loading screen on first load, not after reload)
-- [ ] Clean up and verify
+- [ ] Analyze routing/navigation setup
+- [ ] Implement scroll-to-top logic on page navigation
+- [ ] Integrate scroll-to-top logic into the app
+- [ ] Test navigation between all pages
+- [ ] Verify scroll-to-top works as expected

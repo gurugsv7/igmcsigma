@@ -45,6 +45,7 @@ import SmartAI from './workshops/SmartAI';
 import ExodontiaX from './workshops/ExodontiaX';
 import Paramatrix from './workshops/Paramatrix';
 import DelegatePass from './DelegatePass';
+import ScrollToTop from './ScrollToTop';
 
 // Chatbot Component
 interface Message {
@@ -1059,6 +1060,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-x-hidden">
         {/* Animated Background Pattern */}
         <div className="fixed inset-0 opacity-10 pointer-events-none">

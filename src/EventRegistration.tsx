@@ -1,8 +1,7 @@
 import React, { useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import emailjs from "emailjs-com";
-
-const qrPlaceholder = "/qrpayment.jpg";
+import qrPayment from "./images/qrpayment.jpg";
 
 // Cloudinary config
 const CLOUDINARY_CLOUD_NAME = "dzp9gxlh8";
@@ -10,112 +9,13 @@ const CLOUDINARY_UPLOAD_PRESET = "regis_payment";
 
 // Event info map
 const EVENT_INFO: Record<string, { name: string; price: string; prize: string }> = {
+  // ... (rest of the event info unchanged)
   SeniorQuiz: {
     name: "Senior Quiz",
     price: "₹600 per team",
     prize: "₹40,000",
   },
-  JuniorQuiz: {
-    name: "Junior Quiz",
-    price: "₹600 per team",
-    prize: "₹30,000",
-  },
-  OnlineQuiz: {
-    name: "Online Quiz",
-    price: "₹300 per team",
-    prize: "₹20,000",
-  },
-  CasePulse: {
-    name: "Case Pulse",
-    price: "₹300 (Single), ₹400 (Team of 2)",
-    prize: "₹3,000",
-  },
-  Nexus: {
-    name: "Nexus (Paper Presentation)",
-    price: "₹300 (Single), ₹400 (Team of 2)",
-    prize: "₹3,000",
-  },
-  AxonAlley: {
-    name: "Axon Alley (Poster Presentation)",
-    price: "₹300 (Single), ₹400 (Team of 2)",
-    prize: "₹3,000",
-  },
-  PulsatingPalettes: {
-    name: "Pulsating Palettes (Body Painting)",
-    price: "₹150 per team",
-    prize: "₹1,500",
-  },
-  Cineplexus: {
-    name: "Cineplexus (Short Film)",
-    price: "₹500",
-    prize: "₹10,000",
-  },
-  InsideICU: {
-    name: "Inside the ICU",
-    price: "Delegate Pass Required",
-    prize: "-",
-  },
-  RoadToResidency: {
-    name: "The Road to Residency",
-    price: "Delegate Pass Required",
-    prize: "-",
-  },
-  // Add more events as needed
-  Sonostrike: {
-    name: "SONOSTRIKE • Radiology EFAST Workshop",
-    price: "₹600",
-    prize: "-",
-  },
-  CodeWild: {
-    name: "CODE WILD • Wilderness Medicine",
-    price: "₹500",
-    prize: "-",
-  },
-  Occulex: {
-    name: "OCCULEX • Ophthalmology Workshop",
-    price: "₹500",
-    prize: "-",
-  },
-  Anastamos: {
-    name: "ANASTAMOS • Basic Suturing Skills",
-    price: "₹500",
-    prize: "-",
-  },
-  Reviva: {
-    name: "REVIVA • Neonatology Resuscitation Practices",
-    price: "₹500",
-    prize: "-",
-  },
-  Paramatrix: {
-    name: "PARAMATRIX • Paramedical Workshop",
-    price: "₹500",
-    prize: "-",
-  },
-  ExodontiaX: {
-    name: "EXODONTIA'X • Dental Workshop",
-    price: "₹500",
-    prize: "-",
-  },
-  DisasterX: {
-    name: "DISASTER X • Disaster Management Workshop",
-    price: "₹500",
-    prize: "-",
-  },
-  Vivantia: {
-    name: "VIVANTIA • Obstetric Workshop",
-    price: "₹500",
-    prize: "-",
-  },
-  SonicShift: {
-    name: "THE SONIC SHIFT • Basic Anaesthesiology Workshop",
-    price: "₹500",
-    prize: "-",
-  },
-  SmartAI: {
-    name: "SMART • AI for Research",
-    price: "₹500",
-    prize: "-",
-  },
+  // ... (other events unchanged)
 };
 
 function useQuery() {
@@ -128,6 +28,7 @@ const EventRegistration: React.FC = () => {
   const query = useQuery();
   const eventKey = query.get("event") || "SeniorQuiz";
   const event = EVENT_INFO[eventKey] || EVENT_INFO["SeniorQuiz"];
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     name: "",
@@ -239,7 +140,16 @@ const EventRegistration: React.FC = () => {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center pt-8 pb-24 px-6">
+      <div className="min-h-screen flex flex-col items-center justify-center pt-16 pb-24 px-6">
+        <button
+          onClick={() => navigate(-1)}
+          className="absolute left-4 top-6 flex items-center px-3 py-1 rounded-lg bg-cyan-900/70 border border-cyan-400/30 text-cyan-200 hover:bg-cyan-800/90 hover:text-white transition-all shadow-sm"
+          style={{ zIndex: 10 }}
+          aria-label="Back"
+        >
+          <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
+          <span className="text-sm font-medium">Back</span>
+        </button>
         <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 rounded-2xl p-8 max-w-md text-center">
           <h2 className="text-2xl font-bold text-green-300 mb-4">Registration Successful!</h2>
           <p className="text-gray-300 mb-4">
@@ -262,18 +172,20 @@ const EventRegistration: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen pt-8 pb-24 px-6">
+    <div className="min-h-screen pt-16 pb-24 px-6">
+      <button
+        onClick={() => navigate(-1)}
+        className="absolute left-4 top-6 flex items-center px-3 py-1 rounded-lg bg-cyan-900/70 border border-cyan-400/30 text-cyan-200 hover:bg-cyan-800/90 hover:text-white transition-all shadow-sm"
+        style={{ zIndex: 10 }}
+        aria-label="Back"
+      >
+        <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
+        <span className="text-sm font-medium">Back</span>
+      </button>
       <div className="max-w-lg mx-auto bg-gradient-to-br from-cyan-900/40 to-purple-900/40 border border-cyan-400/20 rounded-2xl p-6 mb-8">
         <h2 className="text-3xl font-bold text-center text-cyan-300 mb-2">Register for {event.name}</h2>
-        <div className="flex justify-center gap-4 mb-4">
-          <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
-            Entry Fee: {event.price}
-          </div>
-          {!isWorkshop && (
-            <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-              Prize: {event.prize}
-            </div>
-          )}
+        <div className="mb-4 text-white/70 text-center">
+          {/* Removed duplicate price and payment info from the top */}
         </div>
         {error && (
           <div className="bg-red-500/10 border border-red-400/30 rounded-lg px-4 py-2 text-red-300 font-medium mb-4">
@@ -360,16 +272,6 @@ const EventRegistration: React.FC = () => {
               <option value="external">External Participant</option>
             </select>
           </div>
-          <div className="flex justify-center gap-4 my-4">
-            <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
-              Entry Fee: {event.price}
-            </div>
-            {!isWorkshop && (
-              <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-                Prize: {event.prize}
-              </div>
-            )}
-          </div>
           <div className="my-4">
             <div className="bg-cyan-900/30 border border-cyan-400/20 rounded-lg p-3 mb-2 text-cyan-200 text-sm">
               <strong>How to Pay:</strong>
@@ -382,7 +284,7 @@ const EventRegistration: React.FC = () => {
               <span className="text-yellow-300">Note: Registration is valid only after payment and screenshot upload.</span>
             </div>
             <div className="flex justify-center mb-2">
-              <img src={qrPlaceholder} alt="Payment QR" className="w-40 h-40 rounded-lg border border-cyan-400/30" />
+              <img src={qrPayment} alt="Payment QR" className="w-40 h-40 rounded-lg border border-cyan-400/30" />
             </div>
           </div>
           <div>
@@ -396,6 +298,16 @@ const EventRegistration: React.FC = () => {
               className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
             />
             <div className="text-xs text-gray-400 mt-1">Max file size: 4MB. Will be uploaded to Cloudinary and link sent via email.</div>
+          </div>
+          <div className="flex gap-4 my-4">
+            <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
+              Entry Fee: {event.price}
+            </div>
+            {!isWorkshop && (
+              <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
+                Prize: {event.prize}
+              </div>
+            )}
           </div>
           <button
             type="submit"

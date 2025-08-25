@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SeniorQuiz = () => {
   const navigate = useNavigate();
@@ -15,29 +15,11 @@ const SeniorQuiz = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Senior Quiz</h2>
-      <p className="text-lg text-white/80 mb-2">STRIATUM SCHOLAR TROPHY</p>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Senior Quiz: Striatum Scholar Trophy</h2>
+      <p className="text-lg text-white/80 mb-2">Topic: Gastroenterology</p>
       <p className="text-white/70 mb-4">
-        Harness the complete potential of your neurons in a thrilling quiz competition, where enthusiasm is limitless.
+        Maximum of 3 Members per team. Eligibility: MBBS Students from 1st Year to CRRI are eligible (Only one CRRI from the 2020 Batch per team). Cross college teams are allowed. On spot registrations allowed. Prelims: 9:00 AM to 10:00 AM [12th October 2025]. Finals: 2:00 PM to 5:30 PM [12th October 2025]. No limitations on number of teams per college. Top 6 Teams will qualify for the Finals. Quizmaster’s decision will be final.
       </p>
-      <div className="mb-4">
-        <span className="block text-cyan-300 font-semibold">Topic:</span>
-        <span className="text-white/80">Gastroenterology</span>
-      </div>
-      <div className="mb-4">
-        <span className="block text-cyan-300 font-semibold">Rules and Regulations:</span>
-        <ul className="list-disc pl-6 text-white/70">
-          <li>Maximum of 3 Members per team</li>
-          <li>Eligibility: MBBS Students from 1st Year to CRRI are eligible (Only one CRRI from the 2020 Batch per team)</li>
-          <li>Cross college teams are allowed</li>
-          <li>On spot registrations allowed</li>
-          <li>Prelims: 9:00 AM to 10:00 AM [12th October 2025]</li>
-          <li>Finals: 2:00 PM to 5:30 PM [12th October 2025]</li>
-          <li>No limitations on number of teams per college</li>
-          <li>Top 6 Teams will qualify for the Finals</li>
-          <li>Quizmaster’s decision will be final</li>
-        </ul>
-      </div>
       <div className="mb-4">
         <span className="block text-cyan-300 font-semibold">Registration:</span>
         <span className="text-white/80">Rs. 600/Team (No delegate fee)</span>
@@ -50,22 +32,26 @@ const SeniorQuiz = () => {
         <span className="block text-cyan-300 font-semibold">Incharge:</span>
         <span className="text-white/80">Sudharshan S</span>
       </div>
+      <div className="mb-4">
+        <span className="block text-cyan-300 font-semibold">Prerequisites:</span>
+        <span className="text-white/80">MBBS students 1st year to CRRI</span>
+      </div>
       <div className="flex gap-4 mb-4">
         <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
-          📅 12/10/25
+          📅 12/10/2025
         </div>
         <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-          ⏰ Sunday
+          ⏰ Prelims: 9:00 AM, Finals: 2:00 PM
         </div>
       </div>
-      <div className="flex justify-center mt-2 mb-4">
-        <Link
-          to="/register?event=SeniorQuiz"
+<div className="flex justify-center mt-2 mb-4">
+        <button
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
           style={{ position: "relative", zIndex: 20 }}
+          onClick={() => navigate('/register?event=SeniorQuiz')}
         >
           Register Now
-        </Link>
+        </button>
       </div>
     </div>
   );

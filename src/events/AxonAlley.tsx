@@ -51,6 +51,10 @@ const AxonAlley = () => {
         <span className="block text-cyan-300 font-semibold">Incharge:</span>
         <span className="text-white/80">Thirumurugan S</span>
       </div>
+      <div className="mb-4">
+        <span className="block text-cyan-300 font-semibold">Prerequisites:</span>
+        <span className="text-white/80">MBBS students</span>
+      </div>
       <div className="flex gap-4 mb-4">
         <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
           📅 12/10/25
@@ -59,20 +63,14 @@ const AxonAlley = () => {
           ⏰ Sunday morning
         </div>
       </div>
-      <div className="flex justify-center mt-2 mb-4">
-        <a
-          href="/register?event=AxonAlley"
+<div className="flex justify-center mt-2 mb-4">
+        <button
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
           style={{ position: "relative", zIndex: 20 }}
-          onClick={e => {
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => {
-              document.body.style.overflow = '';
-            }, 1000);
-          }}
+          onClick={() => navigate('/register?event=AxonAlley')}
         >
           Register Now
-        </a>
+        </button>
       </div>
     </div>
   );

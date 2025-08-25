@@ -15,19 +15,11 @@ const InsideICU = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Inside the ICU: What They Don't Teach You in Undergrad Medicine</h2>
-      <p className="text-lg text-white/80 mb-2">Real-world ICU scenarios and critical care insights</p>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Panel Discussion: Inside the ICU</h2>
+      <p className="text-lg text-white/80 mb-2">What They Don’t Teach You in Undergrad Medicine</p>
       <p className="text-white/70 mb-4">
-        Expert panel discussion on practical ICU management and critical decision making.
+        The Intensive Care Unit is often seen as a space defined by machines, numbers, and silence. But behind every monitor is a storm of decision-making, emotion, and ethical complexity. This panel discussion brings to light the unseen side of critical care - from split-second life-or-death choices to the emotional toll carried by intensivists.
       </p>
-      <div className="mb-4">
-        <span className="block text-cyan-300 font-semibold">Introduction:</span>
-        <span className="text-white/80">
-          The Intensive Care Unit is often seen as a space defined by machines, numbers, and silence. But behind every monitor is a storm of decision-making, emotion, and ethical complexity. This panel discussion brings to light the unseen side of critical care - from split-second life-or-death choices to the emotional toll carried by intensivists.
-          <br />
-          Through real-world scenarios and honest reflections, we aim to prepare undergraduates for the reality of what lies ahead - not just as future doctors, but as humans navigating the rawest edge of medicine.
-        </span>
-      </div>
       <div className="mb-4">
         <span className="block text-cyan-300 font-semibold">Finalized Subtopics:</span>
         <ul className="list-disc pl-6 text-white/70">
@@ -39,21 +31,30 @@ const InsideICU = () => {
           <li>The ICU as a Young Doctor: The Shock of Seeing Death for the First Time</li>
         </ul>
       </div>
+      <div className="mb-4">
+        <span className="block text-cyan-300 font-semibold">Incharges:</span>
+        <span className="text-white/80">Vengataramanan Tirou, Sravanti M</span>
+      </div>
+      <div className="mb-4">
+        <span className="block text-cyan-300 font-semibold">Prerequisites:</span>
+        <span className="text-white/80">Medical students</span>
+      </div>
       <div className="flex gap-4 mb-4">
         <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
-          📅 11/10/25
+          📅 11/10/2025
         </div>
         <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-          ⏰ Afternoon
+          ⏰ Saturday afternoon
         </div>
       </div>
-      <div className="flex justify-center mt-2 mb-4">
-        <a
-          href="/delegate-pass"
+<div className="flex justify-center mt-2 mb-4">
+        <button
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+          style={{ position: "relative", zIndex: 20 }}
+          onClick={() => navigate('/register?event=InsideICU')}
         >
           Register Now
-        </a>
+        </button>
       </div>
     </div>
   );
