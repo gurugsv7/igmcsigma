@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
-function SonicShift({ onRegister }: { onRegister: () => void }) {
+export default function SonicShift() {
   const navigate = useNavigate();
   return (
     <div className="min-h-screen pt-8 pb-24 px-6">
@@ -38,36 +37,14 @@ function SonicShift({ onRegister }: { onRegister: () => void }) {
       </div>
       <div className="text-white/60 mb-2">Incharges: Swathy Meena S G, Sri Meenakshi T</div>
       <div className="text-white/60 mb-2">Prerequisites: Medical students</div>
-      <div className="flex justify-center mt-8">
-        <button
-          onClick={onRegister}
+      <div className="flex justify-center mt-4">
+        <a
+          href="/event-registration?event=SonicShift"
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
         >
           Register Now
-        </button>
+        </a>
       </div>
     </div>
-  );
-}
-
-
-export default function SonicShiftPage() {
-  const [showModal, setShowModal] = useState(false);
-  return (
-    <>
-      <SonicShift onRegister={() => setShowModal(true)} />
-      <WorkshopRegisterModal
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        workshop={{
-          name: "THE SONIC SHIFT • Basic Anaesthesiology Workshop",
-          price: "₹500",
-          date: "09/10/2025 (Thursday)",
-          time: "8:00 AM to 4:00 PM",
-          incharges: "Swathy Meena S G, Sri Meenakshi T",
-          prerequisites: "Medical students"
-        }}
-      />
-    </>
   );
 }

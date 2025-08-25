@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import emailjs from "emailjs-com";
 
 const qrPlaceholder = "/src/images/qrpayment.jpg";
 
@@ -56,6 +57,61 @@ const EVENT_INFO: Record<string, { name: string; price: string; prize: string }>
     prize: "-",
   },
   // Add more events as needed
+  Sonostrike: {
+    name: "SONOSTRIKE • Radiology EFAST Workshop",
+    price: "₹600",
+    prize: "-",
+  },
+  CodeWild: {
+    name: "CODE WILD • Wilderness Medicine",
+    price: "₹500",
+    prize: "-",
+  },
+  Occulex: {
+    name: "OCCULEX • Ophthalmology Workshop",
+    price: "₹500",
+    prize: "-",
+  },
+  Anastamos: {
+    name: "ANASTAMOS • Basic Suturing Skills",
+    price: "₹500",
+    prize: "-",
+  },
+  Reviva: {
+    name: "REVIVA • Neonatology Resuscitation Practices",
+    price: "₹500",
+    prize: "-",
+  },
+  Paramatrix: {
+    name: "PARAMATRIX • Paramedical Workshop",
+    price: "₹500",
+    prize: "-",
+  },
+  ExodontiaX: {
+    name: "EXODONTIA'X • Dental Workshop",
+    price: "₹500",
+    prize: "-",
+  },
+  DisasterX: {
+    name: "DISASTER X • Disaster Management Workshop",
+    price: "₹500",
+    prize: "-",
+  },
+  Vivantia: {
+    name: "VIVANTIA • Obstetric Workshop",
+    price: "₹500",
+    prize: "-",
+  },
+  SonicShift: {
+    name: "THE SONIC SHIFT • Basic Anaesthesiology Workshop",
+    price: "₹500",
+    prize: "-",
+  },
+  SmartAI: {
+    name: "SMART • AI for Research",
+    price: "₹500",
+    prize: "-",
+  },
 };
 
 function useQuery() {
@@ -78,6 +134,9 @@ const EventRegistration: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const formRef = useRef<HTMLFormElement>(null);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const { name, value, files } = e.target as any;
@@ -90,11 +149,41 @@ const EventRegistration: React.FC = () => {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-    }, 1500);
+    setError(null);
+
+    // Prepare EmailJS form data
+    if (!formRef.current) return;
+
+    // Append event and user info to hidden fields for EmailJS
+    const formElement = formRef.current;
+    // Set hidden fields for event_name, etc.
+    (formElement.elements.namedItem("event_name") as HTMLInputElement).value = event.name;
+    (formElement.elements.namedItem("registrant_name") as HTMLInputElement).value = form.name;
+    (formElement.elements.namedItem("registrant_email") as HTMLInputElement).value = form.email;
+    (formElement.elements.namedItem("registrant_phone") as HTMLInputElement).value = form.phone;
+    (formElement.elements.namedItem("registrant_institution") as HTMLInputElement).value = form.institution;
+    (formElement.elements.namedItem("registrant_year") as HTMLInputElement).value = form.year;
+    (formElement.elements.namedItem("registrant_category") as HTMLInputElement).value = form.category;
+
+    emailjs.sendForm(
+      "igmcsigma",
+      "template_0uzpwjc",
+      formRef.current,
+      "acbz69d146b3J-jEm"
+    ).then(
+      (result) => {
+        setIsSubmitting(false);
+        setSubmitted(true);
+      },
+      (error) => {
+        setIsSubmitting(false);
+        setError("Failed to send registration email. Please try again.");
+      }
+    );
   }
+
+  // Helper: is this a workshop? (no prize)
+  const isWorkshop = !event.prize || event.prize === "-";
 
   if (submitted) {
     return (
@@ -128,11 +217,27 @@ const EventRegistration: React.FC = () => {
           <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
             Entry Fee: {event.price}
           </div>
-          <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-            Prize: {event.prize}
-          </div>
+          {!isWorkshop && (
+            <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
+              Prize: {event.prize}
+            </div>
+          )}
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {error && (
+          <div className="bg-red-500/10 border border-red-400/30 rounded-lg px-4 py-2 text-red-300 font-medium mb-4">
+            {error}
+          </div>
+        )}
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-4" encType="multipart/form-data">
+          {/* Hidden fields for EmailJS variables */}
+          <input type="hidden" name="event_name" />
+          <input type="hidden" name="registrant_name" />
+          <input type="hidden" name="registrant_email" />
+          <input type="hidden" name="registrant_phone" />
+          <input type="hidden" name="registrant_institution" />
+          <input type="hidden" name="registrant_year" />
+          <input type="hidden" name="registrant_category" />
+
           <div>
             <label className="block text-sm text-cyan-300 mb-1">Full Name</label>
             <input
@@ -206,9 +311,11 @@ const EventRegistration: React.FC = () => {
             <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
               Entry Fee: {event.price}
             </div>
-            <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-              Prize: {event.prize}
-            </div>
+            {!isWorkshop && (
+              <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
+                Prize: {event.prize}
+              </div>
+            )}
           </div>
           <div className="my-4">
             <div className="bg-cyan-900/30 border border-cyan-400/20 rounded-lg p-3 mb-2 text-cyan-200 text-sm">

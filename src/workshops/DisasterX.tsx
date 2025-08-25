@@ -40,35 +40,16 @@ function DisasterX({ onRegister }: { onRegister: () => void }) {
       </div>
       <div className="text-white/60 mb-2">Incharges: Ayisha Farvin Abdul Malik, Yukesh S</div>
       <div className="text-white/60 mb-2">Prerequisites: Medical students</div>
-      <div className="flex justify-center mt-8">
-        <button
-          onClick={onRegister}
+      <div className="flex justify-center mt-4">
+        <a
+          href="/event-registration?event=DisasterX"
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
         >
           Register Now
-        </button>
+        </a>
       </div>
     </div>
   );
 }
 
-export default function DisasterXPage() {
-  const [showModal, setShowModal] = useState(false);
-  return (
-    <>
-      <DisasterX onRegister={() => setShowModal(true)} />
-      <WorkshopRegisterModal
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        workshop={{
-          name: "DISASTER X • Disaster Management Workshop",
-          price: "₹500",
-          date: "10/10/2025 (Friday)",
-          time: "8:00 AM to 4:00 PM (Full day session)",
-          incharges: "Ayisha Farvin Abdul Malik, Yukesh S",
-          prerequisites: "Medical students"
-        }}
-      />
-    </>
-  );
-}
+export default DisasterX;

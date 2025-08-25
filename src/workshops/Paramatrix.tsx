@@ -40,37 +40,16 @@ function Paramatrix({ onRegister }: { onRegister: () => void }) {
       </div>
       <div className="text-white/60 mb-2">Incharges: Sanjana Saira Giju, Sadra Saseendran</div>
       <div className="text-white/60 mb-2">Prerequisites: Paramedical students</div>
-      <div className="flex justify-center mt-8">
-        <button
-          onClick={onRegister}
+      <div className="flex justify-center mt-4">
+        <a
+          href="/event-registration?event=Paramatrix"
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
         >
           Register Now
-        </button>
+        </a>
       </div>
     </div>
   );
 }
 
-export default function ParamatrixPage() {
-  const [showModal, setShowModal] = useState(false);
-  return (
-    <>
-      <Paramatrix onRegister={() => setShowModal(true)} />
-      <WorkshopRegisterModal
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        workshop={{
-          name: "PARAMATRIX • Paramedical Workshop",
-          price: "₹500",
-          date: "11/10/2025 (Saturday)",
-          time: "Forenoon (4 Hours)",
-          incharges: "Sanjana Saira Giju, Sadra Saseendran",
-          prerequisites: "Paramedical students"
-        }}
-      />
-    </>
-  );
-}
-
-export { Paramatrix };
+export default Paramatrix;

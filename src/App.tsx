@@ -1121,6 +1121,7 @@ function App() {
           <Routes>
             <Route path="/" element={renderActiveSection()} />
             <Route path="/register" element={<EventRegistration />} />
+            <Route path="/event-registration" element={<EventRegistration />} />
             <Route path="/events/senior-quiz" element={<SeniorQuiz />} />
             <Route path="/events/junior-quiz" element={<JuniorQuiz />} />
             <Route path="/events/online-quiz" element={<OnlineQuiz />} />
@@ -1132,17 +1133,19 @@ function App() {
             <Route path="/events/pulsating-palettes" element={<PulsatingPalettes />} />
             <Route path="/events/cineplexus" element={<Cineplexus />} />
             <Route path="/workshops/sonostrike" element={<Sonostrike />} />
-            <Route path="/workshops/disaster-x" element={<DisasterX />} />
-            <Route path="/workshops/vivantia" element={<Vivantia />} />
+            <Route path="/workshops/disaster-x" element={<DisasterX onRegister={() => {}} />} />
+            <Route path="/workshops/vivantia" element={<Vivantia onRegister={() => {}} />} />
             <Route path="/workshops/code-wild" element={<CodeWild />} />
+            <Route path="/workshops/codewild" element={<CodeWild />} />
             <Route path="/workshops/occulex" element={<Occulex />} />
             <Route path="/workshops/sonic-shift" element={<SonicShift />} />
             <Route path="/workshops/sonicshift" element={<SonicShift />} />
             <Route path="/workshops/anastamos" element={<Anastamos />} />
             <Route path="/workshops/reviva" element={<Reviva />} />
             <Route path="/workshops/smart-ai" element={<SmartAI />} />
-            <Route path="/workshops/exodontia-x" element={<ExodontiaX />} />
-            <Route path="/workshops/paramatrix" element={<Paramatrix />} />
+            <Route path="/workshops/smartai" element={<SmartAI />} />
+            <Route path="/workshops/exodontiax" element={<ExodontiaX onRegister={() => {}} />} />
+            <Route path="/workshops/paramatrix" element={<Paramatrix onRegister={() => {}} />} />
             <Route path="/delegate-pass" element={<DelegatePass />} />
             {/* Add more event/workshop routes here */}
           </Routes>

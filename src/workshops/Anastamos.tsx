@@ -1,67 +1,67 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-function Anastamos() {
-  const navigate = useNavigate();
-  return (
-    <div className="min-h-screen pt-8 pb-24 px-6">
-      <button
-        onClick={() => navigate(-1)}
-        className="absolute left-4 top-6 flex items-center px-3 py-1 rounded-lg bg-cyan-900/70 border border-cyan-400/30 text-cyan-200 hover:bg-cyan-800/90 hover:text-white transition-all shadow-sm"
-        style={{ zIndex: 10 }}
-        aria-label="Back"
-      >
-        <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
-        <span className="text-sm font-medium">Back</span>
-      </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">ANASTAMOS • Basic Suturing Skills</h2>
-      <p className="text-lg text-white/80 mb-2">
-        A single stitch can keep a life intact. In the skilled hands of a surgeon resides the ability to mend. This journey is where surgical talent is cultivated. The suturing techniques acquired at this phase and their practice will foster assurance and skill in internships and beyond. Now is your opportunity to be amazed by the remarkable things your hands can achieve.
-      </p>
-      <ul className="text-white/70 mb-4 list-disc pl-6">
-        <li>Universal precaution</li>
-        <li>Operation theatre etiquette</li>
-        <li>Patient preparation</li>
-        <li>Hand scrubbing</li>
-        <li>Gowning and gloving techniques</li>
-        <li>Basic suturing skills</li>
-        <li>Suturing</li>
-        <li>Hand knotting techniques</li>
-      </ul>
-      <div className="flex gap-4 mb-4">
-        <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
-          📅 10/10/2025 (Friday)
-        </div>
-        <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-          ⏰ Forenoon (4 Hours)
-        </div>
-      </div>
-      <div className="text-white/60 mb-2">Incharges: Benifer M, Abhinayashree R</div>
-      <div className="text-white/60 mb-2">Duration: 4 hours (Forenoon session)</div>
-      <div className="text-white/60 mb-2">Prerequisites: Medical students</div>
-      <div className="text-white/60 mb-2">Personal suturing kit provided.</div>
-    </div>
-  );
-}
-
-const RegisterNowButton = () => (
-  <div className="flex justify-center mt-8">
-    <a
-      href="/delegate-pass"
-      className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
-    >
-      Register Now
-    </a>
-  </div>
-);
+import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
 export default function AnastamosPage() {
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+
+  const workshopDetails = {
+    name: "ANASTAMOS • Basic Suturing Skills",
+    price: "₹500",
+    date: "10/10/2025 (Friday)",
+    time: "Forenoon (4 Hours)",
+    incharges: "Benifer M, Abhinayashree R",
+    prerequisites: "Medical students"
+  };
+
   return (
     <>
-      <Anastamos />
-      <RegisterNowButton />
+      <div className="min-h-screen pt-8 pb-24 px-6">
+        <button
+          onClick={() => navigate(-1)}
+          className="absolute left-4 top-6 flex items-center px-3 py-1 rounded-lg bg-cyan-900/70 border border-cyan-400/30 text-cyan-200 hover:bg-cyan-800/90 hover:text-white transition-all shadow-sm"
+          style={{ zIndex: 10 }}
+          aria-label="Back"
+        >
+          <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
+          <span className="text-sm font-medium">Back</span>
+        </button>
+        <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">ANASTAMOS • Basic Suturing Skills</h2>
+        <p className="text-lg text-white/80 mb-2">
+          A single stitch can keep a life intact. In the skilled hands of a surgeon resides the ability to mend. This journey is where surgical talent is cultivated. The suturing techniques acquired at this phase and their practice will foster assurance and skill in internships and beyond. Now is your opportunity to be amazed by the remarkable things your hands can achieve.
+        </p>
+        <ul className="text-white/70 mb-4 list-disc pl-6">
+          <li>Universal precaution</li>
+          <li>Operation theatre etiquette</li>
+          <li>Patient preparation</li>
+          <li>Hand scrubbing</li>
+          <li>Gowning and gloving techniques</li>
+          <li>Basic suturing skills</li>
+          <li>Suturing</li>
+          <li>Hand knotting techniques</li>
+        </ul>
+        <div className="flex gap-4 mb-4">
+          <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
+            📅 10/10/2025 (Friday)
+          </div>
+          <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
+            ⏰ Forenoon (4 Hours)
+          </div>
+        </div>
+        <div className="text-white/60 mb-2">Incharges: Benifer M, Abhinayashree R</div>
+        <div className="text-white/60 mb-2">Duration: 4 hours (Forenoon session)</div>
+        <div className="text-white/60 mb-2">Prerequisites: Medical students</div>
+        <div className="text-white/60 mb-2">Personal suturing kit provided.</div>
+        <div className="flex justify-center mt-2">
+          <a
+            href="/event-registration?event=Anastamos"
+            className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+          >
+            Register Now
+          </a>
+        </div>
+      </div>
     </>
   );
 }
-
-export { Anastamos };
