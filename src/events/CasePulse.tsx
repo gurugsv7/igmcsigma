@@ -15,7 +15,7 @@ const CasePulse = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">Case Presentation: Case Pulse</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Case Presentation: Case Pulse</h2>
       <p className="text-lg text-white/80 mb-2">Present interesting clinical cases</p>
       <p className="text-white/70 mb-4">
         Platform for presenting unique and challenging clinical cases with expert feedback.

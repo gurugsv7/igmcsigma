@@ -15,7 +15,7 @@ const OnlineQuiz = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">Online Quiz</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Online Quiz</h2>
       <p className="text-lg text-white/80 mb-2">STRIATUM SCHOLAR TROPHY</p>
       <p className="text-white/70 mb-4">
         Three-round quiz on Diabetes with online prelims, offline semifinals and finals.

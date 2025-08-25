@@ -27,7 +27,7 @@ export default function SonostrikePage() {
           <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
           <span className="text-sm font-medium">Back</span>
         </button>
-        <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">SONOSTRIKE • Radiology EFAST Workshop</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">SONOSTRIKE • Radiology EFAST Workshop</h2>
         <p className="text-lg text-white/80 mb-2">
           Master the art of bedside ultrasound with hands-on EFAST training. SONOSTRIKE is designed to equip you with the skills to rapidly assess trauma patients, identify life-threatening conditions, and make critical decisions in emergency settings.
         </p>

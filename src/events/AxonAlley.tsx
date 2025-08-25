@@ -15,7 +15,7 @@ const AxonAlley = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">Poster Presentation: Axon Alley</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Poster Presentation: Axon Alley</h2>
       <p className="text-lg text-white/80 mb-2">Research poster presentations</p>
       <p className="text-white/70 mb-4">
         Showcase your research work through professional poster presentations.

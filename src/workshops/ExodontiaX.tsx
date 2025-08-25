@@ -15,7 +15,7 @@ function ExodontiaX({ onRegister }: { onRegister: () => void }) {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">EXODONTIA'X • Dental Workshop</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">EXODONTIA'X • Dental Workshop</h2>
       <p className="text-lg text-white/80 mb-2">
         In the clinic, emergencies can arrive unannounced. EXODONTIA ’X’ equips you to respond with composure and expertise, mastering protocols that safeguard patients and uphold the highest standards of dental care. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practice.
       </p>

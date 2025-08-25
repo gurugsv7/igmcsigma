@@ -27,7 +27,7 @@ export default function CodeWildPage() {
           <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
           <span className="text-sm font-medium">Back</span>
         </button>
-        <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">CODE WILD • Wilderness Medicine</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">CODE WILD • Wilderness Medicine</h2>
         <p className="text-lg text-white/80 mb-2">
           Far from hospitals, survival depends on resourcefulness and resolve. CODE WILD challenges you to adapt, improvise, and deliver care in the most unpredictable of environments—where every decision carries weight. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practice.
         </p>

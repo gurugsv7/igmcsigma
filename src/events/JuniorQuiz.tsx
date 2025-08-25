@@ -15,7 +15,7 @@ const JuniorQuiz = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">Junior Quiz</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Junior Quiz</h2>
       <p className="text-lg text-white/80 mb-2">STRIATUM SCHOLAR TROPHY</p>
       <p className="text-white/70 mb-4">
         Enter the arena where your fundamental skills serve as your most valuable assets! Are you prepared to decipher the intricacies of clinical knowledge? Strengthen your cognitive abilities and prepare for an exhilarating quiz competition.

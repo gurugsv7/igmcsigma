@@ -15,7 +15,7 @@ const InsideICU = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">Inside the ICU: What They Don't Teach You in Undergrad Medicine</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Inside the ICU: What They Don't Teach You in Undergrad Medicine</h2>
       <p className="text-lg text-white/80 mb-2">Real-world ICU scenarios and critical care insights</p>
       <p className="text-white/70 mb-4">
         Expert panel discussion on practical ICU management and critical decision making.

@@ -15,7 +15,7 @@ function Paramatrix({ onRegister }: { onRegister: () => void }) {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">PARAMATRIX • Paramedical Workshop</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">PARAMATRIX • Paramedical Workshop</h2>
       <p className="text-lg text-white/80 mb-2">
         Emergencies demand clarity, speed, and skill. PARAMATRIX prepares paramedical students to handle critical drugs, protocols, and scenarios with confidence—turning knowledge into action when it matters most. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practice.
       </p>

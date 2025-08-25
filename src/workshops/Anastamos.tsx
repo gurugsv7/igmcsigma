@@ -27,7 +27,7 @@ export default function AnastamosPage() {
           <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
           <span className="text-sm font-medium">Back</span>
         </button>
-        <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">ANASTAMOS • Basic Suturing Skills</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">ANASTAMOS • Basic Suturing Skills</h2>
         <p className="text-lg text-white/80 mb-2">
           A single stitch can keep a life intact. In the skilled hands of a surgeon resides the ability to mend. This journey is where surgical talent is cultivated. The suturing techniques acquired at this phase and their practice will foster assurance and skill in internships and beyond. Now is your opportunity to be amazed by the remarkable things your hands can achieve.
         </p>

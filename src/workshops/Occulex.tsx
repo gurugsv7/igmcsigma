@@ -27,7 +27,7 @@ export default function OcculexPage() {
           <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
           <span className="text-sm font-medium">Back</span>
         </button>
-        <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">OCCULEX • Ophthalmology Workshop</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">OCCULEX • Ophthalmology Workshop</h2>
         <p className="text-lg text-white/80 mb-2">
           The eyes are our window to the world, and their care demands precision. OCCULEX introduces you to core ophthalmic techniques and diagnostic skills, grounding you in the essentials of vision and sight preservation. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practices.
         </p>

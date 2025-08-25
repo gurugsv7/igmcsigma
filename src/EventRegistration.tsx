@@ -2,7 +2,11 @@ import React, { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import emailjs from "emailjs-com";
 
-const qrPlaceholder = "/src/images/qrpayment.jpg";
+const qrPlaceholder = "/qrpayment.jpg";
+
+// Cloudinary config
+const CLOUDINARY_CLOUD_NAME = "dzp9gxlh8";
+const CLOUDINARY_UPLOAD_PRESET = "regis_payment";
 
 // Event info map
 const EVENT_INFO: Record<string, { name: string; price: string; prize: string }> = {
@@ -118,6 +122,8 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
+const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB
+
 const EventRegistration: React.FC = () => {
   const query = useQuery();
   const eventKey = query.get("event") || "SeniorQuiz";
@@ -138,12 +144,40 @@ const EventRegistration: React.FC = () => {
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+  async function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const { name, value, files } = e.target as any;
-    setForm((prev) => ({
-      ...prev,
-      [name]: files ? files[0] : value,
-    }));
+    if (name === "paymentScreenshot" && files && files[0]) {
+      if (files[0].size > MAX_FILE_SIZE) {
+        setError("File is too large! Please upload an image less than 4MB.");
+        return;
+      }
+      setError(null);
+      setForm((prev) => ({
+        ...prev,
+        [name]: files[0],
+      }));
+    } else {
+      setForm((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  }
+
+  async function uploadToCloudinary(file: File): Promise<string> {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+    const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    if (data.secure_url) {
+      return data.secure_url;
+    } else {
+      throw new Error("Cloudinary upload failed");
+    }
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -154,9 +188,26 @@ const EventRegistration: React.FC = () => {
     // Prepare EmailJS form data
     if (!formRef.current) return;
 
+    // Upload screenshot to Cloudinary if present
+    let screenshotUrl = "";
+    if (form.paymentScreenshot) {
+      setError("Uploading screenshot...");
+      try {
+        screenshotUrl = await uploadToCloudinary(form.paymentScreenshot);
+      } catch (err) {
+        setIsSubmitting(false);
+        setError("Failed to upload screenshot. Please try again.");
+        return;
+      }
+    }
+
+    // Remove the file input value before sending to EmailJS
+    if (formRef.current.elements.namedItem("paymentScreenshot")) {
+      (formRef.current.elements.namedItem("paymentScreenshot") as HTMLInputElement).value = "";
+    }
+
     // Append event and user info to hidden fields for EmailJS
     const formElement = formRef.current;
-    // Set hidden fields for event_name, etc.
     (formElement.elements.namedItem("event_name") as HTMLInputElement).value = event.name;
     (formElement.elements.namedItem("registrant_name") as HTMLInputElement).value = form.name;
     (formElement.elements.namedItem("registrant_email") as HTMLInputElement).value = form.email;
@@ -164,6 +215,7 @@ const EventRegistration: React.FC = () => {
     (formElement.elements.namedItem("registrant_institution") as HTMLInputElement).value = form.institution;
     (formElement.elements.namedItem("registrant_year") as HTMLInputElement).value = form.year;
     (formElement.elements.namedItem("registrant_category") as HTMLInputElement).value = form.category;
+    (formElement.elements.namedItem("payment_screenshot_url") as HTMLInputElement).value = screenshotUrl;
 
     emailjs.sendForm(
       "igmcsigma",
@@ -237,6 +289,7 @@ const EventRegistration: React.FC = () => {
           <input type="hidden" name="registrant_institution" />
           <input type="hidden" name="registrant_year" />
           <input type="hidden" name="registrant_category" />
+          <input type="hidden" name="payment_screenshot_url" />
 
           <div>
             <label className="block text-sm text-cyan-300 mb-1">Full Name</label>
@@ -342,6 +395,7 @@ const EventRegistration: React.FC = () => {
               required
               className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
             />
+            <div className="text-xs text-gray-400 mt-1">Max file size: 4MB. Will be uploaded to Cloudinary and link sent via email.</div>
           </div>
           <button
             type="submit"

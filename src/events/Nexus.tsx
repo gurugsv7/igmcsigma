@@ -15,7 +15,7 @@ const Nexus = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">Paper Presentation: Nexus</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Paper Presentation: Nexus</h2>
       <p className="text-lg text-white/80 mb-2">Scientific paper presentations</p>
       <p className="text-white/70 mb-4">
         Present your research papers and findings to a panel of expert judges.

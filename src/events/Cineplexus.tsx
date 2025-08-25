@@ -15,7 +15,7 @@ const Cineplexus = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">Short Film: Cineplexus</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Short Film: Cineplexus</h2>
       <p className="text-lg text-white/80 mb-2">Medical themed short film competition</p>
       <p className="text-white/70 mb-4">
         Create and present short films on medical themes and healthcare topics.

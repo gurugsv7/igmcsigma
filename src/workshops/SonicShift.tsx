@@ -14,7 +14,7 @@ export default function SonicShift() {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">THE SONIC SHIFT • Basic Anaesthesiology Workshop</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">THE SONIC SHIFT • Basic Anaesthesiology Workshop</h2>
       <div className="text-center text-cyan-200 font-semibold mb-2">TAGLINE: Real Time answers at Bedside – mastering POCUS</div>
       <p className="text-lg text-white/80 mb-2">
         Point-of-care ultrasound has transformed Anaesthesia, Critical Care, and Pain Management. From fetal interventions to elderly trauma care, real-time bedside imaging simplifies complexities, ensures precision, and improves safety. Join our hands-on workshop to explore this vital skill in patient care.

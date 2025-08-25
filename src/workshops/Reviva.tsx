@@ -27,7 +27,7 @@ export default function RevivaPage() {
           <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
           <span className="text-sm font-medium">Back</span>
         </button>
-        <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">REVIVA • Neonatology Resuscitation Practices</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">REVIVA • Neonatology Resuscitation Practices</h2>
         <p className="text-lg text-white/80 mb-2">
           Learn the essentials of neonatal resuscitation with hands-on practice. REVIVA is designed to provide you with the skills and confidence to manage newborn emergencies and improve outcomes in the delivery room.
         </p>

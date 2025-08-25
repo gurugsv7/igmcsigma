@@ -15,7 +15,7 @@ const RoadToResidency = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-      <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4">The Road to Residency: USMLE, UKMLE, MRCP, MRCS</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">The Road to Residency: USMLE, UKMLE, MRCP, MRCS</h2>
       <p className="text-lg text-white/80 mb-2">Career guidance for international medical examinations</p>
       <p className="text-white/70 mb-4">
         Comprehensive guidance on international medical career pathways and exam strategies.
