@@ -8,14 +8,121 @@ const CLOUDINARY_CLOUD_NAME = "dzp9gxlh8";
 const CLOUDINARY_UPLOAD_PRESET = "regis_payment";
 
 // Event info map
-const EVENT_INFO: Record<string, { name: string; price: string; prize: string }> = {
-  // ... (rest of the event info unchanged)
+const EVENT_INFO: Record<string, { name: string; price: string; prize: string; delegateRequired: boolean }> = {
+  AxonAlley: {
+    name: "Poster Presentation: Axon Alley",
+    price: "₹300 (Single) / ₹400 (Team of 2)",
+    prize: "₹3,000",
+    delegateRequired: true
+  },
+  CasePulse: {
+    name: "Case Presentation: Case Pulse",
+    price: "₹300 (Single) / ₹400 (Team of 2)",
+    prize: "₹3,000",
+    delegateRequired: true
+  },
+  Nexus: {
+    name: "Paper Presentation: Nexus",
+    price: "₹300 (Single) / ₹400 (Team of 2)",
+    prize: "₹3,000",
+    delegateRequired: true
+  },
+  PulsatingPalettes: {
+    name: "Body Painting: Pulsating Palettes",
+    price: "₹150 per team",
+    prize: "₹1,500",
+    delegateRequired: false
+  },
+  Cineplexus: {
+    name: "Short Film: Cineplexus",
+    price: "₹500 per team",
+    prize: "₹10,000",
+    delegateRequired: false
+  },
   SeniorQuiz: {
-    name: "Senior Quiz",
+    name: "Senior Quiz (Peristalympics)",
     price: "₹600 per team",
     prize: "₹40,000",
+    delegateRequired: false
   },
-  // ... (other events unchanged)
+  JuniorQuiz: {
+    name: "Junior Quiz (Vistura)",
+    price: "₹600 per team",
+    prize: "₹30,000",
+    delegateRequired: false
+  },
+  OnlineQuiz: {
+    name: "Online Quiz (Pancrithon)",
+    price: "₹300 per team",
+    prize: "₹20,000",
+    delegateRequired: false
+  },
+  DisasterX: {
+    name: "Disaster Management Workshop: DISASTER X",
+    price: "Delegate Pass Required",
+    prize: "-",
+    delegateRequired: true
+  },
+  Vivantia: {
+    name: "Obstetric Workshop: VIVANTIA",
+    price: "Delegate Pass Required",
+    prize: "-",
+    delegateRequired: true
+  },
+  CodeWild: {
+    name: "Wilderness Medicine: CODE WILD",
+    price: "Delegate Pass Required",
+    prize: "-",
+    delegateRequired: true
+  },
+  Occulex: {
+    name: "Ophthalmology Workshop: OCCULEX",
+    price: "Delegate Pass Required",
+    prize: "-",
+    delegateRequired: true
+  },
+  SonicShift: {
+    name: "Basic Anaesthesiology Workshop: THE SONIC SHIFT",
+    price: "Delegate Pass Required",
+    prize: "-",
+    delegateRequired: true
+  },
+  Anastamos: {
+    name: "Basic Suturing Skills: ANASTAMOS",
+    price: "Delegate Pass Required",
+    prize: "-",
+    delegateRequired: true
+  },
+  Reviva: {
+    name: "Neonatology Resuscitation Practices: REVIVA",
+    price: "Delegate Pass Required",
+    prize: "-",
+    delegateRequired: true
+  },
+  SmartAI: {
+    name: "AI for Research: SMART",
+    price: "Delegate Pass Required",
+    prize: "-",
+    delegateRequired: true
+  },
+  ExodontiaX: {
+    name: "Dental Workshop: EXODONTIA’X’",
+    price: "Delegate Pass Required",
+    prize: "-",
+    delegateRequired: true
+  },
+  Paramatrix: {
+    name: "Paramedical Workshop: PARAMATRIX",
+    price: "Delegate Pass Required",
+    prize: "-",
+    delegateRequired: true
+  },
+  Sonostrike: {
+    name: "Radiology EFAST Workshop: SONOSTRIKE",
+    price: "Delegate Pass Required",
+    prize: "-",
+    delegateRequired: true
+  }
 };
 
 function useQuery() {
@@ -25,10 +132,10 @@ function useQuery() {
 const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB
 
 const EventRegistration: React.FC = () => {
-  const query = useQuery();
-  const eventKey = query.get("event") || "SeniorQuiz";
-  const event = EVENT_INFO[eventKey] || EVENT_INFO["SeniorQuiz"];
+  const location = useLocation();
   const navigate = useNavigate();
+  const eventKey = new URLSearchParams(location.search).get("event") || "SeniorQuiz";
+  const event = EVENT_INFO[eventKey] || EVENT_INFO["SeniorQuiz"];
 
   const [form, setForm] = useState({
     name: "",
@@ -37,6 +144,7 @@ const EventRegistration: React.FC = () => {
     institution: "",
     year: "",
     category: "student",
+    delegate_id: "",
     paymentScreenshot: null as File | null,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -107,26 +215,39 @@ const EventRegistration: React.FC = () => {
       (formRef.current.elements.namedItem("paymentScreenshot") as HTMLInputElement).value = "";
     }
 
-    // Append event and user info to hidden fields for EmailJS
-    const formElement = formRef.current;
-    (formElement.elements.namedItem("event_name") as HTMLInputElement).value = event.name;
-    (formElement.elements.namedItem("registrant_name") as HTMLInputElement).value = form.name;
-    (formElement.elements.namedItem("registrant_email") as HTMLInputElement).value = form.email;
-    (formElement.elements.namedItem("registrant_phone") as HTMLInputElement).value = form.phone;
-    (formElement.elements.namedItem("registrant_institution") as HTMLInputElement).value = form.institution;
-    (formElement.elements.namedItem("registrant_year") as HTMLInputElement).value = form.year;
-    (formElement.elements.namedItem("registrant_category") as HTMLInputElement).value = form.category;
-    (formElement.elements.namedItem("payment_screenshot_url") as HTMLInputElement).value = screenshotUrl;
+    // Prepare template params directly from state
+    const templateParams = {
+      event_name: event.name,
+      registrant_name: form.name,
+      registrant_email: form.email,
+      registrant_phone: form.phone,
+      registrant_institution: form.institution,
+      registrant_year: form.year,
+      registrant_category: form.category,
+      payment_screenshot_url: screenshotUrl,
+    };
 
-    emailjs.sendForm(
+    console.log("Sending registration data to EmailJS:", templateParams);
+
+    emailjs.send(
       "igmcsigma",
       "template_0uzpwjc",
-      formRef.current,
+      templateParams,
       "acbz69d146b3J-jEm"
     ).then(
       (result) => {
         setIsSubmitting(false);
         setSubmitted(true);
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          institution: "",
+          year: "",
+          category: "student",
+          delegate_id: "",
+          paymentScreenshot: null,
+        });
       },
       (error) => {
         setIsSubmitting(false);
@@ -214,6 +335,21 @@ const EventRegistration: React.FC = () => {
               className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
             />
           </div>
+          {event.delegateRequired && (
+            <div>
+              <label className="block text-sm text-cyan-300 mb-1">Delegate Pass ID</label>
+              <input
+                type="text"
+                name="delegate_id"
+                value={form.delegate_id}
+                onChange={handleChange}
+                required={event.delegateRequired}
+                className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
+                placeholder="Enter your Delegate Pass ID"
+              />
+              <div className="text-xs text-gray-400 mt-1">Enter the Delegate Pass ID you received after delegate registration.</div>
+            </div>
+          )}
           <div>
             <label className="block text-sm text-cyan-300 mb-1">Email Address</label>
             <input

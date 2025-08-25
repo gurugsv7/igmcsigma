@@ -1,5 +1,5 @@
-- [ ] Analyze routing/navigation setup
-- [ ] Implement scroll-to-top logic on page navigation
-- [ ] Integrate scroll-to-top logic into the app
-- [ ] Test navigation between all pages
-- [ ] Verify scroll-to-top works as expected
+- [x] Analyze requirements and extract events/workshops that do NOT require delegate pass from brochure
+- [ ] Add delegateRequired flag to EVENT_INFO for all events/workshops
+- [ ] Update EventRegistration form to show "Delegate ID" field only if delegateRequired is true
+- [ ] Update EmailJS template and code to include delegate_id for relevant events
+- [ ] Test registration for both types (with and without delegate ID)

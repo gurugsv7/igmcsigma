@@ -71,7 +71,7 @@ const DelegatePass = () => {
     try {
       await emailjs.send(
         "igmcsigma",
-        "template_0uzpwjc",
+        "template_207v92k",
         {
           name: form.name,
           email: form.email,
