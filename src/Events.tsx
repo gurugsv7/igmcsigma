@@ -51,13 +51,6 @@ const eventSections = [
         details: 'Expert panel discussion on practical ICU management and critical decision making',
         date: '11/10/25',
         time: 'Afternoon'
-      },
-      {
-        title: 'The Road to Residency: USMLE, UKMLE, MRCP, MRCS',
-        description: 'Career guidance for international medical examinations',
-        details: 'Comprehensive guidance on international medical career pathways and exam strategies',
-        date: '11/10/25',
-        time: 'Afternoon'
       }
     ]
   },
@@ -254,7 +247,6 @@ const SectionPage = ({
                   event.title === "Junior Quiz" ? "/events/junior-quiz" :
                   event.title === "Online Quiz" ? "/events/online-quiz" :
                   event.title.startsWith("Inside the ICU") ? "/events/inside-icu" :
-                  event.title.startsWith("The Road to Residency") ? "/events/road-to-residency" :
                   event.title.startsWith("Case Presentation") ? "/events/case-pulse" :
                   event.title.startsWith("Poster Presentation") ? "/events/axon-alley" :
                   event.title.startsWith("Paper Presentation") ? "/events/nexus" :

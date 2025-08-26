@@ -8,120 +8,139 @@ const CLOUDINARY_CLOUD_NAME = "dzp9gxlh8";
 const CLOUDINARY_UPLOAD_PRESET = "regis_payment";
 
 // Event info map
-const EVENT_INFO: Record<string, { name: string; price: string; prize: string; delegateRequired: boolean }> = {
+const EVENT_INFO: Record<string, { name: string; price: string; prize: string; delegateRequired: boolean; teamSize: number }> = {
   AxonAlley: {
     name: "Poster Presentation: Axon Alley",
     price: "₹300 (Single) / ₹400 (Team of 2)",
     prize: "₹3,000",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 2
   },
   CasePulse: {
     name: "Case Presentation: Case Pulse",
     price: "₹300 (Single) / ₹400 (Team of 2)",
     prize: "₹3,000",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 2
   },
   Nexus: {
     name: "Paper Presentation: Nexus",
     price: "₹300 (Single) / ₹400 (Team of 2)",
     prize: "₹3,000",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 2
   },
   PulsatingPalettes: {
     name: "Body Painting: Pulsating Palettes",
     price: "₹150 per team",
     prize: "₹1,500",
-    delegateRequired: false
+    delegateRequired: false,
+    teamSize: 3
   },
   Cineplexus: {
     name: "Short Film: Cineplexus",
     price: "₹500 per team",
     prize: "₹10,000",
-    delegateRequired: false
+    delegateRequired: false,
+    teamSize: 10 // Estimate, not specified, can be adjusted
   },
   SeniorQuiz: {
     name: "Senior Quiz (Peristalympics)",
     price: "₹600 per team",
     prize: "₹40,000",
-    delegateRequired: false
+    delegateRequired: false,
+    teamSize: 3
   },
   JuniorQuiz: {
     name: "Junior Quiz (Vistura)",
     price: "₹600 per team",
     prize: "₹30,000",
-    delegateRequired: false
+    delegateRequired: false,
+    teamSize: 3
   },
   OnlineQuiz: {
     name: "Online Quiz (Pancrithon)",
     price: "₹300 per team",
     prize: "₹20,000",
-    delegateRequired: false
+    delegateRequired: false,
+    teamSize: 3
   },
   DisasterX: {
     name: "Disaster Management Workshop: DISASTER X",
     price: "Delegate Pass Required",
     prize: "-",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 1
   },
   Vivantia: {
     name: "Obstetric Workshop: VIVANTIA",
     price: "Delegate Pass Required",
     prize: "-",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 1
   },
   CodeWild: {
     name: "Wilderness Medicine: CODE WILD",
     price: "Delegate Pass Required",
     prize: "-",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 1
   },
   Occulex: {
     name: "Ophthalmology Workshop: OCCULEX",
     price: "Delegate Pass Required",
     prize: "-",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 1
   },
   SonicShift: {
     name: "Basic Anaesthesiology Workshop: THE SONIC SHIFT",
     price: "Delegate Pass Required",
     prize: "-",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 1
   },
   Anastamos: {
     name: "Basic Suturing Skills: ANASTAMOS",
     price: "Delegate Pass Required",
     prize: "-",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 1
   },
   Reviva: {
     name: "Neonatology Resuscitation Practices: REVIVA",
     price: "Delegate Pass Required",
     prize: "-",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 1
   },
   SmartAI: {
     name: "AI for Research: SMART",
     price: "Delegate Pass Required",
     prize: "-",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 1
   },
   ExodontiaX: {
     name: "Dental Workshop: EXODONTIA’X’",
     price: "Delegate Pass Required",
     prize: "-",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 1
   },
   Paramatrix: {
     name: "Paramedical Workshop: PARAMATRIX",
     price: "Delegate Pass Required",
     prize: "-",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 1
   },
   Sonostrike: {
     name: "Radiology EFAST Workshop: SONOSTRIKE",
     price: "Delegate Pass Required",
     prize: "-",
-    delegateRequired: true
+    delegateRequired: true,
+    teamSize: 1
   }
 };
 
@@ -138,7 +157,7 @@ const EventRegistration: React.FC = () => {
   const event = EVENT_INFO[eventKey] || EVENT_INFO["SeniorQuiz"];
 
   const [form, setForm] = useState({
-    name: "",
+    memberNames: [""], // Array for team member names
     email: "",
     phone: "",
     institution: "",
@@ -153,8 +172,9 @@ const EventRegistration: React.FC = () => {
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  async function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
-    const { name, value, files } = e.target as any;
+  // Handles changes for all fields, including member names
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+    const { name, value, files, dataset } = e.target as any;
     if (name === "paymentScreenshot" && files && files[0]) {
       if (files[0].size > MAX_FILE_SIZE) {
         setError("File is too large! Please upload an image less than 4MB.");
@@ -165,6 +185,14 @@ const EventRegistration: React.FC = () => {
         ...prev,
         [name]: files[0],
       }));
+    } else if (name === "memberName" && dataset.index !== undefined) {
+      // Update specific member name
+      const idx = parseInt(dataset.index, 10);
+      setForm((prev) => {
+        const memberNames = [...(prev.memberNames || [])];
+        memberNames[idx] = value;
+        return { ...prev, memberNames };
+      });
     } else {
       setForm((prev) => ({
         ...prev,
@@ -218,7 +246,7 @@ const EventRegistration: React.FC = () => {
     // Prepare template params directly from state
     const templateParams = {
       event_name: event.name,
-      registrant_name: form.name,
+      team_members: (form.memberNames || []).join(", "),
       registrant_email: form.email,
       registrant_phone: form.phone,
       registrant_institution: form.institution,
@@ -239,7 +267,7 @@ const EventRegistration: React.FC = () => {
         setIsSubmitting(false);
         setSubmitted(true);
         setForm({
-          name: "",
+          memberNames: Array(event.teamSize).fill(""),
           email: "",
           phone: "",
           institution: "",
@@ -316,7 +344,7 @@ const EventRegistration: React.FC = () => {
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-4" encType="multipart/form-data">
           {/* Hidden fields for EmailJS variables */}
           <input type="hidden" name="event_name" />
-          <input type="hidden" name="registrant_name" />
+          <input type="hidden" name="team_members" />
           <input type="hidden" name="registrant_email" />
           <input type="hidden" name="registrant_phone" />
           <input type="hidden" name="registrant_institution" />
@@ -324,17 +352,26 @@ const EventRegistration: React.FC = () => {
           <input type="hidden" name="registrant_category" />
           <input type="hidden" name="payment_screenshot_url" />
 
-          <div>
-            <label className="block text-sm text-cyan-300 mb-1">Full Name</label>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              required
-              className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
-            />
-          </div>
+          {/* Team member names */}
+          {[...Array(event.teamSize)].map((_, idx) => (
+            <div key={idx}>
+              <label className="block text-sm text-cyan-300 mb-1">
+                {event.teamSize === 1
+                  ? "Full Name"
+                  : `Member ${idx + 1} Name${idx === 0 ? " (Team Leader)" : ""}`}
+              </label>
+              <input
+                type="text"
+                name="memberName"
+                data-index={idx}
+                value={form.memberNames[idx] || ""}
+                onChange={handleChange}
+                required
+                className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
+                placeholder={event.teamSize === 1 ? "Full Name" : `Member ${idx + 1} Name`}
+              />
+            </div>
+          ))}
           {event.delegateRequired && (
             <div>
               <label className="block text-sm text-cyan-300 mb-1">Delegate Pass ID</label>
@@ -445,13 +482,13 @@ const EventRegistration: React.FC = () => {
               </div>
             )}
           </div>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-6 rounded-full transition-all duration-300 mt-2"
-          >
-            {isSubmitting ? "Submitting..." : "Submit Registration"}
-          </button>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-6 rounded-full transition-all duration-300 mt-2"
+        >
+          {isSubmitting ? "Submitting..." : "Submit Registration"}
+        </button>
         </form>
       </div>
     </div>

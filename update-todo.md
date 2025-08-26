@@ -1,5 +1,6 @@
-- [x] Analyze requirements and extract events/workshops that do NOT require delegate pass from brochure
-- [ ] Add delegateRequired flag to EVENT_INFO for all events/workshops
-- [ ] Update EventRegistration form to show "Delegate ID" field only if delegateRequired is true
-- [ ] Update EmailJS template and code to include delegate_id for relevant events
-- [ ] Test registration for both types (with and without delegate ID)
+- [x] Analyze requirements
+- [ ] Identify chatbot implementation file(s)
+- [ ] Gather latest details and links for all workshops/events
+- [ ] Update chatbot logic/data with new details and links
+- [ ] Test chatbot guidance for workshops/events
+- [ ] Verify results

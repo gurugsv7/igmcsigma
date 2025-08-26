@@ -48,13 +48,12 @@ const InsideICU = () => {
         </div>
       </div>
 <div className="flex justify-center mt-2 mb-4">
-        <button
-          className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
-          style={{ position: "relative", zIndex: 20 }}
-          onClick={() => navigate('/register?event=InsideICU')}
+        <div
+          className="bg-gradient-to-r from-cyan-500 to-teal-500 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300"
+          style={{ position: "relative", zIndex: 20, pointerEvents: "none", opacity: 0.85 }}
         >
-          Register Now
-        </button>
+          Included with Tier 2 Delegate Pass
+        </div>
       </div>
     </div>
   );

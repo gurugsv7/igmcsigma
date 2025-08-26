@@ -78,40 +78,86 @@ const FloatingChatbot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const getBotResponse = (userMessage: string): string => {
-    const message = userMessage.toLowerCase();
+const getBotResponse = (userMessage: string): string => {
+  const message = userMessage.toLowerCase();
 
-    if (message.includes('register') || message.includes('registration')) {
-      return "🎯 Registration is now open!\n\n• Visit our official website\n• Fill out the registration form\n• Pay the symposium fee\n• Receive confirmation email\n\nEarly bird discounts available until August 10th! 💫";
+  // Direct navigation for workshops (external URLs)
+  const workshopLinks: { [key: string]: string } = {
+    "sonostrike": "https://igmcrisigma.com/workshops/sonostrike",
+    "disaster x": "https://igmcrisigma.com/workshops/disaster-x",
+    "vivantia": "https://igmcrisigma.com/workshops/vivantia",
+    "code wild": "https://igmcrisigma.com/workshops/code-wild",
+    "occulex": "https://igmcrisigma.com/workshops/occulex",
+    "sonic shift": "https://igmcrisigma.com/workshops/sonic-shift",
+    "anastamos": "https://igmcrisigma.com/workshops/anastamos",
+    "reviva": "https://igmcrisigma.com/workshops/reviva",
+    "smart ai": "https://igmcrisigma.com/workshops/smart-ai",
+    "exodontia x": "https://igmcrisigma.com/workshops/exodontiax",
+    "paramatrix": "https://igmcrisigma.com/workshops/paramatrix"
+  };
+  for (const [name, url] of Object.entries(workshopLinks)) {
+    if (message.includes(name) && (message.includes("go to") || message.includes("open") || message.includes("navigate") || message.includes("show"))) {
+      return `🔗 Here is the direct link to ${name.charAt(0).toUpperCase() + name.slice(1)} workshop:\n${url}`;
     }
+  }
 
-    if (message.includes('workshop') || message.includes('cortex crafts')) {
-      // Dynamically list all workshops
-      try {
-        // Import workshops array from WorkshopsSection file
-        // If not exported, fallback to static
-        // @ts-ignore
-        const workshops = WorkshopsSectionDefault?.__workshops || [];
-        let workshopList = workshops.length
-          ? workshops.map((w: any) => `• ${w.title.split("•").pop()?.trim() || w.title}`).join('\n')
-          : "Workshop details are currently unavailable.";
-        return `🧠 WORKSHOPS (CORTEX CRAFTS):\n\n${workshopList}\n\nAll workshops include hands-on training! ⚡`;
-      } catch {
-        return "Workshop details are currently unavailable.";
-      }
+  // Direct navigation for events (external URLs)
+  const eventLinks: { [key: string]: string } = {
+    "senior quiz": "https://igmcrisigma.com/events/senior-quiz",
+    "junior quiz": "https://igmcrisigma.com/events/junior-quiz",
+    "online quiz": "https://igmcrisigma.com/events/online-quiz",
+    "inside icu": "https://igmcrisigma.com/events/inside-icu",
+    "case pulse": "https://igmcrisigma.com/events/case-pulse",
+    "axon alley": "https://igmcrisigma.com/events/axon-alley",
+    "nexus": "https://igmcrisigma.com/events/nexus",
+    "pulsating palettes": "https://igmcrisigma.com/events/pulsating-palettes",
+    "cineplexus": "https://igmcrisigma.com/events/cineplexus"
+  };
+  for (const [name, url] of Object.entries(eventLinks)) {
+    if (message.includes(name) && (message.includes("go to") || message.includes("open") || message.includes("navigate") || message.includes("show"))) {
+      return `🔗 Here is the direct link to ${name.charAt(0).toUpperCase() + name.slice(1)} event:\n${url}`;
     }
+  }
 
-    if (message.includes('event') || message.includes('events') || message.includes('competition')) {
-      // Dynamically list all events
-      let eventList = eventSections
-        .map(
-          (section: any) =>
-            `\n${section.title}:\n` +
-            section.events.map((e: any) => `• ${e.title} (${e.date}, ${e.time})`).join('\n')
-        )
-        .join('\n');
-      return `📅 EVENTS & COMPETITIONS:${eventList}`;
-    }
+  if (message.includes('register') || message.includes('registration')) {
+    return "🎯 Registration is now open!\n\n• Visit our official website\n• Fill out the registration form\n• Pay the symposium fee\n• Receive confirmation email\n\nEarly bird discounts available until August 10th! 💫";
+  }
+
+if (message.includes('workshop') || message.includes('cortex crafts')) {
+  // List all workshops with navigation links
+  return `🧠 WORKSHOPS (CORTEX CRAFTS):\n
+• Sonostrike (/workshops/sonostrike)
+• Disaster X (/workshops/disaster-x)
+• Vivantia (/workshops/vivantia)
+• Code Wild (/workshops/code-wild)
+• Occulex (/workshops/occulex)
+• Sonic Shift (/workshops/sonic-shift)
+• Anastamos (/workshops/anastamos)
+• Reviva (/workshops/reviva)
+• Smart AI (/workshops/smart-ai)
+• Exodontia X (/workshops/exodontiax)
+• Paramatrix (/workshops/paramatrix)
+
+All workshops include hands-on training! ⚡
+To open a workshop page, type its name or visit the Workshops tab.`;
+}
+
+if (message.includes('event') || message.includes('events') || message.includes('competition')) {
+  // List all events with navigation links
+  return `📅 EVENTS & COMPETITIONS:
+
+• Senior Quiz (/events/senior-quiz)
+• Junior Quiz (/events/junior-quiz)
+• Online Quiz (/events/online-quiz)
+• Inside ICU (/events/inside-icu)
+• Case Pulse (/events/case-pulse)
+• Axon Alley (/events/axon-alley)
+• Nexus (/events/nexus)
+• Pulsating Palettes (/events/pulsating-palettes)
+• Cineplexus (/events/cineplexus)
+
+To open an event page, type its name or visit the Events tab.`;
+}
 
     if (message.includes('location') || message.includes('where') || message.includes('venue')) {
       return "📍 Event Location:\n\nIndira Gandhi Medical College and Research Institute (IGMCRI)\nPuducherry, India\n\nThe symposium will be held across multiple venues within the campus including:\n• Main Auditorium\n• Workshop Labs\n• Conference Halls\n\nDetailed venue maps will be provided upon registration! 🗺️";
@@ -134,7 +180,7 @@ const FloatingChatbot = () => {
     }
     
     if (message.includes('panel') || message.includes('firing line')) {
-      return "🎤 FIRING LINE: THE EXPERT CIRCUIT\n\nPanel Discussions:\n\n1️⃣ Inside the ICU: What They Don't Teach You in Undergrad\n   • Real ICU scenarios\n   • Critical decision making\n   • Patient management\n\n2️⃣ The Road to Residency: USMLE, PLAB, MRCP, MRCS\n   • Exam strategies\n   • Career guidance\n   • International opportunities\n\nInteractive Q&A sessions included! 💡";
+      return "🎤 FIRING LINE: THE EXPERT CIRCUIT\n\nPanel Discussion:\n\n1️⃣ Inside the ICU: What They Don't Teach You in Undergrad\n   • Real ICU scenarios\n   • Critical decision making\n   • Patient management\n   • Included with Tier 2 Delegate Registration\n\nInteractive Q&A session included! 💡";
     }
     
     if (message.includes('schedule') || message.includes('program') || message.includes('timeline')) {
@@ -798,12 +844,14 @@ const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
         </button>
       </div>
 
+
       <div className="flex items-center justify-center space-x-2 text-pink-300 bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-400/30 rounded-full py-2 px-4">
         <Heart size={16} className="text-pink-400" />
         <Plus size={12} className="text-white" />
         <Stethoscope size={16} className="text-pink-400" />
         <span className="text-sm font-medium">Events for Paramedics and Dental also included!</span>
       </div>
+      <div style={{ height: 120 }} /> {/* Spacer for scroll */}
     </div>
   </div>
 );

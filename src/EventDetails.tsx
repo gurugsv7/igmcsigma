@@ -166,21 +166,7 @@ const EventDetails = ({ event, onBack }: EventDetailsProps) => {
           ],
           time: "Afternoon session on 11th October 2025",
           registration: {
-            fee: "Registration details will be announced"
-          }
-        };
-      case 'The Road to Residency':
-        return {
-          title: "The Road to Residency: USMLE, UKMLE, MRCP, MRCS",
-          description: [
-            "Part of FIRING LINE: THE EXPERT CIRCUIT",
-            "Comprehensive guidance on international medical career pathways and exam strategies",
-            "Expert insights on preparation, application process, and career planning",
-            "Interactive discussion with successful candidates"
-          ],
-          time: "Afternoon session on 11th October 2025",
-          registration: {
-            fee: "Registration details will be announced"
+            fee: "Included with Tier 2 Delegate Pass"
           }
         };
       case 'Online Quiz':
