@@ -408,6 +408,7 @@ const BottomNav = ({ activeTab, setActiveTab, showNav = true }: BottomNavProps) 
           <button
             key={id}
             onClick={() => {
+              setActiveTab(id);
               navigate(path);
             }}
             className={`flex flex-col items-center p-2 rounded-lg transition-all duration-300 ${
@@ -842,7 +843,7 @@ const HomeSection = ({ setActiveTab }: HomeSectionProps) => {
           <BuyDelegatePassButton />
           <button
             className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500/10 font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-400/25 mt-1"
-            onClick={() => navigate('/workshops')}
+            onClick={() => setActiveTab('workshops')}
           >
             Explore Workshops
           </button>
