@@ -4,7 +4,7 @@ import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
 export const anastamosDetails = {
   title: "ANASTAMOS • Basic Suturing Skills",
-  description: "A single stitch can keep a life intact. In the skilled hands of a surgeon resides the ability to mend. This journey is where surgical talent is cultivated. The suturing techniques acquired at this phase and their practice will foster assurance and skill in internships and beyond. Now is your opportunity to be amazed by the remarkable things your hands can achieve.",
+  description: "Universal precautions, OT etiquette, patient preparation, hand scrubbing, gowning/gloving, basic suturing, knotting, personal kit provided.",
   topic: undefined,
   theme: undefined,
   themes: undefined,
@@ -60,17 +60,17 @@ export default function AnastamosPage() {
         </button>
 <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">ANASTAMOS • Basic Suturing Skills</h2>
         <p className="text-lg text-white/80 mb-2">
-          A single stitch can keep a life intact. In the skilled hands of a surgeon resides the ability to mend. This journey is where surgical talent is cultivated. The suturing techniques acquired at this phase and their practice will foster assurance and skill in internships and beyond. Now is your opportunity to be amazed by the remarkable things your hands can achieve.
+          Universal precautions, OT etiquette, patient preparation, hand scrubbing, gowning/gloving, basic suturing, knotting, personal suturing kit provided.
         </p>
         <ul className="text-white/70 mb-4 list-disc pl-6">
-          <li>Universal precaution</li>
+          <li>Universal precautions</li>
           <li>Operation theatre etiquette</li>
           <li>Patient preparation</li>
           <li>Hand scrubbing</li>
           <li>Gowning and gloving techniques</li>
           <li>Basic suturing skills</li>
-          <li>Suturing</li>
           <li>Hand knotting techniques</li>
+          <li>Personal suturing kit provided</li>
         </ul>
         <div className="flex gap-4 mb-4">
           <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">

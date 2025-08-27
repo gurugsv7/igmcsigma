@@ -4,7 +4,7 @@ import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
 export const smartAIDetails = {
   title: "SMART • AI for Research",
-  description: "Innovation begins with asking the right questions. SMART brings Artificial Intelligence into the heart of research, guiding you to design, refine, and present scientific ideas with efficiency, creativity, and ethical responsibility. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practices.",
+  description: "Covers prompt engineering, protocol writing, brainstorming, turbo literature review, robust methodology, questionnaires/proformas/consent, data analysis/visualization, review/discussion writing, references, and AI content management/detection.",
   topic: undefined,
   theme: undefined,
   themes: undefined,
@@ -62,7 +62,7 @@ export default function SmartAIPage() {
         </button>
 <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">SMART • AI for Research</h2>
         <p className="text-lg text-white/80 mb-2">
-          Innovation begins with asking the right questions. SMART brings Artificial Intelligence into the heart of research, guiding you to design, refine, and present scientific ideas with efficiency, creativity, and ethical responsibility. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practices.
+          Covers prompt engineering, protocol writing, brainstorming, turbo literature review, robust methodology, questionnaires/proformas/consent, data analysis/visualization, review/discussion writing, references, and AI content management/detection.
         </p>
         <ul className="text-white/70 mb-4 list-disc pl-6">
           <li><strong>Application of AI in:</strong></li>

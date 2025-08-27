@@ -17,7 +17,7 @@ function ExodontiaX({ onRegister }: { onRegister: () => void }) {
       </button>
 <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">EXODONTIA'X • Dental Workshop</h2>
       <p className="text-lg text-white/80 mb-2">
-        In the clinic, emergencies can arrive unannounced. EXODONTIA ’X’ equips you to respond with composure and expertise, mastering protocols that safeguard patients and uphold the highest standards of dental care. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practice.
+        Practice-based emergency handling: medical emergencies, syncope, hypoglycemia, chest pain, BLS, airway emergencies, drug/equipment management, collapse response, kit handling, practical challenges.
       </p>
       <ul className="text-white/70 mb-4 list-disc pl-6">
         <li>Identifying medical emergencies in dental settings</li>
@@ -28,7 +28,6 @@ function ExodontiaX({ onRegister }: { onRegister: () => void }) {
         <li>Handling emergency medication kits</li>
         <li>Responding to medical collapse during procedures</li>
         <li>Solving practical challenges in emergency scenarios</li>
-        <li>Disaster preparedness</li>
       </ul>
       <div className="flex gap-4 mb-4">
         <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
@@ -56,7 +55,7 @@ export default ExodontiaX;
 
 export const exodontiaXDetails = {
   title: "EXODONTIA'X • Dental Workshop",
-  description: "In the clinic, emergencies can arrive unannounced. EXODONTIA ’X’ equips you to respond with composure and expertise, mastering protocols that safeguard patients and uphold the highest standards of dental care. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practice.",
+  description: "Practice-based emergency handling: medical emergencies, syncope, hypoglycemia, chest pain, BLS, airway emergencies, drug/equipment management, collapse response, kit handling, practical challenges.",
   topic: undefined,
   theme: undefined,
   themes: undefined,
@@ -69,8 +68,7 @@ export const exodontiaXDetails = {
     "Managing airway emergencies",
     "Handling emergency medication kits",
     "Responding to medical collapse during procedures",
-    "Solving practical challenges in emergency scenarios",
-    "Disaster preparedness"
+    "Solving practical challenges in emergency scenarios"
   ],
   abstract: undefined,
   presentation: undefined,

@@ -4,7 +4,7 @@ import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
 export const revivaDetails = {
   title: "REVIVA • Neonatology Resuscitation Practices",
-  description: "Learn the essentials of neonatal resuscitation with hands-on practice. REVIVA is designed to provide you with the skills and confidence to manage newborn emergencies and improve outcomes in the delivery room.",
+  description: "Birth preparation, newborn care, resuscitation steps, ventilation (brief/prolonged), tube intubation, chest compressions.",
   topic: undefined,
   theme: undefined,
   themes: undefined,
@@ -57,24 +57,18 @@ export default function RevivaPage() {
         </button>
 <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">REVIVA • Neonatology Resuscitation Practices</h2>
         <p className="text-lg text-white/80 mb-2">
-          Learn the essentials of neonatal resuscitation with hands-on practice. REVIVA is designed to provide you with the skills and confidence to manage newborn emergencies and improve outcomes in the delivery room.
+          Birth preparation, newborn care, resuscitation steps, ventilation (brief/prolonged), tube intubation, chest compressions.
         </p>
         <div className="mb-2">
           <strong>Skills covered:</strong>
           <ul className="text-white/80 list-disc pl-6 mt-1">
-            <li>Birth preparation and Routine Newborn care</li>
+            <li>Birth preparation and routine newborn care</li>
             <li>Initial steps of resuscitation</li>
-            <li>Ventilation: Brief and Prolonged (Positive pressure resuscitation)</li>
-            <li>Endotracheal tube intubation and chest compressions</li>
+            <li>Ventilation: brief and prolonged (positive pressure resuscitation)</li>
+            <li>Endotracheal tube intubation</li>
+            <li>Chest compressions</li>
           </ul>
         </div>
-        <ul className="text-white/70 mb-4 list-disc pl-6">
-          <li>Neonatal resuscitation protocols</li>
-          <li>Airway management and ventilation</li>
-          <li>Chest compressions and medication</li>
-          <li>Simulation-based scenarios</li>
-          <li>Teamwork and communication</li>
-        </ul>
         <div className="flex gap-4 mb-4">
           <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
             📅 10/10/2025 (Friday)

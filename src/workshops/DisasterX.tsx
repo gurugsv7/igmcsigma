@@ -18,7 +18,7 @@ function DisasterX({ onRegister }: { onRegister: () => void }) {
 <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">DISASTER X • Disaster Management Workshop</h2>
       <div className="text-center text-cyan-200 font-semibold mb-2">TAGLINE: “DISASTER PARADIGM IN ACTION”</div>
       <p className="text-lg text-white/80 mb-2">
-        Crisis tests more than skill—it tests resilience and leadership. DISASTER X immerses you in real-world scenarios, training you to coordinate, triage, and act decisively when faced with large-scale emergencies. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practice.
+        Practical disaster scenario training: medical response coordination, hospital fire evacuation, chemical mass casualty, triage principles, rapid clinical decision-making, logistics, and emergency simulation.
       </p>
       <ul className="text-white/70 mb-4 list-disc pl-6">
         <li>Disaster scenario assessment and medical response coordination</li>
@@ -56,7 +56,7 @@ export default DisasterX;
 
 export const disasterXDetails = {
   title: "DISASTER X • Disaster Management Workshop",
-  description: "Crisis tests more than skill—it tests resilience and leadership. DISASTER X immerses you in real-world scenarios, training you to coordinate, triage, and act decisively when faced with large-scale emergencies. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practice.",
+  description: "Practical disaster scenario training: medical response coordination, hospital fire evacuation, chemical mass casualty, triage principles, rapid clinical decision-making, logistics, and emergency simulation.",
   topic: undefined,
   theme: "DISASTER PARADIGM IN ACTION",
   themes: undefined,

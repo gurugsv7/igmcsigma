@@ -4,7 +4,7 @@ import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
 export const occulexDetails = {
   title: "OCCULEX • Ophthalmology Workshop",
-  description: "The eyes are our window to the world, and their care demands precision. OCCULEX introduces you to core ophthalmic techniques and diagnostic skills, grounding you in the essentials of vision and sight preservation. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practices.",
+  description: "Experience-based skill-building: visual/pupillary pathways/reflexes, cataract surgeries, A-scan/keratometry, B-scan/UBM, hands-on ophthalmoscopy, retinoscopy, foreign body removal, injections, duct syringing, corneal button removal for transplantation.",
   topic: undefined,
   theme: undefined,
   themes: undefined,
@@ -62,7 +62,7 @@ export default function OcculexPage() {
         </button>
 <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">OCCULEX • Ophthalmology Workshop</h2>
         <p className="text-lg text-white/80 mb-2">
-          The eyes are our window to the world, and their care demands precision. OCCULEX introduces you to core ophthalmic techniques and diagnostic skills, grounding you in the essentials of vision and sight preservation. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practices.
+          Experience-based skill-building: visual/pupillary pathways/reflexes, cataract surgeries, A-scan/keratometry, B-scan/UBM, hands-on ophthalmoscopy, retinoscopy, foreign body removal, injections, duct syringing, corneal button removal for transplantation.
         </p>
         <div className="mb-2">
           <strong>Skills covered:</strong>
