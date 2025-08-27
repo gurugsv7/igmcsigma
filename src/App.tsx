@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 // BuyDelegatePassButton for client-side navigation
 const BuyDelegatePassButton = () => {
@@ -798,52 +799,55 @@ const RegistrationForm = ({ item, type, onBack }: RegistrationFormProps) => {
 interface HomeSectionProps {
   setActiveTab: (tab: string) => void;
 }
-const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
-  <div className="min-h-screen flex flex-col items-center justify-start text-center px-6 pt-8 relative">
-    <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20 pointer-events-none"></div>
-    <div className="relative z-10">
-      <div className="relative mb-0 mt-[-80px]">
-          <img
-            src={stratiumLogo}
-            alt="Striatum Logo"
-            loading="eager"
-            width={288}
-            height={288}
-            style={{ willChange: 'transform' }}
-            className="relative mx-auto mb-0 w-72 h-72 object-contain drop-shadow-2xl animate-float translate-z-0"
-          />
-        <div className="flex flex-col items-center justify-center mb-0">
-          <div className="flex flex-col items-center mb-8">
-            <div className="text-base md:text-lg font-semibold text-cyan-200 mb-1 tracking-wide uppercase text-center">
-              Indira Gandhi Medical College and Research Institute
+const HomeSection = ({ setActiveTab }: HomeSectionProps) => {
+  const navigate = useNavigate();
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-start text-center px-6 pt-8 relative">
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20 pointer-events-none"></div>
+      <div className="relative z-10">
+        <div className="relative mb-0 mt-[-80px]">
+            <img
+              src={stratiumLogo}
+              alt="Striatum Logo"
+              loading="eager"
+              width={288}
+              height={288}
+              style={{ willChange: 'transform' }}
+              className="relative mx-auto mb-0 w-72 h-72 object-contain drop-shadow-2xl animate-float translate-z-0"
+            />
+          <div className="flex flex-col items-center justify-center mb-0">
+            <div className="flex flex-col items-center mb-8">
+              <div className="text-base md:text-lg font-semibold text-cyan-200 mb-1 tracking-wide uppercase text-center">
+                Indira Gandhi Medical College and Research Institute
+              </div>
+              <span className="text-base md:text-lg font-medium text-purple-300 tracking-wide uppercase text-center">
+                presents
+              </span>
             </div>
-            <span className="text-base md:text-lg font-medium text-purple-300 tracking-wide uppercase text-center">
-              presents
-            </span>
+            <h1 className="relative text-5xl md:text-7xl font-bold tracking-wide bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-0 drop-shadow-2xl max-w-[12ch] mx-auto animate-gradient-x">
+              STRIATUM
+            </h1>
+            <div className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-4 mt-4 drop-shadow-2xl">
+              3.0
+            </div>
           </div>
-          <h1 className="relative text-5xl md:text-7xl font-bold tracking-wide bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-0 drop-shadow-2xl max-w-[12ch] mx-auto animate-gradient-x">
-            STRIATUM
-          </h1>
-          <div className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-4 mt-4 drop-shadow-2xl">
-            3.0
-          </div>
+          <p className="text-lg md:text-xl text-cyan-200 mb-6 font-light leading-relaxed">
+            Connecting Knowledge, Sparking Innovation
+          </p>
         </div>
-        <p className="text-lg md:text-xl text-cyan-200 mb-6 font-light leading-relaxed">
-          Connecting Knowledge, Sparking Innovation
-        </p>
-      </div>
 
-      <CountdownTimer />
+        <CountdownTimer />
 
-      <div className="flex flex-col sm:flex-row gap-4 mb-8">
-        <BuyDelegatePassButton />
-        <button
-          className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500/10 font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-400/25 mt-1"
-          onClick={() => setActiveTab('workshops')}
-        >
-          Explore Workshops
-        </button>
-      </div>
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <BuyDelegatePassButton />
+          <button
+            className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500/10 font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-400/25 mt-1"
+            onClick={() => navigate('/workshops')}
+          >
+            Explore Workshops
+          </button>
+        </div>
+
 
 
       <div className="flex items-center justify-center space-x-2 text-pink-300 bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-400/30 rounded-full py-2 px-4">
@@ -856,6 +860,7 @@ const HomeSection = ({ setActiveTab }: HomeSectionProps) => (
     </div>
   </div>
 );
+}
 
 // Removed inline EventSection component. Use import from './Events'.
 
@@ -1108,9 +1113,10 @@ function App() {
   };
 
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-x-hidden">
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-x-hidden">
         {/* Animated Background Pattern */}
         <div className="fixed inset-0 opacity-10 pointer-events-none">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,#00f7ff_0%,transparent_50%)] animate-pulse"></div>
@@ -1220,6 +1226,7 @@ function App() {
         {!showRegistration && <FloatingChatbot />}
       </div>
     </Router>
+    </HelmetProvider>
   );
 }
 
