@@ -492,7 +492,7 @@ const EventRegistration: React.FC = () => {
         <button
           type="button"
           className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 mt-3"
-          onClick={() => window.open('/accommodation', '_blank')}
+          onClick={() => navigate('/accommodation')}
         >
           Get Accommodation
         </button>
