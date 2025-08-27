@@ -247,6 +247,8 @@ const EventRegistration: React.FC = () => {
     const templateParams = {
       event_name: event.name,
       team_members: (form.memberNames || []).join(", "),
+      registrant_name: form.memberNames[0] || "",
+      delegate_id: form.delegate_id,
       registrant_email: form.email,
       registrant_phone: form.phone,
       registrant_institution: form.institution,
