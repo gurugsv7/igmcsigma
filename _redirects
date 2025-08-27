@@ -1,3 +1,6 @@
+# Redirect www to non-www (canonical domain)
+https://www.igmcrisigma.com/*  https://igmcrisigma.com/:splat  301!
+
 /sitemap.xml              /sitemap.xml              200
 /events-sitemap.xml       /events-sitemap.xml       200
 /workshops-sitemap.xml    /workshops-sitemap.xml    200
