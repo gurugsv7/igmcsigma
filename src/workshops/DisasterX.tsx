@@ -53,3 +53,34 @@ function DisasterX({ onRegister }: { onRegister: () => void }) {
 }
 
 export default DisasterX;
+
+export const disasterXDetails = {
+  title: "DISASTER X • Disaster Management Workshop",
+  description: "Crisis tests more than skill—it tests resilience and leadership. DISASTER X immerses you in real-world scenarios, training you to coordinate, triage, and act decisively when faced with large-scale emergencies. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practice.",
+  topic: undefined,
+  theme: "DISASTER PARADIGM IN ACTION",
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Disaster scenario assessment and medical response coordination",
+    "Strategic planning for hospital fire evacuation",
+    "Chemical mass casualty incident management",
+    "Application of triage principles and victim prioritization",
+    "Critical thinking in emergency situations",
+    "Rapid clinical decision making in emergencies",
+    "Spatial awareness for hospital evacuation logistics",
+    "Experiential learning through medical emergency stimulations"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: undefined
+  },
+  incharge: "Ayisha Farvin Abdul Malik, Yukesh S",
+  prerequisites: "Medical students",
+  date: "10/10/2025 (Friday)",
+  time: "8:00 AM to 4:00 PM (Full day session)"
+};

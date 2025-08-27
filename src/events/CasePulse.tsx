@@ -104,3 +104,42 @@ export default function CasePulsePage() {
 }
 
 export { CasePulse };
+
+export const casePulseDetails = {
+  title: "CASE PRESENTATION (CASE PULSE)",
+  description: "Part of STRIATUM 3.0 - SNYAPSE: Connecting knowledge, Sparking Innovation",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Each team can have a maximum of 2 members",
+    "Individual presentations will also be accepted",
+    "Cases should be from Medicine, Surgery, OBGY and Paediatrics",
+    "Only one delegate in the team is allowed to present the case. However questions can be answered by either of the team members",
+    "The case presented should be original and must be from any of the teaching hospitals affiliated to the delegate's college and must be followed up"
+  ],
+  abstract: [
+    "Abstracts should not exceed 500 words",
+    "The last date for the submission of abstracts is 24th September, 2025",
+    "The abstracts should be in the form of a word document (.doc or .docx)",
+    "The abstracts should be in the format of- Identification, data of the patient, presenting complaints, history, examination findings, investigations, differential diagnosis, treatment, follow up and references",
+    "Abstracts should be sent to striatum.3.igmcri@gmail.com",
+    "Rename the file as Name_Subject_Casepulse"
+  ],
+  presentation: [
+    "The presentation is expected to be in the form of a Power point presentation (.ppt or .pptx)",
+    "The power point presentation is to be submitted at the latest by 5th October 2025",
+    "Presentation on Sunday morning, 12th October 2025"
+  ],
+  registration: {
+    single: "Rs. 300",
+    team: "Rs. 400 (A team of 2 members)",
+    prize: "Rs. 3000",
+    fee: undefined
+  },
+  incharge: undefined,
+  prerequisites: undefined,
+  date: undefined,
+  time: undefined
+};

@@ -53,3 +53,35 @@ function Paramatrix({ onRegister }: { onRegister: () => void }) {
 }
 
 export default Paramatrix;
+
+export const paramatrixDetails = {
+  title: "PARAMATRIX • Paramedical Workshop",
+  description: "Emergencies demand clarity, speed, and skill. PARAMATRIX prepares paramedical students to handle critical drugs, protocols, and scenarios with confidence—turning knowledge into action when it matters most. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practice.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Drug identification skills",
+    "Crash cart medication knowledge and handling",
+    "Infusion preparation and rate calculation",
+    "Emergency drug box organization",
+    "High alert medication safety practices",
+    "Scenario based emergency medication administration",
+    "Hands on clinical skills at rotating stations",
+    "Team and communication in emergencies",
+    "Professional development and knowledge retention"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: undefined
+  },
+  incharge: "Sanjana Saira Giju, Sadra Saseendran",
+  prerequisites: "Paramedical students",
+  date: "11/10/2025 (Saturday)",
+  time: "Forenoon (4 Hours)"
+};

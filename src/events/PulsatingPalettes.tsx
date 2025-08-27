@@ -82,3 +82,33 @@ export default function PulsatingPalettesPage() {
 }
 
 export { PulsatingPalettes };
+
+export const pulsatingPalettesDetails = {
+  title: "BODY PAINTING: PULSATING PALETTES",
+  description: "A team of 3 students can participate including the model. Body painting (any region) – GROSS ANATOMY. Participants should explain the painting to the judges during evaluation, creative innovative ideas gain extra points. Participants should bring the required materials and stationaries. Judge’s Decision will be FINAL.",
+  topic: undefined,
+  theme: "Anatomy",
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "A team of 3 students can participate including the model",
+    "Body painting (Any region) – GROSS ANATOMY",
+    "Participants should explain the painting to the judges during evaluation",
+    "Creative innovative ideas gain extra points",
+    "Participants should bring the required materials and stationaries",
+    "Judge's Decision will be FINAL",
+    "Event on Saturday morning, 11th October 2025"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: "Rs. 150/Team",
+    prize: "Rs. 1500",
+    fee: undefined
+  },
+  incharge: "Vishwesh R",
+  prerequisites: "Medical students",
+  date: "11/10/2025",
+  time: "Saturday morning"
+};

@@ -2,6 +2,37 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
+export const anastamosDetails = {
+  title: "ANASTAMOS • Basic Suturing Skills",
+  description: "A single stitch can keep a life intact. In the skilled hands of a surgeon resides the ability to mend. This journey is where surgical talent is cultivated. The suturing techniques acquired at this phase and their practice will foster assurance and skill in internships and beyond. Now is your opportunity to be amazed by the remarkable things your hands can achieve.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Universal precaution",
+    "Operation theatre etiquette",
+    "Patient preparation",
+    "Hand scrubbing",
+    "Gowning and gloving techniques",
+    "Basic suturing skills",
+    "Suturing",
+    "Hand knotting techniques"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: "₹500"
+  },
+  incharge: "Benifer M, Abhinayashree R",
+  prerequisites: "Medical students",
+  date: "10/10/2025 (Friday)",
+  time: "Forenoon (4 Hours)"
+};
+
 export default function AnastamosPage() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();

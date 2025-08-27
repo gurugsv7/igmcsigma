@@ -1,6 +1,35 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+export const sonicShiftDetails = {
+  title: "THE SONIC SHIFT • Basic Anaesthesiology Workshop",
+  description: "Point-of-care ultrasound has transformed Anaesthesia, Critical Care, and Pain Management. From fetal interventions to elderly trauma care, real-time bedside imaging simplifies complexities, ensures precision, and improves safety. Join our hands-on workshop to explore this vital skill in patient care.",
+  topic: undefined,
+  theme: "Real Time answers at Bedside – mastering POCUS",
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Introduction sonography and its applications in critical care and pain management",
+    "Approach to a patient with desaturation/breathlessness",
+    "Approach to a patient with blunt trauma",
+    "Approach to a patient with hypotension",
+    "Visualization of neurovascular bundles",
+    "Approach to a patient with difficult intravenous access"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: undefined
+  },
+  incharge: "Swathy Meena S G, Sri Meenakshi T",
+  prerequisites: "Medical students",
+  date: "09/10/2025 (Thursday)",
+  time: "8:00 AM to 4:00 PM"
+};
+
 export default function SonicShift() {
   const navigate = useNavigate();
   return (

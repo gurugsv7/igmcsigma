@@ -70,3 +70,42 @@ export default function CineplexusPage() {
 }
 
 export { Cineplexus };
+
+export const cineplexusDetails = {
+  title: "MEDICAL SHORT FILM: CINEPLEXUS",
+  description: "Categories: Live Action, Documentary, Animation. Participants: Medical and Paramedical. Duration: 5-10 minutes. Ratio: 16:9. Language: Any (with English subtitles). One entry per team. Submission via Google Drive link. Deadline: 28th September 2025 (Sunday).",
+  topic: undefined,
+  theme: undefined,
+  themes: [
+    "Youth Suicide Prevention",
+    "Hidden depression behind a smile",
+    "Substance Abuse Awareness"
+  ],
+  categories: [
+    "Live Action",
+    "Documentary",
+    "Animation"
+  ],
+  rules: [
+    "Participants: Medical and Paramedical",
+    "Duration: 5-10 minutes",
+    "Ratio: 16:9",
+    "Language: Any (with English subtitles)",
+    "One entry per team",
+    "Submission via Google Drive link",
+    "Deadline: 28th September 2025 (Sunday)",
+    "Selected entries will be judged on spot on Saturday morning, 11th October 2025"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: "Rs. 10,000",
+    fee: "Rs. 500"
+  },
+  incharge: "Vijayshantini S",
+  prerequisites: "Medical and Paramedical students",
+  date: "11/10/2025",
+  time: "Saturday morning"
+};

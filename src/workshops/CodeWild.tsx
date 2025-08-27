@@ -2,6 +2,38 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
+export const codeWildDetails = {
+  title: "CODE WILD • Wilderness Medicine",
+  description: "Far from hospitals, survival depends on resourcefulness and resolve. CODE WILD challenges you to adapt, improvise, and deliver care in the most unpredictable of environments—where every decision carries weight. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practice.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Wilderness medicine principles for remote environments",
+    "Improvised splinting using natural outdoor materials",
+    "Hemorrhage control: tourniquets and pressure dressing",
+    "Heat stroke, hypothermia, dehydration emergency management",
+    "Identification and 1st aid for envenomation",
+    "Snakebite management stimulation and emergency response",
+    "Navigation and rescue signaling for wilderness scenarios",
+    "Search and rescue triage: injured hiker care",
+    "Survival kit essentials and emergency preparedness"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: "₹500"
+  },
+  incharge: "Sangeetha K, Mohammed Ameen Can",
+  prerequisites: "Medical students",
+  date: "11/10/2025 (Saturday)",
+  time: "8:00 AM to 4:00 PM (Full day session)"
+};
+
 export default function CodeWildPage() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();

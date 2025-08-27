@@ -2,6 +2,39 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
+export const occulexDetails = {
+  title: "OCCULEX • Ophthalmology Workshop",
+  description: "The eyes are our window to the world, and their care demands precision. OCCULEX introduces you to core ophthalmic techniques and diagnostic skills, grounding you in the essentials of vision and sight preservation. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practices.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Visual and Pupillary pathways and reflexes (Theory and demonstration)",
+    "Cataract surgeries – Video demonstration",
+    "A Scan and Keratometry (Theory and demonstration)",
+    "B scan and UBM (Theory and demonstration)",
+    "Direct and indirect ophthalmoscopy (Demonstration and Hands on)",
+    "Retinoscopy (Theory and Demonstration)",
+    "Conjunctival and corneal foreign body removal (Demonstration)",
+    "Sub-conjunctival, peri-bulbar and Retrobulbar injections – Demonstrations and Hands on (Subjected to availability of patients)",
+    "Syringing of the nasolacrimal duct (Anatomy, Demonstration and theory)",
+    "Corneo-scleral button removal for Corneal transplantation (Demonstration)"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: "₹500"
+  },
+  incharge: "Swadhi T, Cindhujaa",
+  prerequisites: "Medical students",
+  date: "11/10/2025 (Saturday)",
+  time: "Forenoon (4 Hours)"
+};
+
 export default function OcculexPage() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
@@ -31,6 +64,21 @@ export default function OcculexPage() {
         <p className="text-lg text-white/80 mb-2">
           The eyes are our window to the world, and their care demands precision. OCCULEX introduces you to core ophthalmic techniques and diagnostic skills, grounding you in the essentials of vision and sight preservation. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practices.
         </p>
+        <div className="mb-2">
+          <strong>Skills covered:</strong>
+          <ul className="text-white/80 list-disc pl-6 mt-1">
+            <li>Visual and Pupillary pathways and reflexes</li>
+            <li>Cataract surgeries</li>
+            <li>A Scan and Keratometry</li>
+            <li>B scan and UBM</li>
+            <li>Direct and indirect ophthalmoscopy – Hands-on</li>
+            <li>Retinoscopy</li>
+            <li>Conjunctival and corneal foreign body removal (Subject to availability of patients)</li>
+            <li>Sub-conjunctival, peri-bulbar and retrobulbar injections</li>
+            <li>Syringing of the nasolacrimal duct</li>
+            <li>Corneo-scleral button removal for corneal transplantation</li>
+          </ul>
+        </div>
         <ul className="text-white/70 mb-4 list-disc pl-6">
           <li>Visual and Pupillary pathways and reflexes (Theory and demonstration)</li>
           <li>Cataract surgeries – Video demonstration</li>

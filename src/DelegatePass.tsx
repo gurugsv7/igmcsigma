@@ -60,6 +60,14 @@ const DelegatePass = () => {
     setShowPaymentModal(true);
   }
 
+  function generateDelegateId() {
+    let id = "";
+    for (let i = 0; i < 12; i++) {
+      id += Math.floor(Math.random() * 10).toString();
+    }
+    return id;
+  }
+
   async function handlePaymentSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!paymentScreenshotUrl) {
@@ -67,6 +75,8 @@ const DelegatePass = () => {
       return;
     }
     setIsSubmitting(true);
+
+    const delegateId = generateDelegateId();
 
     try {
       await emailjs.send(
@@ -79,6 +89,7 @@ const DelegatePass = () => {
           institution: form.institution,
           tier: form.tier,
           paymentScreenshotUrl,
+          delegateId,
         },
         "acbz69d146b3J-jEm"
       );

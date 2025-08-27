@@ -2,6 +2,35 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
+export const sonostrikeDetails = {
+  title: "SONOSTRIKE • Radiology EFAST Workshop",
+  description: "Master the art of bedside ultrasound with hands-on EFAST training. SONOSTRIKE is designed to equip you with the skills to rapidly assess trauma patients, identify life-threatening conditions, and make critical decisions in emergency settings.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Introduction to EFAST protocol",
+    "Hands-on ultrasound scanning",
+    "Identifying free fluid and pneumothorax",
+    "Trauma case simulations",
+    "Interpretation of ultrasound images",
+    "Clinical integration and decision making"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: "₹600"
+  },
+  incharge: "Kartiyayini, Priyanga R",
+  prerequisites: "Medical students",
+  date: "09/10/2025 (Thursday)",
+  time: "8:00 AM to 4:00 PM (Full day session)"
+};
+
 export default function SonostrikePage() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();

@@ -16,7 +16,11 @@ const JuniorQuiz = () => {
         <span className="text-sm font-medium">Back</span>
       </button>
 <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Junior Quiz: Striatum Scholar Trophy</h2>
-      <p className="text-lg text-white/80 mb-2">Topic: Anatomy and Pathology</p>
+      <div className="mb-2">
+        <span className="block text-cyan-300 font-bold text-xl bg-cyan-900/30 rounded px-3 py-2 shadow">
+          Topic: Anatomy and Pathology
+        </span>
+      </div>
       <p className="text-white/70 mb-4">
         Maximum 3 members per team. Eligibility: MBBS Students from 1st Year to 3rd year are eligible (Only one 3rd year from the batch of 2022 per team). Cross college teams are allowed. On spot registrations allowed. Prelims: 9:00 AM to 10:00 AM [12th October 2025]. Finals: 2:00 PM to 5:30 PM [12th October 2025]. No limitations on number of teams per college. Top 6 teams will qualify for Finals. Quizmaster’s decision will be final!
       </p>
@@ -78,3 +82,36 @@ export default function JuniorQuizPage() {
 }
 
 export { JuniorQuiz };
+
+export const juniorQuizDetails = {
+  title: "JUNIOR QUIZ - STRIATUM SCHOLAR TROPHY",
+  description: "Maximum 3 members per team. Eligibility: MBBS Students from 1st Year to 3rd year are eligible (Only one 3rd year from the batch of 2022 per team). Cross college teams are allowed. On spot registrations allowed. Prelims: 9:00 AM to 10:00 AM [12th October 2025]. Finals: 2:00 PM to 5:30 PM [12th October 2025]. No limitations on number of teams per college. Top 6 teams will qualify for Finals. Quizmaster’s decision will be final!",
+  topic: "Anatomy and Pathology",
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Maximum 3 members per team",
+    "Eligibility: MBBS Students from 1st Year to 3rd year are eligible (Only one 3rd year from the batch of 2022 per team)",
+    "Cross college teams are allowed",
+    "On spot registrations allowed",
+    "Event on Sunday, 12th October 2025",
+    "Prelims: 9:00 AM to 10:00 AM",
+    "Finals: 2:00 PM to 5:30 PM",
+    "No limitations on number of teams per college",
+    "Top 6 teams will qualify for Finals",
+    "Quizmaster's decision will be final!"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: "Rs. 600/Team",
+    prize: "Rs. 30,000",
+    fee: undefined
+  },
+  incharge: "Boojasri R V",
+  prerequisites: "MBBS students 1st to 3rd year",
+  date: "12/10/2025",
+  time: "Prelims: 9:00 AM, Finals: 2:00 PM"
+};

@@ -2,6 +2,39 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
+export const smartAIDetails = {
+  title: "SMART • AI for Research",
+  description: "Innovation begins with asking the right questions. SMART brings Artificial Intelligence into the heart of research, guiding you to design, refine, and present scientific ideas with efficiency, creativity, and ethical responsibility. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practices.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "<strong>Application of AI in:</strong>",
+    "Prompt engineering in protocol writing",
+    "Brainstorming research questions & objectives",
+    "Turbocharging literature review",
+    "Crafting impactful, robust methodology",
+    "Creating ready-to-print questionnaires, proformas and consent forms",
+    "Conducting seamless data analysis & data visualisation",
+    "Simplying review and discussion writing",
+    "Writing references from scratch",
+    "AI content detection & management"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: "₹500"
+  },
+  incharge: "Hemalatha M, Gopinath S",
+  prerequisites: "Medical students",
+  date: "10/10/2025 (Friday)",
+  time: "8:00 AM to 4:00 PM (Full day session)"
+};
+
 export default function SmartAIPage() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
@@ -32,7 +65,7 @@ export default function SmartAIPage() {
           Innovation begins with asking the right questions. SMART brings Artificial Intelligence into the heart of research, guiding you to design, refine, and present scientific ideas with efficiency, creativity, and ethical responsibility. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practices.
         </p>
         <ul className="text-white/70 mb-4 list-disc pl-6">
-          <li>Application of AI in:</li>
+          <li><strong>Application of AI in:</strong></li>
           <li>Prompt engineering in protocol writing</li>
           <li>Brainstorming research questions & objectives</li>
           <li>Turbocharging literature review</li>

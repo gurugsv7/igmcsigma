@@ -16,7 +16,11 @@ const SeniorQuiz = () => {
         <span className="text-sm font-medium">Back</span>
       </button>
 <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Senior Quiz: Striatum Scholar Trophy</h2>
-      <p className="text-lg text-white/80 mb-2">Topic: Gastroenterology</p>
+      <div className="mb-2">
+        <span className="block text-cyan-300 font-bold text-xl bg-cyan-900/30 rounded px-3 py-2 shadow">
+          Topic: Gastroenterology
+        </span>
+      </div>
       <p className="text-white/70 mb-4">
         Maximum of 3 Members per team. Eligibility: MBBS Students from 1st Year to CRRI are eligible (Only one CRRI from the 2020 Batch per team). Cross college teams are allowed. On spot registrations allowed. Prelims: 9:00 AM to 10:00 AM [12th October 2025]. Finals: 2:00 PM to 5:30 PM [12th October 2025]. No limitations on number of teams per college. Top 6 Teams will qualify for the Finals. Quizmaster’s decision will be final.
       </p>
@@ -78,3 +82,36 @@ export default function SeniorQuizPage() {
 }
 
 export { SeniorQuiz };
+
+export const seniorQuizDetails = {
+  title: "SENIOR QUIZ - STRIATUM SCHOLAR TROPHY",
+  description: "Part of STRIATUM 3.0 - SNYAPSE: Connecting knowledge, Sparking Innovation",
+  topic: "GASTROENTEROLOGY",
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Maximum of 3 Members per team",
+    "Eligibility: MBBS Students from 1st Year to CRMI are eligible (Only one CRMI from the 2020 Batch per team)",
+    "Cross college teams are allowed",
+    "On spot registrations allowed",
+    "Event on Sunday, 12th October 2025",
+    "Prelims: 9:00 AM to 10:00 AM",
+    "Finals: 2:00 PM to 5:30 PM",
+    "No limitations on number of teams per college",
+    "Top 6 Teams will qualify for the Finals",
+    "Quizmaster's decision will be final"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: "Rs. 600/Team (No delegate fee)",
+    prize: "Rs. 40,000",
+    fee: undefined
+  },
+  incharge: "Sudharshan S",
+  prerequisites: "MBBS students 1st year to CRRI",
+  date: "12/10/2025",
+  time: "Prelims: 9:00 AM, Finals: 2:00 PM"
+};

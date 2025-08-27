@@ -93,3 +93,45 @@ export default function NexusPage() {
 }
 
 export { Nexus };
+
+export const nexusDetails = {
+  title: "PAPER PRESENTATION (NEXUS)",
+  description: "Present your research papers and studies to a panel of experts and peers.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Teams should consist of a maximum of two members. Individual presenters also accepted.",
+    "Only one delegate in the team is allowed to present the paper. Questions can be answered by either member.",
+    "Abstracts (not more than 500 words) must be submitted by 24th September 2025 to striatum.3.igmcri@gmail.com in Word document (.doc or .docx) format. Rename the file as Name_Nexus.",
+    "Abstract format: Title, Introduction, Background, Aims and Objectives, Materials and Methods, Results & analysis (as applicable), and References.",
+    "Informed consent form, study questionnaire and case study form must be uploaded separately if used for the study.",
+    "All abstracts will be screened by a committee of senior faculty members.",
+    "Selected abstracts will be presented in the oral paper presentation.",
+    "Presentation must be in PowerPoint (.ppt or .pptx) and submitted by 5th October 2025.",
+    "Each presenter: 8 minutes (5 min presentation, 3 min Q&A).",
+    "One winner per session, declared in the valedictory ceremony."
+  ],
+  abstract: [
+    "Abstracts (not more than 500 words) must be submitted by 24th September 2025 to striatum.3.igmcri@gmail.com in Word document (.doc or .docx) format. Rename the file as Name_Nexus.",
+    "Abstract format: Title, Introduction, Background, Aims and Objectives, Materials and Methods, Results & analysis (as applicable), and References.",
+    "Informed consent form, study questionnaire and case study form must be uploaded separately if used for the study.",
+    "All abstracts will be screened by a committee of senior faculty members.",
+    "Selected abstracts will be presented in the oral paper presentation."
+  ],
+  presentation: [
+    "Presentation must be in PowerPoint (.ppt or .pptx) and submitted by 5th October 2025.",
+    "Each presenter: 8 minutes (5 min presentation, 3 min Q&A)."
+  ],
+  registration: {
+    single: "Rs. 300/ Single member",
+    team: "Rs. 400/ Team of 2 members",
+    prize: "Rs. 3000",
+    fee: undefined
+  },
+  incharge: "Bhuwaneshwaran R",
+  prerequisites: "MBBS students",
+  date: "12/10/25",
+  time: "Sunday morning"
+};

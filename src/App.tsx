@@ -46,6 +46,8 @@ import ExodontiaX from './workshops/ExodontiaX';
 import Paramatrix from './workshops/Paramatrix';
 import DelegatePass from './DelegatePass';
 import ScrollToTop from './ScrollToTop';
+import AccommodationChatbot from './AccommodationChatbot';
+import Accommodation from './Accommodation';
 
 // Chatbot Component
 interface Message {
@@ -1197,6 +1199,7 @@ function App() {
             <Route path="/workshops/exodontiax" element={<ExodontiaX onRegister={() => {}} />} />
             <Route path="/workshops/paramatrix" element={<Paramatrix onRegister={() => {}} />} />
             <Route path="/delegate-pass" element={<DelegatePass />} />
+            <Route path="/accommodation" element={<Accommodation />} />
             {/* Add more event/workshop routes here */}
           </Routes>
         </main>

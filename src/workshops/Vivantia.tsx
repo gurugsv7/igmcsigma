@@ -52,3 +52,33 @@ function Vivantia({ onRegister }: { onRegister: () => void }) {
 }
 
 export default Vivantia;
+
+export const vivantiaDetails = {
+  title: "VIVANTIA • Obstetric Workshop",
+  description: "Every birth is a story of strength, precision, and timely care. VIVANTIA equips you with essential intrapartum skills and lifesaving techniques, ensuring you step into obstetric practice with confidence and clarity. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practices.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Mechanism and conduct of labour (DOAP)",
+    "LSCS",
+    "Episiotomy suturing – hands on",
+    "Postpartum hemorrhage management",
+    "Pap smear and IUCD insertion",
+    "Gynaecology examination",
+    "Manual vacuum aspiration"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: undefined
+  },
+  incharge: "Sri Yogalakshmi R, Srinidhi Elodie Radjou",
+  prerequisites: "Medical students",
+  date: "09/10/2025 (Thursday)",
+  time: "Afternoon (4 Hours)"
+};

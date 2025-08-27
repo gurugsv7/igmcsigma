@@ -2,6 +2,34 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkshopRegisterModal from "../WorkshopRegisterModal";
 
+export const revivaDetails = {
+  title: "REVIVA • Neonatology Resuscitation Practices",
+  description: "Learn the essentials of neonatal resuscitation with hands-on practice. REVIVA is designed to provide you with the skills and confidence to manage newborn emergencies and improve outcomes in the delivery room.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Neonatal resuscitation protocols",
+    "Airway management and ventilation",
+    "Chest compressions and medication",
+    "Simulation-based scenarios",
+    "Teamwork and communication"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: "₹500"
+  },
+  incharge: "Jaganathan R, Karthik Raj Yuvaraj",
+  prerequisites: "Medical students",
+  date: "10/10/2025 (Friday)",
+  time: "8:00 AM to 4:00 PM (Full day session)"
+};
+
 export default function RevivaPage() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
@@ -31,6 +59,15 @@ export default function RevivaPage() {
         <p className="text-lg text-white/80 mb-2">
           Learn the essentials of neonatal resuscitation with hands-on practice. REVIVA is designed to provide you with the skills and confidence to manage newborn emergencies and improve outcomes in the delivery room.
         </p>
+        <div className="mb-2">
+          <strong>Skills covered:</strong>
+          <ul className="text-white/80 list-disc pl-6 mt-1">
+            <li>Birth preparation and Routine Newborn care</li>
+            <li>Initial steps of resuscitation</li>
+            <li>Ventilation: Brief and Prolonged (Positive pressure resuscitation)</li>
+            <li>Endotracheal tube intubation and chest compressions</li>
+          </ul>
+        </div>
         <ul className="text-white/70 mb-4 list-disc pl-6">
           <li>Neonatal resuscitation protocols</li>
           <li>Airway management and ventilation</li>

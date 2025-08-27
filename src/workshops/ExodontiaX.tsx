@@ -53,3 +53,35 @@ function ExodontiaX({ onRegister }: { onRegister: () => void }) {
 }
 
 export default ExodontiaX;
+
+export const exodontiaXDetails = {
+  title: "EXODONTIA'X • Dental Workshop",
+  description: "In the clinic, emergencies can arrive unannounced. EXODONTIA ’X’ equips you to respond with composure and expertise, mastering protocols that safeguard patients and uphold the highest standards of dental care. This workshop ensures practical insight, engaging learning, and confidence to excel in both academic and clinical practice.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Identifying medical emergencies in dental settings",
+    "Managing syncope, hypoglycemia and chest pain",
+    "Using emergency drugs and clinical equipment",
+    "Performing basic life support (BLS)",
+    "Managing airway emergencies",
+    "Handling emergency medication kits",
+    "Responding to medical collapse during procedures",
+    "Solving practical challenges in emergency scenarios",
+    "Disaster preparedness"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: undefined
+  },
+  incharge: "Sushmitha S, Abhinaya N",
+  prerequisites: "Dental students",
+  date: "11/10/2025 (Saturday)",
+  time: "Forenoon (4 Hours)"
+};

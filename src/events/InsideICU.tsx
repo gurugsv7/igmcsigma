@@ -80,3 +80,32 @@ export default function InsideICUPage() {
 }
 
 export { InsideICU };
+
+export const insideICUDetails = {
+  title: "PANEL DISCUSSION: INSIDE THE ICU",
+  description: "What They Don’t Teach You in Undergrad Medicine. The Intensive Care Unit is often seen as a space defined by machines, numbers, and silence. But behind every monitor is a storm of decision-making, emotion, and ethical complexity. This panel discussion brings to light the unseen side of critical care - from split-second life-or-death choices to the emotional toll carried by intensivists.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Real-World ICU Cases: Decisions Under Pressure",
+    "End-of-Life Dilemmas: Who Decides When Enough is Enough?",
+    "The Role of the Intensivist: More Than Just Machines",
+    "ICU Protocols vs Individual Judgement: Walking the Grey Line",
+    "Emotional Toll on Healthcare Providers: The Weight We Carry",
+    "The ICU as a Young Doctor: The Shock of Seeing Death for the First Time"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: undefined,
+    prize: undefined,
+    fee: "Included with Tier 2 Delegate Pass"
+  },
+  incharge: "Vengataramanan Tirou, Sravanti M",
+  prerequisites: "Medical students",
+  date: "11/10/2025",
+  time: "Saturday afternoon"
+};

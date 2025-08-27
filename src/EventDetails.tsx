@@ -1,4 +1,7 @@
 import React from "react";
+import { casePulseDetails } from "./events/CasePulse";
+import { axonAlleyDetails } from "./events/AxonAlley";
+import { seniorQuizDetails } from "./events/SeniorQuiz";
 
 interface EventDetailsProps {
   event: any;
@@ -9,60 +12,9 @@ const EventDetails = ({ event, onBack }: EventDetailsProps) => {
   const getEventDetails = () => {
     switch(event.title) {
       case 'Case Presentation':
-        return {
-          title: "CASE PRESENTATION (CASE PULSE)",
-          description: "Part of STRIATUM 3.0 - SNYAPSE: Connecting knowledge, Sparking Innovation",
-          rules: [
-            "Each team can have a maximum of 2 members",
-            "Individual presentations will also be accepted",
-            "Cases should be from Medicine, Surgery, OBGY and Paediatrics",
-            "Only one delegate in the team is allowed to present the case. However questions can be answered by either of the team members",
-            "The case presented should be original and must be from any of the teaching hospitals affiliated to the delegate's college and must be followed up"
-          ],
-          abstract: [
-            "Abstracts should not exceed 500 words",
-            "The last date for the submission of abstracts is 24th September, 2025",
-            "The abstracts should be in the form of a word document (.doc or .docx)",
-            "The abstracts should be in the format of- Identification, data of the patient, presenting complaints, history, examination findings, investigations, differential diagnosis, treatment, follow up and references",
-            "Abstracts should be sent to striatum.3.igmcri@gmail.com",
-            "Rename the file as Name_Subject_Casepulse"
-          ],
-          presentation: [
-            "The presentation is expected to be in the form of a Power point presentation (.ppt or .pptx)",
-            "The power point presentation is to be submitted at the latest by 5th October 2025",
-            "Presentation on Sunday morning, 12th October 2025"
-          ],
-          registration: {
-            single: "Rs. 300",
-            team: "Rs. 400 (A team of 2 members)",
-            prize: "Rs. 3000"
-          }
-        };
+        return casePulseDetails;
       case 'Poster Presentation':
-        return {
-          title: "POSTER PRESENTATION (AXON ALLEY)",
-          description: "Part of STRIATUM 3.0 - SNYAPSE: Connecting knowledge, Sparking Innovation",
-          rules: [
-            "Only digital posters in print are accepted",
-            "Poster size should not exceed 4' x 3'",
-            "Teams should consist of a maximum of 2 members",
-            "Only one delegate in the team is allowed to present the poster. However questions can be answered by any of the team members",
-            "Only e-posters in landscape orientation are accepted",
-            "E-posters should be sent to striatum.3.igmcri@gmail.com",
-            "Rename the file as Name_AxonAlley",
-            "Plagiarism of any type will lead to disqualification",
-            "All information must appear within one slide only",
-            "Resolution of the e-poster should be 1080×1920 pixels",
-            "Last day for submission of the e-poster 1st October 2025",
-            "Selected teams have to present their posters on Sunday morning, 12th October 2025",
-            "Delegates will be allotted a time of 7 minutes in total: 4 minutes to explain their poster and 3 minutes for questions by jury"
-          ],
-          registration: {
-            single: "Rs. 300",
-            team: "Rs. 400 (A team of 2 members)",
-            prize: "Rs. 3000"
-          }
-        };
+        return axonAlleyDetails;
       case 'Paper Presentation':
         return {
           title: "PAPER PRESENTATION (NEXUS)",
@@ -112,27 +64,7 @@ const EventDetails = ({ event, onBack }: EventDetailsProps) => {
           }
         };
       case 'Senior Quiz':
-        return {
-          title: "SENIOR QUIZ - STRIATUM SCHOLAR TROPHY",
-          description: "Part of STRIATUM 3.0 - SNYAPSE: Connecting knowledge, Sparking Innovation",
-          topic: "GASTROENTEROLOGY",
-          rules: [
-            "Maximum of 3 Members per team",
-            "Eligibility: MBBS Students from 1st Year to CRMI are eligible (Only one CRMI from the 2020 Batch per team)",
-            "Cross college teams are allowed",
-            "On spot registrations allowed",
-            "Event on Sunday, 12th October 2025",
-            "Prelims: 9:00 AM to 10:00 AM",
-            "Finals: 2:00 PM to 5:30 PM",
-            "No limitations on number of teams per college",
-            "Top 6 Teams will qualify for the Finals",
-            "Quizmaster's decision will be final"
-          ],
-          registration: {
-            team: "Rs. 600/Team (No delegate fee)",
-            prize: "Rs. 40,000"
-          }
-        };
+        return seniorQuizDetails;
       case 'Junior Quiz':
         return {
           title: "JUNIOR QUIZ - STRIATUM SCHOLAR TROPHY",

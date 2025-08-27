@@ -97,3 +97,40 @@ export default function AxonAlleyPage() {
 }
 
 export { AxonAlley };
+
+export const axonAlleyDetails = {
+  title: "POSTER PRESENTATION (AXON ALLEY)",
+  description: "Research poster presentations. Showcase your research work through professional poster presentations.",
+  topic: undefined,
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Only digital posters in print are accepted.",
+    "Poster size should not exceed 4ft x 3ft.",
+    "Teams should consist of a maximum of 2 members.",
+    "Only one delegate in the team is allowed to present the poster. Questions can be answered by any team member.",
+    "Only e-posters in landscape orientation are accepted.",
+    "E-posters should be sent to striatum.3.igmcri@gmail.com. Rename the file as Name_AxonAlley.",
+    "Plagiarism of any type will lead to disqualification.",
+    "All information must appear within one slide only.",
+    "Resolution of the e-poster should be 1080×1920 pixels.",
+    "Last day for submission of the e-poster: 1st October 2025.",
+    "Selected teams have to present their posters on the day of event.",
+    "Delegates will be allotted a time of 7 minutes in total: 4 minutes to explain their poster and 3 minutes for questions by jury.",
+    "Prizes will be given for overall best poster presentation, best poster and best presenter.",
+    "Winners will be declared in the valedictory ceremony only."
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: "Rs. 300/ Single member",
+    team: "Rs. 400/ Team of 2 members",
+    prize: "Rs. 3000",
+    fee: undefined
+  },
+  incharge: "Thirumurugan S",
+  prerequisites: "MBBS students",
+  date: "12/10/25",
+  time: "Sunday morning"
+};

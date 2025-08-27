@@ -1,6 +1,5 @@
 - [x] Analyze requirements
-- [ ] Identify chatbot implementation file(s)
-- [ ] Gather latest details and links for all workshops/events
-- [ ] Update chatbot logic/data with new details and links
-- [ ] Test chatbot guidance for workshops/events
-- [ ] Verify results
+- [ ] Create AccommodationChatbot component
+- [ ] Style and position popup for mobile (bottom left)
+- [ ] Integrate into App.tsx
+- [ ] Test on mobile viewport

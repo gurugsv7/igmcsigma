@@ -16,7 +16,11 @@ const OnlineQuiz = () => {
         <span className="text-sm font-medium">Back</span>
       </button>
 <h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Online Quiz: Pancrithon</h2>
-      <p className="text-lg text-white/80 mb-2">Topic: Diabetes</p>
+      <div className="mb-2">
+        <span className="block text-cyan-300 font-bold text-xl bg-cyan-900/30 rounded px-3 py-2 shadow">
+          Topic: Diabetes
+        </span>
+      </div>
       <p className="text-white/70 mb-4">
         Maximum 3 members per team. Eligibility: MBBS Students from 1st Year to CRRI are eligible (Only one CRRI from the 2020 Batch per team). NO cross college teams are allowed. Quiz consists of 3 rounds. Preliminary round will be conducted ONLINE on 28/09/2025 [4.00pm to 4.45pm]. Preliminary round will consist of 45 questions, with a duration of 45 minutes. Link will be sent on the day of Quiz. During the preliminary round, camera should be ON always. Any malpractice identified will lead to disqualification. Top 12 teams from the preliminary round will be qualified for the semifinals. Semifinals will be conducted offline on 12/10/2025. Top 6 teams from semifinals will be qualified for Finals. Finals will be conducted offline on 12/10/2025.
       </p>
@@ -78,3 +82,39 @@ export default function OnlineQuizPage() {
 }
 
 export { OnlineQuiz };
+
+export const onlineQuizDetails = {
+  title: "ONLINE QUIZ - PANCRITHON",
+  description: "Maximum 3 members per team. Eligibility: MBBS Students from 1st Year to CRRI are eligible (Only one CRRI from the 2020 Batch per team). NO cross college teams are allowed. Quiz consists of 3 rounds. Preliminary round will be conducted ONLINE on 28/09/2025 [4.00pm to 4.45pm]. Preliminary round will consist of 45 questions, with a duration of 45 minutes. Link will be sent on the day of Quiz. During the preliminary round, camera should be ON always. Any malpractice identified will lead to disqualification. Top 12 teams from the preliminary round will be qualified for the semifinals. Semifinals will be conducted offline on 12/10/2025. Top 6 teams from semifinals will be qualified for Finals. Finals will be conducted offline on 12/10/2025.",
+  topic: "Diabetes",
+  theme: undefined,
+  themes: undefined,
+  categories: undefined,
+  rules: [
+    "Maximum 3 members per team",
+    "Eligibility: MBBS Students from 1st Year to CRRI are eligible (Only one CRRI from the 2020 Batch per team)",
+    "NO cross college teams are allowed",
+    "Quiz consists of 3 rounds",
+    "Preliminary round will be conducted ONLINE on 28/09/2025 [4.00pm to 4.45pm]",
+    "Preliminary round will consist of 45 questions, with a duration of 45 minutes",
+    "Link will be sent on the day of Quiz",
+    "During the preliminary round, camera should be ON always",
+    "Any malpractice identified will lead to disqualification",
+    "Top 12 teams from the preliminary round will be qualified for the semifinals",
+    "Semifinals will be conducted offline on 12/10/2025",
+    "Top 6 teams from semifinals will be qualified for Finals",
+    "Finals will be conducted offline on 12/10/2025"
+  ],
+  abstract: undefined,
+  presentation: undefined,
+  registration: {
+    single: undefined,
+    team: "Rs. 300/team",
+    prize: "Rs. 20,000",
+    fee: undefined
+  },
+  incharge: "Arivanban S",
+  prerequisites: "MBBS students 1st year to CRRI",
+  date: "28/09/2025 (Online Prelims), 12/10/2025 (Semis & Finals)",
+  time: "Prelims: 4:00 PM, Semis/Finals: Sunday"
+};
