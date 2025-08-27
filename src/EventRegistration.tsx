@@ -266,6 +266,7 @@ const EventRegistration: React.FC = () => {
         phone: form.phone,
         event_id: eventKey,
         registration_time: new Date().toISOString(),
+        payment_screenshot_url: screenshotUrl,
       }
     ]);
     if (supabaseError) {

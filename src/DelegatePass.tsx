@@ -87,6 +87,7 @@ const DelegatePass = () => {
         phone: form.phone,
         pass_type: form.tier,
         purchase_time: new Date().toISOString(),
+        paymentScreenshotUrl: paymentScreenshotUrl,
       }
     ]);
     if (supabaseError) {

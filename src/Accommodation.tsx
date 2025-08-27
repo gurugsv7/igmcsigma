@@ -124,6 +124,7 @@ const Accommodation: React.FC = () => {
         check_in: form.arrival ? form.arrival.split("T")[0] : null,
         check_out: form.departure ? form.departure.split("T")[0] : null,
         booking_time: new Date().toISOString(),
+        payment_proof_url: paymentProofUrl,
       }
     ]);
     if (supabaseError) {
