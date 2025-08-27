@@ -89,7 +89,6 @@ export default function InsideICUPage() {
   return (
     <>
       <InsideICU />
-      <RegisterNowButton />
     </>
   );
 }

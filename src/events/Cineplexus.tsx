@@ -79,7 +79,6 @@ export default function CineplexusPage() {
   return (
     <>
       <Cineplexus />
-      <RegisterNowButton />
     </>
   );
 }

@@ -79,7 +79,6 @@ export default function SeniorQuizPage() {
   return (
     <>
       <SeniorQuiz />
-      <RegisterNowButton />
     </>
   );
 }

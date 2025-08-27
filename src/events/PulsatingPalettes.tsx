@@ -91,7 +91,6 @@ export default function PulsatingPalettesPage() {
   return (
     <>
       <PulsatingPalettes />
-      <RegisterNowButton />
     </>
   );
 }

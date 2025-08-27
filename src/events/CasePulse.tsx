@@ -113,7 +113,6 @@ export default function CasePulsePage() {
   return (
     <>
       <CasePulse />
-      <RegisterNowButton />
     </>
   );
 }
