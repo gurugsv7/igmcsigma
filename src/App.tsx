@@ -1179,6 +1179,8 @@ function App() {
               />
             } />
             <Route path="/workshops" element={<WorkshopsSection />} />
+            <Route path="/about" element={<AboutSection />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/register" element={<EventRegistration />} />
             <Route path="/event-registration" element={<EventRegistration />} />
             <Route path="/events/senior-quiz" element={<SeniorQuiz />} />
