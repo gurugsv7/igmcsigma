@@ -48,7 +48,8 @@ const OnlineQuiz = () => {
           ⏰ Prelims: 4:00 PM, Semis/Finals: Sunday
         </div>
       </div>
-<div className="flex justify-center mt-2 mb-4">
+<div className="flex flex-col items-center mt-2 mb-4">
+    <div className="font-bold text-cyan-300 mb-2">Inclusive of lunch</div>
         <button
           className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
           style={{ position: "relative", zIndex: 20 }}
@@ -62,7 +63,8 @@ const OnlineQuiz = () => {
 };
 
 const RegisterNowButton = () => (
-  <div className="flex justify-center mt-8">
+  <div className="flex flex-col items-center mt-8">
+    <div className="font-bold text-green-300 mb-2">Inclusive of lunch</div>
     <a
       href="/delegate-pass"
       className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"

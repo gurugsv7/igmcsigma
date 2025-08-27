@@ -87,8 +87,9 @@ export default function SmartAIPage() {
       <div className="text-white/60 mb-2">Incharges: Hemalatha M, Gopinath S</div>
       <div className="text-white/60 mb-2">Prerequisites: Medical students</div>
 
-        <div className="flex justify-center mt-4">
-<button
+        <div className="flex flex-col items-center mt-4">
+          <div className="font-bold text-cyan-300 mb-2">Inclusive of lunch</div>
+          <button
             onClick={() => navigate("/register?event=SmartAI")}
             className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
           >
