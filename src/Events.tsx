@@ -17,21 +17,21 @@ const eventSections = [
     color: 'purple',
     events: [
       {
-        title: 'Senior Quiz',
+        title: 'Senior Quiz - Peristalympics',
         description: 'Advanced quiz on Gastroenterology',
         details: 'Senior level quiz for final year students and interns focusing on gastroenterology topics',
         date: '12/10/25',
         time: 'Sunday'
       },
       {
-        title: 'Junior Quiz',
+        title: 'Junior Quiz - Vistura',
         description: 'Quiz on Anatomy and Pathology',
         details: 'Junior level quiz covering foundational medical subjects - anatomy and pathology',
         date: '12/10/25',
         time: 'Sunday'
       },
       {
-        title: 'Online Quiz',
+        title: 'Online Quiz - Pancrithon',
         description: 'Diabetes Mellitus Quiz',
         details: 'Three-round quiz with online prelims, offline semifinals and finals',
         date: 'Prelims: 28/09/25',

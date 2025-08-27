@@ -15,7 +15,8 @@ const OnlineQuiz = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Online Quiz: Pancrithon</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-2 mt-12">Online Quiz</h2>
+<h3 className="text-xl font-semibold text-center text-purple-300 mb-4">Pancrithon</h3>
       <div className="mb-2">
         <span className="block text-cyan-300 font-bold text-xl bg-cyan-900/30 rounded px-3 py-2 shadow">
           Topic: Diabetes
@@ -86,7 +87,7 @@ export default function OnlineQuizPage() {
 export { OnlineQuiz };
 
 export const onlineQuizDetails = {
-  title: "ONLINE QUIZ - PANCRITHON",
+  title: "Pancrithon",
   description: "Maximum 3 members per team. Eligibility: MBBS Students from 1st Year to CRRI are eligible (Only one CRRI from the 2020 Batch per team). NO cross college teams are allowed. Quiz consists of 3 rounds. Preliminary round will be conducted ONLINE on 28/09/2025 [4.00pm to 4.45pm]. Preliminary round will consist of 45 questions, with a duration of 45 minutes. Link will be sent on the day of Quiz. During the preliminary round, camera should be ON always. Any malpractice identified will lead to disqualification. Top 12 teams from the preliminary round will be qualified for the semifinals. Semifinals will be conducted offline on 12/10/2025. Top 6 teams from semifinals will be qualified for Finals. Finals will be conducted offline on 12/10/2025.",
   topic: "Diabetes",
   theme: undefined,

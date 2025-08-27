@@ -15,7 +15,8 @@ const SeniorQuiz = () => {
         <span className="mr-1 text-lg" aria-hidden="true">&#8592;</span>
         <span className="text-sm font-medium">Back</span>
       </button>
-<h2 className="text-3xl font-bold text-center text-cyan-300 mb-4 mt-12">Senior Quiz: Striatum Scholar Trophy</h2>
+<h2 className="text-3xl font-bold text-center text-cyan-300 mb-2 mt-12">Senior Quiz</h2>
+<h3 className="text-xl font-semibold text-center text-purple-300 mb-4">Peristalympics</h3>
       <div className="mb-2">
         <span className="block text-cyan-300 font-bold text-xl bg-cyan-900/30 rounded px-3 py-2 shadow">
           Topic: Gastroenterology
@@ -86,7 +87,7 @@ export default function SeniorQuizPage() {
 export { SeniorQuiz };
 
 export const seniorQuizDetails = {
-  title: "SENIOR QUIZ - STRIATUM SCHOLAR TROPHY",
+  title: "PERISTALYMPIcs",
   description: "Part of STRIATUM 3.0 - SNYAPSE: Connecting knowledge, Sparking Innovation",
   topic: "GASTROENTEROLOGY",
   theme: undefined,

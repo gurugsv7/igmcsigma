@@ -40,13 +40,19 @@ function DisasterX({ onRegister }: { onRegister: () => void }) {
       </div>
       <div className="text-white/60 mb-2">Incharges: Ayisha Farvin Abdul Malik, Yukesh S</div>
       <div className="text-white/60 mb-2">Prerequisites: Medical students</div>
-<div className="flex flex-col items-center mt-4">
+<div className="flex flex-col items-center mt-4 gap-3">
         <div className="font-bold text-cyan-300 mb-2">Inclusive of lunch</div>
         <button
-          className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+          className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
           onClick={() => navigate("/register?event=DisasterX")}
         >
           Register Now
+        </button>
+        <button
+          className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300"
+          onClick={() => navigate('/accommodation')}
+        >
+          Get Accommodation
         </button>
       </div>
     </div>
