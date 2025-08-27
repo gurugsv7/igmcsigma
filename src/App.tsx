@@ -391,10 +391,10 @@ interface BottomNavProps {
 const BottomNav = ({ activeTab, setActiveTab, showNav = true }: BottomNavProps) => {
   const tabs = [
     { id: 'home', label: 'Home', icon: Home, path: '/' },
-    { id: 'event', label: 'Events', icon: Calendar, path: '/' },
-    { id: 'workshops', label: 'Workshops', icon: Wrench, path: '/' },
-    { id: 'about', label: 'About', icon: Users, path: '/' },
-    { id: 'contact', label: 'Contact', icon: Phone, path: '/' },
+    { id: 'event', label: 'Events', icon: Calendar, path: '/events' },
+    { id: 'workshops', label: 'Workshops', icon: Wrench, path: '/workshops' },
+    { id: 'about', label: 'About', icon: Users, path: '/about' },
+    { id: 'contact', label: 'Contact', icon: Phone, path: '/contact' },
   ];
   const navigate = useNavigate();
 
@@ -407,7 +407,6 @@ const BottomNav = ({ activeTab, setActiveTab, showNav = true }: BottomNavProps) 
           <button
             key={id}
             onClick={() => {
-              setActiveTab(id);
               navigate(path);
             }}
             className={`flex flex-col items-center p-2 rounded-lg transition-all duration-300 ${
@@ -1172,6 +1171,14 @@ function App() {
         <main className="relative z-10">
           <Routes>
             <Route path="/" element={renderActiveSection()} />
+            <Route path="/events" element={
+              <EventSection
+                setRegistrationItem={setRegistrationItem}
+                setRegistrationType={setRegistrationType}
+                setShowRegistration={setShowRegistration}
+              />
+            } />
+            <Route path="/workshops" element={<WorkshopsSection />} />
             <Route path="/register" element={<EventRegistration />} />
             <Route path="/event-registration" element={<EventRegistration />} />
             <Route path="/events/senior-quiz" element={<SeniorQuiz />} />

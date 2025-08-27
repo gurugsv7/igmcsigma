@@ -7,6 +7,7 @@ TODO:
 */
 
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Stethoscope, Heart, Brain, Microscope, Plus, Users, BookOpen, Clock, HeartPulse, AlertTriangle, Cpu, X } from "lucide-react";
 
@@ -368,83 +369,97 @@ const WorkshopsSection = () => {
   // Main page: show group cards
   if (!activeGroup) {
     return (
-      <div className="min-h-screen pt-8 pb-24 px-2 sm:px-6 relative overflow-x-hidden">
-        <div
-          className="pointer-events-none fixed inset-0 z-0"
-          aria-hidden="true"
-          style={{
-            background:
-              "repeating-linear-gradient(90deg,rgba(80,255,255,0.04) 0 1px,transparent 1px 32px),repeating-linear-gradient(180deg,rgba(80,255,255,0.04) 0 1px,transparent 1px 32px)",
-            maskImage:
-              "radial-gradient(circle at 50% 30%,rgba(255,255,255,0.18) 60%,transparent 100%)",
-          }}
-        />
-        <svg className="pointer-events-none fixed left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2" width="600" height="600" style={{opacity:0.08}} aria-hidden="true">
-          <ellipse cx="300" cy="300" rx="220" ry="80" fill="none" stroke="#00fff7" strokeWidth="2"/>
-          <ellipse cx="300" cy="300" rx="140" ry="220" fill="none" stroke="#b388ff" strokeWidth="2"/>
-        </svg>
-        <h2 
-          className="relative z-10 text-3xl font-bold text-center bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent mb-4"
-          style={{
-            filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3)) drop-shadow(0 0 2px rgba(255,255,255,0.3))"
-          }}
-        >
-          CORTEX CRAFTS
-        </h2>
-        <p className="relative z-10 text-center text-gray-400 mb-8 max-w-2xl mx-auto">
-          Hands-on workshops designed to enhance your practical medical skills and knowledge
-        </p>
-        <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6 relative z-10">
-          {groups.map(group => {
-            const GroupIcon = group.icon;
-            return (
-              <button
-                key={group.id}
-                onClick={() => setActiveGroup(group.id)}
-                className={`
-                  relative group flex items-center justify-between overflow-hidden
-                  rounded-2xl p-5 min-h-[120px] bg-white/10 backdrop-blur-md
-                  border border-white/20 shadow-[0_0_24px_2px_rgba(0,255,255,0.08)]
-                  transition-all duration-200
-                  hover:scale-[1.04] hover:shadow-[0_0_32px_4px_rgba(0,255,255,0.25)]
-                  hover:border-cyan-400/60
-                  before:absolute before:inset-0 before:rounded-2xl
-                  before:pointer-events-none
-                  before:border-2 before:border-transparent
-                  before:transition-all before:duration-200
-                  hover:before:border-cyan-400/80
-                `}
-                style={{
-                  boxShadow:
-                    "0 0 24px 2px rgba(0,255,255,0.10), 0 2px 24px 0 rgba(180,0,255,0.10)",
-                  background:
-                    "linear-gradient(135deg, rgba(30,30,60,0.55) 60%, rgba(60,0,80,0.35) 100%)",
-                }}
-              >
-                <span
+      <>
+        <Helmet>
+          <title>Workshops | IGMC Sigma</title>
+          <meta name="description" content="Discover hands-on medical workshops at IGMC Sigma Striatum 3.0. Enhance your clinical, diagnostic, emergency, and research skills with expert-led sessions." />
+          <meta name="keywords" content="IGMC Sigma workshops, medical workshops, clinical skills, diagnostic, emergency, research, Striatum 3.0, IGMCRI, medical college workshops" />
+          <meta property="og:title" content="Workshops | IGMC Sigma" />
+          <meta property="og:description" content="Discover hands-on medical workshops at IGMC Sigma Striatum 3.0. Enhance your clinical, diagnostic, emergency, and research skills with expert-led sessions." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://igmcrisigma.com/workshops" />
+          <meta property="og:site_name" content="IGMCRI Sigma" />
+          <meta property="og:image" content="https://igmcrisigma.com/src/images/stratium.png" />
+          <link rel="canonical" href="https://igmcrisigma.com/workshops" />
+        </Helmet>
+        <div className="min-h-screen pt-8 pb-24 px-2 sm:px-6 relative overflow-x-hidden">
+          <div
+            className="pointer-events-none fixed inset-0 z-0"
+            aria-hidden="true"
+            style={{
+              background:
+                "repeating-linear-gradient(90deg,rgba(80,255,255,0.04) 0 1px,transparent 1px 32px),repeating-linear-gradient(180deg,rgba(80,255,255,0.04) 0 1px,transparent 1px 32px)",
+              maskImage:
+                "radial-gradient(circle at 50% 30%,rgba(255,255,255,0.18) 60%,transparent 100%)",
+            }}
+          />
+          <svg className="pointer-events-none fixed left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2" width="600" height="600" style={{opacity:0.08}} aria-hidden="true">
+            <ellipse cx="300" cy="300" rx="220" ry="80" fill="none" stroke="#00fff7" strokeWidth="2"/>
+            <ellipse cx="300" cy="300" rx="140" ry="220" fill="none" stroke="#b388ff" strokeWidth="2"/>
+          </svg>
+          <h2 
+            className="relative z-10 text-3xl font-bold text-center bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent mb-4"
+            style={{
+              filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3)) drop-shadow(0 0 2px rgba(255,255,255,0.3))"
+            }}
+          >
+            CORTEX CRAFTS
+          </h2>
+          <p className="relative z-10 text-center text-gray-400 mb-8 max-w-2xl mx-auto">
+            Hands-on workshops designed to enhance your practical medical skills and knowledge
+          </p>
+          <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6 relative z-10">
+            {groups.map(group => {
+              const GroupIcon = group.icon;
+              return (
+                <button
+                  key={group.id}
+                  onClick={() => setActiveGroup(group.id)}
                   className={`
-                    flex items-center justify-center mr-4 min-w-[56px] min-h-[56px]
-                    rounded-xl bg-gradient-to-br ${group.color}
-                    border border-white/20
-                    shadow-[0_0_24px_4px_rgba(0,255,255,0.18)]
+                    relative group flex items-center justify-between overflow-hidden
+                    rounded-2xl p-5 min-h-[120px] bg-white/10 backdrop-blur-md
+                    border border-white/20 shadow-[0_0_24px_2px_rgba(0,255,255,0.08)]
+                    transition-all duration-200
+                    hover:scale-[1.04] hover:shadow-[0_0_32px_4px_rgba(0,255,255,0.25)]
+                    hover:border-cyan-400/60
+                    before:absolute before:inset-0 before:rounded-2xl
+                    before:pointer-events-none
+                    before:border-2 before:border-transparent
+                    before:transition-all before:duration-200
+                    hover:before:border-cyan-400/80
                   `}
                   style={{
-                    filter: "drop-shadow(0 0 8px #0ff8) drop-shadow(0 0 2px #fff8)",
+                    boxShadow:
+                      "0 0 24px 2px rgba(0,255,255,0.10), 0 2px 24px 0 rgba(180,0,255,0.10)",
+                    background:
+                      "linear-gradient(135deg, rgba(30,30,60,0.55) 60%, rgba(60,0,80,0.35) 100%)",
                   }}
                 >
-                  <GroupIcon size={32} strokeWidth={2.5} className="text-white drop-shadow-[0_0_4px_cyan]" />
-                </span>
-                <div className="flex-1 flex flex-col items-start">
-                  <span className="font-extrabold text-base md:text-lg uppercase tracking-wide text-white">
-                    {group.name}
+                  <span
+                    className={`
+                      flex items-center justify-center mr-4 min-w-[56px] min-h-[56px]
+                      rounded-xl bg-gradient-to-br ${group.color}
+                      border border-white/20
+                      shadow-[0_0_24px_4px_rgba(0,255,255,0.18)]
+                    `}
+                    style={{
+                      filter: "drop-shadow(0 0 8px #0ff8) drop-shadow(0 0 2px #fff8)",
+                    }}
+                  >
+                    <GroupIcon size={32} strokeWidth={2.5} className="text-white drop-shadow-[0_0_4px_cyan]" />
                   </span>
-                  <span className="text-xs mt-1 text-white/60 font-medium">{group.workshops.length} Workshops</span>
-                </div>
-              </button>
-            );
-          })}
+                  <div className="flex-1 flex flex-col items-start">
+                    <span className="font-extrabold text-base md:text-lg uppercase tracking-wide text-white">
+                      {group.name}
+                    </span>
+                    <span className="text-xs mt-1 text-white/60 font-medium">{group.workshops.length} Workshops</span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 

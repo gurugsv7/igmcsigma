@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Award, MessageSquare, Microscope, Plus } from "lucide-react";
 import EventDetails from "./EventDetails";
@@ -243,15 +244,15 @@ const SectionPage = ({
               {/* CTA Button */}
               <Link
                 to={
-                  event.title === "Senior Quiz" ? "/events/senior-quiz" :
-                  event.title === "Junior Quiz" ? "/events/junior-quiz" :
-                  event.title === "Online Quiz" ? "/events/online-quiz" :
-                  event.title.startsWith("Inside the ICU") ? "/events/inside-icu" :
-                  event.title.startsWith("Case Presentation") ? "/events/case-pulse" :
-                  event.title.startsWith("Poster Presentation") ? "/events/axon-alley" :
-                  event.title.startsWith("Paper Presentation") ? "/events/nexus" :
-                  event.title.startsWith("Body Painting") ? "/events/pulsating-palettes" :
-                  event.title.startsWith("Short Film") ? "/events/cineplexus" :
+                  event.title.toLowerCase().includes("senior quiz") ? "/events/senior-quiz" :
+                  event.title.toLowerCase().includes("junior quiz") ? "/events/junior-quiz" :
+                  event.title.toLowerCase().includes("online quiz") ? "/events/online-quiz" :
+                  event.title.toLowerCase().includes("inside the icu") ? "/events/inside-icu" :
+                  event.title.toLowerCase().includes("case pulse") || event.title.toLowerCase().includes("case presentation") ? "/events/case-pulse" :
+                  event.title.toLowerCase().includes("axon alley") || event.title.toLowerCase().includes("poster presentation") ? "/events/axon-alley" :
+                  event.title.toLowerCase().includes("nexus") || event.title.toLowerCase().includes("paper presentation") ? "/events/nexus" :
+                  event.title.toLowerCase().includes("pulsating palettes") || event.title.toLowerCase().includes("body painting") ? "/events/pulsating-palettes" :
+                  event.title.toLowerCase().includes("cineplexus") || event.title.toLowerCase().includes("short film") ? "/events/cineplexus" :
                   "#"
                 }
                 className={`
@@ -294,86 +295,97 @@ const EventSection = ({
   }
 
   return (
-    <div className="min-h-screen pt-8 pb-24 px-6">
-      <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent mb-8">
-        Events & Competitions
-      </h2>
-      <div className="max-w-3xl mx-auto grid md:grid-cols-3 gap-6">
-        {eventSections.map((section) => {
-          const Icon = section.icon;
-          // Badge emoji by category
-          const badge = section.id === "quizzes"
-            ? "🧠 Quiz"
-            : section.id === "panels"
-            ? "💬 Panel"
-            : "🧪 Other";
-          return (
-            <button
-              key={section.id}
-              onClick={() => setActiveSection(section.id)}
-              className={`
-                relative group flex items-center justify-between overflow-hidden
-                rounded-2xl p-5 min-h-[120px] bg-white/10 backdrop-blur-md
-                border border-white/20 shadow-[0_0_24px_2px_rgba(0,255,255,0.08)]
-                transition-all duration-200
-                hover:scale-[1.04] hover:shadow-[0_0_32px_4px_rgba(0,255,255,0.25)]
-                hover:border-cyan-400/60
-                before:absolute before:inset-0 before:rounded-2xl
-                before:pointer-events-none
-                before:border-2 before:border-transparent
-                before:transition-all before:duration-200
-                hover:before:border-cyan-400/80
-                `}
-              style={{
-                boxShadow:
-                  "0 0 24px 2px rgba(0,255,255,0.10), 0 2px 24px 0 rgba(180,0,255,0.10)",
-                background:
-                  "linear-gradient(135deg, rgba(30,30,60,0.55) 60%, rgba(60,0,80,0.35) 100%)",
-              }}
-            >
-              {/* Neon-glass icon left */}
-              <span
+    <>
+      <Helmet>
+        <title>Events & Competitions | IGMC Sigma</title>
+        <meta name="description" content="Explore all events and competitions at IGMC Sigma Striatum 3.0. Medical quizzes, panels, presentations, and creative events for students and professionals." />
+        <meta name="keywords" content="IGMC Sigma events, medical competitions, quizzes, panels, presentations, Striatum 3.0, IGMCRI, medical college events" />
+        <meta property="og:title" content="Events & Competitions | IGMC Sigma" />
+        <meta property="og:description" content="Explore all events and competitions at IGMC Sigma Striatum 3.0. Medical quizzes, panels, presentations, and creative events for students and professionals." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://igmcrisigma.com/events" />
+        <meta property="og:site_name" content="IGMCRI Sigma" />
+        <meta property="og:image" content="https://igmcrisigma.com/src/images/stratium.png" />
+        <link rel="canonical" href="https://igmcrisigma.com/events" />
+      </Helmet>
+      <div className="min-h-screen pt-8 pb-24 px-6">
+        <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent mb-8">
+          Events & Competitions
+        </h2>
+        <div className="max-w-3xl mx-auto grid md:grid-cols-3 gap-6">
+          {eventSections.map((section) => {
+            const Icon = section.icon;
+            // Badge emoji by category
+            const badge = section.id === "quizzes"
+              ? "🧠 Quiz"
+              : section.id === "panels"
+              ? "💬 Panel"
+              : "🧪 Other";
+            return (
+              <button
+                key={section.id}
+                onClick={() => setActiveSection(section.id)}
                 className={`
-                  flex items-center justify-center mr-4 min-w-[56px] min-h-[56px]
-                  rounded-xl bg-gradient-to-br ${section.color === "purple"
-                    ? "from-purple-500 via-pink-500 to-cyan-400"
-                    : section.color === "teal"
-                    ? "from-teal-400 via-cyan-400 to-blue-400"
-                    : "from-pink-400 via-fuchsia-500 to-yellow-300"}
-                  shadow-[0_0_24px_4px_rgba(0,255,255,0.18)]
-                  border border-white/20
-                `}
+                  relative group flex items-center justify-between overflow-hidden
+                  rounded-2xl p-5 min-h-[120px] bg-white/10 backdrop-blur-md
+                  border border-white/20 shadow-[0_0_24px_2px_rgba(0,255,255,0.08)]
+                  transition-all duration-200
+                  hover:scale-[1.04] hover:shadow-[0_0_32px_4px_rgba(0,255,255,0.25)]
+                  hover:border-cyan-400/60
+                  before:absolute before:inset-0 before:rounded-2xl
+                  before:pointer-events-none
+                  before:border-2 before:border-transparent
+                  before:transition-all before:duration-200
+                  hover:before:border-cyan-400/80
+                  `}
                 style={{
-                  filter: "drop-shadow(0 0 8px #0ff8) drop-shadow(0 0 2px #fff8)",
+                  boxShadow:
+                    "0 0 24px 2px rgba(0,255,255,0.10), 0 2px 24px 0 rgba(180,0,255,0.10)",
+                  background:
+                    "linear-gradient(135deg, rgba(30,30,60,0.55) 60%, rgba(60,0,80,0.35) 100%)",
                 }}
               >
-                <Icon size={32} strokeWidth={2.5} className="text-white drop-shadow-[0_0_4px_cyan]" />
-              </span>
-              {/* Right stack */}
-              <div className="flex-1 flex flex-col items-start">
-                <span className="font-extrabold text-base md:text-lg uppercase tracking-wide text-white drop-shadow-[0_1px_4px_rgba(0,255,255,0.12)]">
-                  {section.title}
+                <span
+                  className={`
+                    flex items-center justify-center mr-4 min-w-[56px] min-h-[56px]
+                    rounded-xl bg-gradient-to-br ${section.color === "purple"
+                      ? "from-purple-500 via-pink-500 to-cyan-400"
+                      : section.color === "teal"
+                      ? "from-teal-400 via-cyan-400 to-blue-400"
+                      : "from-pink-400 via-fuchsia-500 to-yellow-300"}
+                    shadow-[0_0_24px_4px_rgba(0,255,255,0.18)]
+                    border border-white/20
+                  `}
+                  style={{
+                    filter: "drop-shadow(0 0 8px #0ff8) drop-shadow(0 0 2px #fff8)",
+                  }}
+                >
+                  <Icon size={32} strokeWidth={2.5} className="text-white drop-shadow-[0_0_4px_cyan]" />
                 </span>
-                <span className="text-xs mt-1 text-white/60 font-medium">{section.events.length} Events</span>
-              </div>
-              {/* Glow pulse animation */}
-              <style>
-                {`
-                  .group:hover, .group:focus-visible {
-                    animation: glowPulse 0.7s cubic-bezier(.4,0,.2,1);
-                  }
-                  @keyframes glowPulse {
-                    0% { box-shadow: 0 0 24px 2px rgba(0,255,255,0.10), 0 2px 24px 0 rgba(180,0,255,0.10);}
-                    60% { box-shadow: 0 0 48px 8px rgba(0,255,255,0.30), 0 2px 32px 0 rgba(180,0,255,0.18);}
-                    100% { box-shadow: 0 0 24px 2px rgba(0,255,255,0.10), 0 2px 24px 0 rgba(180,0,255,0.10);}
-                  }
-                `}
-              </style>
-            </button>
-          );
-        })}
+                <div className="flex-1 flex flex-col items-start">
+                  <span className="font-extrabold text-base md:text-lg uppercase tracking-wide text-white drop-shadow-[0_1px_4px_rgba(0,255,255,0.12)]">
+                    {section.title}
+                  </span>
+                  <span className="text-xs mt-1 text-white/60 font-medium">{section.events.length} Events</span>
+                </div>
+                <style>
+                  {`
+                    .group:hover, .group:focus-visible {
+                      animation: glowPulse 0.7s cubic-bezier(.4,0,.2,1);
+                    }
+                    @keyframes glowPulse {
+                      0% { box-shadow: 0 0 24px 2px rgba(0,255,255,0.10), 0 2px 24px 0 rgba(180,0,255,0.10);}
+                      60% { box-shadow: 0 0 48px 8px rgba(0,255,255,0.30), 0 2px 32px 0 rgba(180,0,255,0.18);}
+                      100% { box-shadow: 0 0 24px 2px rgba(0,255,255,0.10), 0 2px 24px 0 rgba(180,0,255,0.10);}
+                    }
+                  `}
+                </style>
+              </button>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
