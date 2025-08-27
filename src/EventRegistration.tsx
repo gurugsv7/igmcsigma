@@ -386,7 +386,7 @@ const EventRegistration: React.FC = () => {
                 data-index={idx}
                 value={form.memberNames[idx] || ""}
                 onChange={handleChange}
-                required
+                required={idx === 0}
                 className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
                 placeholder={event.teamSize === 1 ? "Full Name" : `Member ${idx + 1} Name`}
               />
