@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CLOUDINARY_API_URL, CLOUDINARY_UPLOAD_PRESET } from "./cloudinaryConfig";
 import emailjs from "@emailjs/browser";
 import qrPayment from "./images/qrpayment.jpg";
+import { supabase } from "./supabaseClient";
 
 const DelegatePass = () => {
   const navigate = useNavigate();
@@ -77,6 +78,22 @@ const DelegatePass = () => {
     setIsSubmitting(true);
 
     const delegateId = generateDelegateId();
+
+    // Store delegate pass in Supabase
+    const { error: supabaseError } = await supabase.from("DelegatePass").insert([
+      {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        pass_type: form.tier,
+        purchase_time: new Date().toISOString(),
+      }
+    ]);
+    if (supabaseError) {
+      setIsSubmitting(false);
+      alert("Failed to save delegate pass. Please try again.");
+      return;
+    }
 
     try {
       await emailjs.send(
@@ -198,6 +215,8 @@ const DelegatePass = () => {
                 onChange={handleChange}
                 className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
                 required
+                pattern="^(\+91\d{10}|\d{10})$"
+                title="Enter a valid 10-digit number or +91 followed by 10 digits"
               />
             </div>
             <div className="mb-4">

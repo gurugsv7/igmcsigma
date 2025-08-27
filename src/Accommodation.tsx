@@ -3,6 +3,7 @@ import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
 import qrPayment from "./images/qrpayment.jpg";
 import { allEventWorkshopDetails } from "./eventsData";
+import { supabase } from "./supabaseClient";
 
 const CLOUDINARY_CLOUD_NAME = "dzp9gxlh8";
 const CLOUDINARY_UPLOAD_PRESET = "regis_payment";
@@ -112,6 +113,24 @@ const Accommodation: React.FC = () => {
       email: form.email,
       phone: form.phone,
     };
+
+    // Store accommodation in Supabase
+    const { error: supabaseError } = await supabase.from("Accommodation").insert([
+      {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        room_type: "Non-AC",
+        check_in: form.arrival ? form.arrival.split("T")[0] : null,
+        check_out: form.departure ? form.departure.split("T")[0] : null,
+        booking_time: new Date().toISOString(),
+      }
+    ]);
+    if (supabaseError) {
+      setIsSubmitting(false);
+      setError("Failed to save accommodation. Please try again.");
+      return;
+    }
 
     emailjs.send(
       "service_kh999ms",
@@ -347,6 +366,8 @@ const Accommodation: React.FC = () => {
               value={form.phone}
               onChange={handleChange}
               required
+              pattern="^(\+91\d{10}|\d{10})$"
+              title="Enter a valid 10-digit number or +91 followed by 10 digits"
               className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
             />
           </div>

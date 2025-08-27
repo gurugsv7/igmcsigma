@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import emailjs from "emailjs-com";
 import qrPayment from "./images/qrpayment.jpg";
+import { supabase } from "./supabaseClient";
 
 // Cloudinary config
 const CLOUDINARY_CLOUD_NAME = "dzp9gxlh8";
@@ -257,6 +258,22 @@ const EventRegistration: React.FC = () => {
       payment_screenshot_url: screenshotUrl,
     };
 
+    // Store registration in Supabase
+    const { error: supabaseError } = await supabase.from("EventRegistration").insert([
+      {
+        name: form.memberNames[0] || "",
+        email: form.email,
+        phone: form.phone,
+        event_id: eventKey,
+        registration_time: new Date().toISOString(),
+      }
+    ]);
+    if (supabaseError) {
+      setIsSubmitting(false);
+      setError("Failed to save registration. Please try again.");
+      return;
+    }
+
     console.log("Sending registration data to EmailJS:", templateParams);
 
     emailjs.send(
@@ -408,6 +425,8 @@ const EventRegistration: React.FC = () => {
               value={form.phone}
               onChange={handleChange}
               required
+              pattern="^(\+91\d{10}|\d{10})$"
+              title="Enter a valid 10-digit number or +91 followed by 10 digits"
               className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
             />
           </div>
