@@ -39,14 +39,20 @@ function ExodontiaX({ onRegister }: { onRegister: () => void }) {
       </div>
       <div className="text-white/60 mb-2">Incharges: Sushmitha S, Abhinaya N</div>
       <div className="text-white/60 mb-2">Prerequisites: Dental students</div>
-<div className="flex justify-center mt-4">
-        <button
-          className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
-          onClick={() => navigate("/register?event=ExodontiaX")}
-        >
-          Register Now
-        </button>
-      </div>
+<div className="flex flex-col items-center mt-4 gap-3">
+  <button
+    className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-6 rounded-full transition-all duration-300"
+    onClick={() => navigate("/register?event=ExodontiaX")}
+  >
+    Register Now
+  </button>
+  <button
+    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300"
+    onClick={() => navigate('/accommodation')}
+  >
+    Get Accommodation
+  </button>
+</div>
     </div>
   );
 }

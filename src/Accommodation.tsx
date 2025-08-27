@@ -350,6 +350,10 @@ const Accommodation: React.FC = () => {
               className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
             />
           </div>
+          <div className="bg-yellow-400/20 border-2 border-yellow-400 rounded-lg px-4 py-3 mb-2 text-yellow-300 font-bold text-center text-lg shadow-md">
+            Confirm accommodation availability before prebooking<br />
+            <span className="text-yellow-200 font-semibold">Contact: 97914 66866</span>
+          </div>
           <button
             type="submit"
             disabled={isSubmitting}
