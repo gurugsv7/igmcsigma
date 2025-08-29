@@ -1,8 +1,9 @@
--- Add payment_proof_url to Accommodation
-alter table "Accommodation" add column if not exists payment_proof_url text;
+-- Add team_members column to store member details (name, phone, year) as JSON
+ALTER TABLE "EventRegistration"
+ADD COLUMN IF NOT EXISTS team_members JSONB;
 
--- Add payment_screenshot_url to EventRegistration
-alter table "EventRegistration" add column if not exists payment_screenshot_url text;
+-- Optionally, migrate existing data if needed (not required for new events)
 
--- Add paymentScreenshotUrl to DelegatePass
-alter table "DelegatePass" add column if not exists paymentScreenshotUrl text;
+-- Add coupon_code column if not already present
+ALTER TABLE "EventRegistration"
+ADD COLUMN IF NOT EXISTS coupon_code TEXT;

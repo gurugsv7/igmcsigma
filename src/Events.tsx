@@ -4,8 +4,20 @@ import { Link } from "react-router-dom";
 import { Award, MessageSquare, Microscope, Plus } from "lucide-react";
 import EventDetails from "./EventDetails";
 
+export interface EventType {
+  title: string;
+  description: string;
+  details: string;
+  date: string;
+  time: string;
+}
+
+interface SelectedEventType extends EventType {
+  originalTitle: string;
+}
+
 interface EventSectionProps {
-  setRegistrationItem: (item: any) => void;
+  setRegistrationItem: (item: EventType) => void;
   setRegistrationType: (type: string) => void;
   setShowRegistration: (show: boolean) => void;
 }
@@ -126,14 +138,14 @@ const SectionPage = ({
 }: {
   section: typeof eventSections[0],
   onBack: () => void,
-  setRegistrationItem: (item: any) => void,
+  setRegistrationItem: (item: EventType) => void,
   setRegistrationType: (type: string) => void,
   setShowRegistration: (show: boolean) => void
 }) => {
-  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [selectedEvent, setSelectedEvent] = useState<SelectedEventType | null>(null);
   const Icon = section.icon;
 
-  const handleEventSelect = (event: any) => {
+  const handleEventSelect = (event: EventType) => {
     // Get the base title for EventDetails matching
     let strippedTitle = event.title;
     if (event.title.includes(":")) {
@@ -145,7 +157,7 @@ const SectionPage = ({
     }
     // Get just the main title without any subtitles
     strippedTitle = strippedTitle.split(/[\-:]/)[0].trim();
-    
+
     setSelectedEvent({
       ...event,
       originalTitle: event.title, // keep full title for reference

@@ -465,8 +465,18 @@ const CountdownTimer = () => {
 };
 
 // Registration Form Component
+import type { EventType } from './Events';
+
+interface WorkshopType extends EventType {
+  duration?: string;
+  capacity?: string;
+  prerequisites?: string;
+}
+
+type RegistrationItemType = EventType | WorkshopType;
+
 interface RegistrationFormProps {
-  item: any;
+  item: RegistrationItemType;
   type: string;
   onBack: () => void;
 }
@@ -569,17 +579,17 @@ const RegistrationForm = ({ item, type, onBack }: RegistrationFormProps) => {
               <div className="bg-black/20 rounded-lg p-3 text-center">
                 <Clock className="w-5 h-5 text-cyan-400 mx-auto mb-1" />
                 <p className="text-xs text-gray-400">Duration</p>
-                <p className="text-sm text-cyan-300">{item.duration}</p>
+                <p className="text-sm text-cyan-300">{'duration' in item ? item.duration : ''}</p>
               </div>
               <div className="bg-black/20 rounded-lg p-3 text-center">
                 <Users className="w-5 h-5 text-cyan-400 mx-auto mb-1" />
                 <p className="text-xs text-gray-400">Capacity</p>
-                <p className="text-sm text-cyan-300">{item.capacity}</p>
+                <p className="text-sm text-cyan-300">{'capacity' in item ? item.capacity : ''}</p>
               </div>
               <div className="bg-black/20 rounded-lg p-3 text-center">
                 <BookOpen className="w-5 h-5 text-cyan-400 mx-auto mb-1" />
                 <p className="text-xs text-gray-400">Prerequisites</p>
-                <p className="text-sm text-cyan-300">{item.prerequisites}</p>
+                <p className="text-sm text-cyan-300">{'prerequisites' in item ? item.prerequisites : ''}</p>
               </div>
             </div>
           )}
@@ -973,8 +983,8 @@ const AboutSection = () => (
 function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [showRegistration, setShowRegistration] = useState(false);
-  const [registrationItem, setRegistrationItem] = useState(null);
-  const [registrationType, setRegistrationType] = useState('');
+  const [registrationItem, setRegistrationItem] = useState<RegistrationItemType | null>(null);
+  const [registrationType, setRegistrationType] = useState<string>('');
   // Only show loading screen on first SPA load, not on reload/direct visit
   const [isLoading, setIsLoading] = useState(true);
 
@@ -1101,8 +1111,8 @@ function App() {
       case 'home': return <HomeSection setActiveTab={setActiveTab} />;
       case 'event': return (
         <EventSection
-          setRegistrationItem={setRegistrationItem}
-          setRegistrationType={setRegistrationType}
+          setRegistrationItem={(item) => setRegistrationItem(item)}
+          setRegistrationType={(type) => setRegistrationType(type)}
           setShowRegistration={setShowRegistration}
         />
       );

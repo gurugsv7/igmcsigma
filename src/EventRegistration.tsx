@@ -156,9 +156,13 @@ const EventRegistration: React.FC = () => {
   const navigate = useNavigate();
   const eventKey = new URLSearchParams(location.search).get("event") || "SeniorQuiz";
   const event = EVENT_INFO[eventKey] || EVENT_INFO["SeniorQuiz"];
+  const [discountedPrice, setDiscountedPrice] = useState<string | null>(null);
+  const [couponStatus, setCouponStatus] = useState<string | null>(null);
+  const [couponInput, setCouponInput] = useState<string>("");
+  const [couponApplied, setCouponApplied] = useState<boolean>(false);
 
-  const [form, setForm] = useState({
-    memberNames: [""], // Array for team member names
+const [form, setForm] = useState({
+    members: [{ name: "", phone: "", year: "" }],
     email: "",
     phone: "",
     institution: "",
@@ -166,6 +170,7 @@ const EventRegistration: React.FC = () => {
     category: "student",
     delegate_id: "",
     paymentScreenshot: null as File | null,
+    coupon: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -176,7 +181,11 @@ const EventRegistration: React.FC = () => {
   // Handles changes for all fields, including member names
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const { name, value, files, dataset } = e.target as any;
-    if (name === "paymentScreenshot" && files && files[0]) {
+    if (name === "coupon") {
+      setCouponInput(value);
+      setCouponStatus(null);
+      setCouponApplied(false);
+    } else if (name === "paymentScreenshot" && files && files[0]) {
       if (files[0].size > MAX_FILE_SIZE) {
         setError("File is too large! Please upload an image less than 4MB.");
         return;
@@ -186,13 +195,16 @@ const EventRegistration: React.FC = () => {
         ...prev,
         [name]: files[0],
       }));
-    } else if (name === "memberName" && dataset.index !== undefined) {
-      // Update specific member name
+    } else if (["memberName", "memberPhone", "memberYear"].includes(name) && dataset.index !== undefined) {
+      // Update specific member field
       const idx = parseInt(dataset.index, 10);
       setForm((prev) => {
-        const memberNames = [...(prev.memberNames || [])];
-        memberNames[idx] = value;
-        return { ...prev, memberNames };
+        const members = [...(prev.members || [])];
+        if (!members[idx]) members[idx] = { name: "", phone: "", year: "" };
+        if (name === "memberName") members[idx].name = value;
+        if (name === "memberPhone") members[idx].phone = value;
+        if (name === "memberYear") members[idx].year = value;
+        return { ...prev, members };
       });
     } else {
       setForm((prev) => ({
@@ -245,10 +257,13 @@ const EventRegistration: React.FC = () => {
     }
 
     // Prepare template params directly from state
+    const teamMembersStr = (form.members || []).map(
+      (m, idx) => `Member ${idx + 1}: ${m.name} (${m.phone}, ${m.year})`
+    ).join("; ");
     const templateParams = {
       event_name: event.name,
-      team_members: (form.memberNames || []).join(", "),
-      registrant_name: form.memberNames[0] || "",
+      team_members: teamMembersStr,
+      registrant_name: form.members[0]?.name || "",
       delegate_id: form.delegate_id,
       registrant_email: form.email,
       registrant_phone: form.phone,
@@ -256,17 +271,20 @@ const EventRegistration: React.FC = () => {
       registrant_year: form.year,
       registrant_category: form.category,
       payment_screenshot_url: screenshotUrl,
+      coupon_code: form.coupon,
     };
 
     // Store registration in Supabase
     const { error: supabaseError } = await supabase.from("EventRegistration").insert([
       {
-        name: form.memberNames[0] || "",
+        name: form.members[0]?.name || "",
         email: form.email,
         phone: form.phone,
         event_id: eventKey,
         registration_time: new Date().toISOString(),
         payment_screenshot_url: screenshotUrl,
+        team_members: JSON.stringify(form.members),
+        coupon_code: form.coupon
       }
     ]);
     if (supabaseError) {
@@ -287,7 +305,7 @@ const EventRegistration: React.FC = () => {
         setIsSubmitting(false);
         setSubmitted(true);
         setForm({
-          memberNames: Array(event.teamSize).fill(""),
+          members: Array(event.teamSize).fill({ name: "", phone: "", year: "" }),
           email: "",
           phone: "",
           institution: "",
@@ -295,6 +313,7 @@ const EventRegistration: React.FC = () => {
           category: "student",
           delegate_id: "",
           paymentScreenshot: null,
+          coupon: "",
         });
       },
       (error) => {
@@ -374,7 +393,7 @@ const EventRegistration: React.FC = () => {
 
           {/* Team member names */}
           {[...Array(event.teamSize)].map((_, idx) => (
-            <div key={idx}>
+            <div key={idx} className="mb-2 border-b border-cyan-400/10 pb-2">
               <label className="block text-sm text-cyan-300 mb-1">
                 {event.teamSize === 1
                   ? "Full Name"
@@ -384,12 +403,40 @@ const EventRegistration: React.FC = () => {
                 type="text"
                 name="memberName"
                 data-index={idx}
-                value={form.memberNames[idx] || ""}
+                value={form.members[idx]?.name || ""}
                 onChange={handleChange}
                 required={idx === 0}
                 className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
                 placeholder={event.teamSize === 1 ? "Full Name" : `Member ${idx + 1} Name`}
               />
+              {event.teamSize > 1 && (
+                <>
+                  <label className="block text-xs text-cyan-200 mt-1">Phone Number</label>
+                  <input
+                    type="tel"
+                    name="memberPhone"
+                    data-index={idx}
+                    value={form.members[idx]?.phone || ""}
+                    onChange={handleChange}
+                    required
+                    pattern="^(\+91\d{10}|\d{10})$"
+                    title="Enter a valid 10-digit number or +91 followed by 10 digits"
+                    className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
+                    placeholder="Phone Number"
+                  />
+                  <label className="block text-xs text-cyan-200 mt-1">Year of Study</label>
+                  <input
+                    type="text"
+                    name="memberYear"
+                    data-index={idx}
+                    value={form.members[idx]?.year || ""}
+                    onChange={handleChange}
+                    required
+                    className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
+                    placeholder="Year of Study"
+                  />
+                </>
+              )}
             </div>
           ))}
           {event.delegateRequired && (
@@ -494,9 +541,67 @@ const EventRegistration: React.FC = () => {
             />
             <div className="text-xs text-gray-400 mt-1">Max file size: 4MB. Will be uploaded to Cloudinary and link sent via email.</div>
           </div>
+          <div>
+            <label className="block text-sm text-cyan-300 mb-1">Coupon Code</label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                name="coupon"
+                value={couponInput}
+                onChange={handleChange}
+                className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
+                placeholder="Enter coupon code (if any)"
+                autoComplete="off"
+                disabled={couponApplied}
+              />
+              <button
+                type="button"
+                className="bg-cyan-700 hover:bg-cyan-600 text-white font-semibold px-4 py-2 rounded-lg"
+                onClick={() => {
+                  const code = couponInput.trim().replace(/[^A-Z0-9!]/gi, "").toUpperCase();
+                  if (code === "SYNAPSE25!" || code === "SYNAPSE25!") {
+                    // Extract numeric price from event.price
+                    let priceStr = event.price;
+                    let price = 0;
+                    if (priceStr.includes("/")) {
+                      priceStr = priceStr.split("/")[0];
+                    }
+                    const match = priceStr.match(/(\d+)/);
+                    if (match) {
+                      price = parseInt(match[1], 10);
+                      const discounted = Math.round(price * 0.95);
+                      setDiscountedPrice(`₹${discounted} (5% off)`);
+                      setCouponStatus("Coupon applied: 5% discount");
+                      setCouponApplied(true);
+                      setForm((prev) => ({
+                        ...prev,
+                        coupon: couponInput
+                      }));
+                    }
+                  } else {
+                    setDiscountedPrice(null);
+                    setCouponStatus("Sorry, this coupon does not exist or has been used.");
+                    setCouponApplied(false);
+                    setForm((prev) => ({
+                      ...prev,
+                      coupon: ""
+                    }));
+                  }
+                }}
+                disabled={couponApplied}
+              >
+                {couponApplied ? "Applied" : "Submit"}
+              </button>
+            </div>
+            {couponStatus && (
+              <div className={`mt-1 text-sm ${couponStatus.startsWith("Sorry") ? "text-red-400" : "text-green-400"}`}>
+                {couponStatus}
+              </div>
+            )}
+          </div>
           <div className="flex gap-4 my-4">
             <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
-              Entry Fee: {event.price}
+              Entry Fee: {discountedPrice ? discountedPrice : event.price}
             </div>
             {!isWorkshop && (
               <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">

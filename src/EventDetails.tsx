@@ -3,8 +3,14 @@ import { casePulseDetails } from "./events/CasePulse";
 import { axonAlleyDetails } from "./events/AxonAlley";
 import { seniorQuizDetails } from "./events/SeniorQuiz";
 
+interface EventDetailsType {
+  title: string;
+  description?: string | string[];
+  [key: string]: any;
+}
+
 interface EventDetailsProps {
-  event: any;
+  event: EventDetailsType;
   onBack: () => void;
 }
 
