@@ -1,9 +1,7 @@
--- Add team_members column to store member details (name, phone, year) as JSON
+-- Add year column to store year of study
 ALTER TABLE "EventRegistration"
-ADD COLUMN IF NOT EXISTS team_members JSONB;
+ADD COLUMN IF NOT EXISTS year TEXT;
 
--- Optionally, migrate existing data if needed (not required for new events)
-
--- Add coupon_code column if not already present
+-- Add coupon_applied column to store if coupon was applied (yes/no)
 ALTER TABLE "EventRegistration"
-ADD COLUMN IF NOT EXISTS coupon_code TEXT;
+ADD COLUMN IF NOT EXISTS coupon_applied TEXT CHECK (coupon_applied IN ('yes', 'no'));
