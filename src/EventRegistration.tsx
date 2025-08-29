@@ -283,7 +283,7 @@ const [form, setForm] = useState({
         registration_time: new Date().toISOString(),
         payment_screenshot_url: screenshotUrl,
         team_members: JSON.stringify(form.members),
-        coupon_applied: couponApplied ? "yes" : "no"
+coupon_applied: form.coupon && form.coupon.trim() !== "" ? "yes" : "no"
       }
     ]);
     if (supabaseError) {
