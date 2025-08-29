@@ -164,9 +164,7 @@ const EventRegistration: React.FC = () => {
 const [form, setForm] = useState({
     members: [{ name: "", phone: "", year: "" }],
     email: "",
-    phone: "",
     institution: "",
-    year: "",
     category: "student",
     delegate_id: "",
     paymentScreenshot: null as File | null,
@@ -266,9 +264,9 @@ const [form, setForm] = useState({
       registrant_name: form.members[0]?.name || "",
       delegate_id: form.delegate_id,
       registrant_email: form.email,
-      registrant_phone: form.phone,
+      registrant_phone: form.members[0]?.phone || "",
       registrant_institution: form.institution,
-      registrant_year: form.year,
+      registrant_year: form.members[0]?.year || "",
       registrant_category: form.category,
       payment_screenshot_url: screenshotUrl,
       coupon_code: form.coupon,
@@ -279,7 +277,8 @@ const [form, setForm] = useState({
       {
         name: form.members[0]?.name || "",
         email: form.email,
-        phone: form.phone,
+        phone: form.members[0]?.phone || "",
+        year: form.members[0]?.year || "",
         event_id: eventKey,
         registration_time: new Date().toISOString(),
         payment_screenshot_url: screenshotUrl,
@@ -307,9 +306,7 @@ const [form, setForm] = useState({
         setForm({
           members: Array(event.teamSize).fill({ name: "", phone: "", year: "" }),
           email: "",
-          phone: "",
           institution: "",
-          year: "",
           category: "student",
           delegate_id: "",
           paymentScreenshot: null,
@@ -392,51 +389,86 @@ const [form, setForm] = useState({
           <input type="hidden" name="payment_screenshot_url" />
 
           {/* Team member names */}
-          {[...Array(event.teamSize)].map((_, idx) => (
-            <div key={idx} className="mb-2 border-b border-cyan-400/10 pb-2">
+          {/* Team Leader (Member 1) */}
+          <div className="mb-2 border-b border-cyan-400/10 pb-2">
+            <label className="block text-sm text-cyan-300 mb-1">
+              {event.teamSize === 1 ? "Full Name" : "Member 1 Name (Team Leader)"}
+            </label>
+            <input
+              type="text"
+              name="memberName"
+              data-index={0}
+              value={form.members[0]?.name || ""}
+              onChange={handleChange}
+              required
+              className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
+              placeholder={event.teamSize === 1 ? "Full Name" : "Member 1 Name (Team Leader)"}
+            />
+            <label className="block text-xs text-cyan-200 mt-1">Phone Number</label>
+            <input
+              type="tel"
+              name="memberPhone"
+              data-index={0}
+              value={form.members[0]?.phone || ""}
+              onChange={handleChange}
+              required
+              pattern="^(\+91\d{10}|\d{10})$"
+              title="Enter a valid 10-digit number or +91 followed by 10 digits"
+              className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
+              placeholder="Phone Number"
+            />
+            <label className="block text-xs text-cyan-200 mt-1">Year of Study</label>
+            <input
+              type="text"
+              name="memberYear"
+              data-index={0}
+              value={form.members[0]?.year || ""}
+              onChange={handleChange}
+              required
+              className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
+              placeholder="Year of Study"
+            />
+          </div>
+          {/* Other Members */}
+          {[...Array(event.teamSize - 1)].map((_, idx) => (
+            <div key={idx + 1} className="mb-2 border-b border-cyan-400/10 pb-2">
               <label className="block text-sm text-cyan-300 mb-1">
-                {event.teamSize === 1
-                  ? "Full Name"
-                  : `Member ${idx + 1} Name${idx === 0 ? " (Team Leader)" : ""}`}
+                {`Member ${idx + 2} Name`}
               </label>
               <input
                 type="text"
                 name="memberName"
-                data-index={idx}
-                value={form.members[idx]?.name || ""}
+                data-index={idx + 1}
+                value={form.members[idx + 1]?.name || ""}
                 onChange={handleChange}
-                required={idx === 0}
+                required={false}
                 className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
-                placeholder={event.teamSize === 1 ? "Full Name" : `Member ${idx + 1} Name`}
+                placeholder={`Member ${idx + 2} Name`}
               />
-              {event.teamSize > 1 && (
-                <>
-                  <label className="block text-xs text-cyan-200 mt-1">Phone Number</label>
-                  <input
-                    type="tel"
-                    name="memberPhone"
-                    data-index={idx}
-                    value={form.members[idx]?.phone || ""}
-                    onChange={handleChange}
-                    required
-                    pattern="^(\+91\d{10}|\d{10})$"
-                    title="Enter a valid 10-digit number or +91 followed by 10 digits"
-                    className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
-                    placeholder="Phone Number"
-                  />
-                  <label className="block text-xs text-cyan-200 mt-1">Year of Study</label>
-                  <input
-                    type="text"
-                    name="memberYear"
-                    data-index={idx}
-                    value={form.members[idx]?.year || ""}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
-                    placeholder="Year of Study"
-                  />
-                </>
-              )}
+              <label className="block text-xs text-cyan-200 mt-1">Phone Number</label>
+              <input
+                type="tel"
+                name="memberPhone"
+                data-index={idx + 1}
+                value={form.members[idx + 1]?.phone || ""}
+                onChange={handleChange}
+                required
+                pattern="^(\+91\d{10}|\d{10})$"
+                title="Enter a valid 10-digit number or +91 followed by 10 digits"
+                className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
+                placeholder="Phone Number"
+              />
+              <label className="block text-xs text-cyan-200 mt-1">Year of Study</label>
+              <input
+                type="text"
+                name="memberYear"
+                data-index={idx + 1}
+                value={form.members[idx + 1]?.year || ""}
+                onChange={handleChange}
+                required
+                className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
+                placeholder="Year of Study"
+              />
             </div>
           ))}
           {event.delegateRequired && (
@@ -466,35 +498,11 @@ const [form, setForm] = useState({
             />
           </div>
           <div>
-            <label className="block text-sm text-cyan-300 mb-1">Phone Number</label>
-            <input
-              type="tel"
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              required
-              pattern="^(\+91\d{10}|\d{10})$"
-              title="Enter a valid 10-digit number or +91 followed by 10 digits"
-              className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
-            />
-          </div>
-          <div>
             <label className="block text-sm text-cyan-300 mb-1">Institution</label>
             <input
               type="text"
               name="institution"
               value={form.institution}
-              onChange={handleChange}
-              required
-              className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
-            />
-          </div>
-          <div>
-            <label className="block text-sm text-cyan-300 mb-1">Year of Study</label>
-            <input
-              type="text"
-              name="year"
-              value={form.year}
               onChange={handleChange}
               required
               className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
