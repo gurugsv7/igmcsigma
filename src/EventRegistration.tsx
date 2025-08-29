@@ -435,24 +435,22 @@ const [form, setForm] = useState({
               <label className="block text-sm text-cyan-300 mb-1">
                 {`Member ${idx + 2} Name`}
               </label>
-              <input
+<input
                 type="text"
                 name="memberName"
                 data-index={idx + 1}
                 value={form.members[idx + 1]?.name || ""}
                 onChange={handleChange}
-                required={false}
                 className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
                 placeholder={`Member ${idx + 2} Name`}
               />
               <label className="block text-xs text-cyan-200 mt-1">Phone Number</label>
-              <input
+<input
                 type="tel"
                 name="memberPhone"
                 data-index={idx + 1}
                 value={form.members[idx + 1]?.phone || ""}
                 onChange={handleChange}
-                required
                 pattern="^(\+91\d{10}|\d{10})$"
                 title="Enter a valid 10-digit number or +91 followed by 10 digits"
                 className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
@@ -465,7 +463,6 @@ const [form, setForm] = useState({
                 data-index={idx + 1}
                 value={form.members[idx + 1]?.year || ""}
                 onChange={handleChange}
-                required
                 className="w-full rounded-lg px-3 py-2 bg-gray-900/60 border border-cyan-400/20 text-white focus:outline-none focus:border-cyan-400"
                 placeholder="Year of Study"
               />
