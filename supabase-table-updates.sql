@@ -1,7 +1,13 @@
--- Add year column to store year of study
-ALTER TABLE "EventRegistration"
-ADD COLUMN IF NOT EXISTS year TEXT;
+-- Add missing columns to DelegatePass table for delegate registration
 
--- Add coupon_applied column to store if coupon was applied (yes/no)
-ALTER TABLE "EventRegistration"
-ADD COLUMN IF NOT EXISTS coupon_applied TEXT CHECK (coupon_applied IN ('yes', 'no'));
+ALTER TABLE "DelegatePass"
+ADD COLUMN IF NOT EXISTS institution TEXT;
+
+ALTER TABLE "DelegatePass"
+ADD COLUMN IF NOT EXISTS delegate_id TEXT;
+
+ALTER TABLE "DelegatePass"
+ADD COLUMN IF NOT EXISTS registration_id TEXT;
+
+ALTER TABLE "DelegatePass"
+ADD COLUMN IF NOT EXISTS payment_screenshot_url TEXT;

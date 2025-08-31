@@ -22,6 +22,7 @@ const DelegatePass = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [delegateId, setDelegateId] = useState<string | null>(null);
 
   async function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const { name, value, files } = e.target as any;
@@ -77,16 +78,22 @@ const DelegatePass = () => {
     }
     setIsSubmitting(true);
 
-    const delegateId = generateDelegateId();
+    const newDelegateId = generateDelegateId();
+    setDelegateId(newDelegateId);
 
     // Store delegate pass in Supabase
+    const registrationId = `DP-${newDelegateId.slice(-6)}`;
     const { error: supabaseError } = await supabase.from("DelegatePass").insert([
       {
         name: form.name,
         email: form.email,
         phone: form.phone,
+        institution: form.institution,
         pass_type: form.tier,
         purchase_time: new Date().toISOString(),
+        delegate_id: newDelegateId,
+        registration_id: registrationId,
+        payment_screenshot_url: paymentScreenshotUrl
       }
     ]);
     if (supabaseError) {
@@ -106,7 +113,8 @@ const DelegatePass = () => {
           institution: form.institution,
           tier: form.tier,
           paymentScreenshotUrl,
-          delegateId,
+          delegateIdRaw: newDelegateId,
+          registrationId: registrationId,
         },
         "acbz69d146b3J-jEm"
       );
@@ -171,7 +179,7 @@ const DelegatePass = () => {
           </p>
           <div className="bg-black/20 rounded-lg p-3 mb-4">
             <p className="text-sm text-gray-400">Registration ID</p>
-            <p className="text-cyan-300 font-mono">DP-{Date.now().toString().slice(-6)}</p>
+            <p className="text-cyan-300 font-mono">{delegateId ? `DP-${delegateId.slice(-6)}` : ""}</p>
           </div>
           <a
             href="/"

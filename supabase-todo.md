@@ -1,4 +1,13 @@
 # Supabase Backend Integration Todo
+## Delegate Pass Registration Processing
+
+- [ ] Analyze requirements and current implementation
+- [ ] Check Delegate ID and Registration ID generation/storage
+- [ ] Verify payment screenshot
+- [ ] Generate and assign Delegate ID and Registration ID
+- [ ] Update registration record in database
+- [ ] Confirm registration processed
+
 
 - [x] Analyze requirements and define data models (registration, delegate pass, accommodation)
 
@@ -84,4 +93,3 @@ VITE_SUPABASE_ANON_KEY=your-anon-key
 - [ ] Implement logic to store registration events
 - [ ] Implement logic to store delegate passes
 - [ ] Implement logic to store accommodation data
-- [ ] Test all backend integrations
