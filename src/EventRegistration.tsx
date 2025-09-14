@@ -534,7 +534,8 @@ coupon_applied: form.coupon && form.coupon.trim() !== "" ? "yes" : "no"
               <img src={qrPayment} alt="Payment QR" className="w-40 h-40 rounded-lg border border-cyan-400/30" />
             </div>
           </div>
-          <div>
+<div>
+<div className="text-yellow-300 text-base mb-1 font-semibold">Screenshot with transaction ID visible required</div>
             <label className="block text-sm text-cyan-300 mb-1">Upload Payment Screenshot</label>
             <input
               type="file"
