@@ -181,10 +181,10 @@ const WorkshopsSection = () => {
         'Tips and tricks in thoracic ultrasound',
         'Interactive video-based learning sessions'
       ],
-      duration: '8:00 AM to 4:00 PM (Thursday)',
+      duration: '8:00 AM to 4:00 PM (Friday)',
       prerequisites: 'Medical students',
       capacity: 'N/A',
-      date: '09/10/25',
+      date: '10/10/25',
       time: 'Full day'
     },
     {
@@ -250,7 +250,7 @@ const WorkshopsSection = () => {
       duration: '8:00 AM to 4:00 PM (Full day session)',
       prerequisites: 'Medical students',
       capacity: 'N/A',
-      date: '10/10/25',
+      date: '09/10/25',
       time: 'Full day'
     },
     {

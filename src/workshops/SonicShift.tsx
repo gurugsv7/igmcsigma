@@ -26,7 +26,7 @@ export const sonicShiftDetails = {
   },
   incharge: "Swathy Meena S G, Sri Meenakshi T",
   prerequisites: "Medical students",
-  date: "09/10/2025 (Thursday)",
+  date: "10/10/2025 (Friday)",
   time: "8:00 AM to 4:00 PM"
 };
 
@@ -57,7 +57,7 @@ export default function SonicShift() {
       </ul>
       <div className="flex gap-4 mb-4">
         <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg px-4 py-2 text-cyan-300 font-medium">
-          📅 09/10/2025 (Thursday)
+          📅 10/10/2025 (Friday)
         </div>
         <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
           ⏰ 8:00 AM to 4:00 PM
