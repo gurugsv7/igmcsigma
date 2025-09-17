@@ -1,7 +1,15 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "igmc-striatum-3.0",
+  "description": "Official website for STRIATUM 3.0 medical conference by IGMCRI - connecting knowledge, sparking innovation in medical education",
+  "version": "3.0.0",
+  "author": "SIGMA '25 - IGMCRI, Puducherry",
+  "keywords": ["medical", "conference", "striatum", "igmcri", "workshops", "medical-education", "react", "typescript"],
+  "homepage": "https://igmcrisigma.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gurugsv7/igmcsigma.git"
+  },
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
