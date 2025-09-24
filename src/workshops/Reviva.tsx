@@ -27,7 +27,7 @@ export const revivaDetails = {
   incharge: "Jaganathan R, Karthik Raj Yuvaraj",
   prerequisites: "Medical students",
   date: "10/10/2025 (Friday)",
-  time: "8:00 AM to 4:00 PM (Full day session)"
+  time: "2:00 PM to 5:30 PM (Half day, afternoon session)"
 };
 
 export default function RevivaPage() {
@@ -38,7 +38,7 @@ export default function RevivaPage() {
     name: "REVIVA • Neonatology Resuscitation Practices",
     price: "₹500",
     date: "10/10/2025 (Friday)",
-    time: "8:00 AM to 4:00 PM (Full day session)",
+    time: "2:00 PM to 5:30 PM (Half day, afternoon session)",
     incharges: "Jaganathan R, Karthik Raj Yuvaraj",
     prerequisites: "Medical students"
   };
@@ -74,7 +74,7 @@ export default function RevivaPage() {
             📅 10/10/2025 (Friday)
           </div>
           <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-            ⏰ 8:00 AM to 4:00 PM (Full day session)
+            ⏰ 2:00 PM to 5:30 PM (Half day, afternoon session)
           </div>
         </div>
         <div className="text-white/60 mb-2">Incharges: Jaganathan R, Karthik Raj Yuvaraj</div>

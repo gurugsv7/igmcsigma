@@ -28,7 +28,7 @@ export const sonostrikeDetails = {
   incharge: "Kartiyayini, Priyanga R",
   prerequisites: "Medical students",
   date: "09/10/2025 (Thursday)",
-  time: "8:00 AM to 4:00 PM (Full day session)"
+  time: "9:00 AM to 12:30 PM (Forenoon session)"
 };
 
 export default function SonostrikePage() {
@@ -73,7 +73,7 @@ export default function SonostrikePage() {
             📅 09/10/2025 (Thursday)
           </div>
           <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-            ⏰ 8:00 AM to 4:00 PM (Full day session)
+            ⏰ 9:00 AM to 12:30 PM (Forenoon session)
           </div>
         </div>
         <div className="text-white/60 mb-2">Incharges: Kartiyayini, Priyanga R</div>
