@@ -32,7 +32,7 @@ export const occulexDetails = {
   incharge: "Swadhi T, Cindhujaa",
   prerequisites: "Medical students",
   date: "11/10/2025 (Saturday)",
-  time: "Forenoon (4 Hours)"
+  time: "9:00 AM to 12:30 PM (Forenoon session)"
 };
 
 export default function OcculexPage() {
@@ -43,7 +43,7 @@ export default function OcculexPage() {
     name: "OCCULEX • Ophthalmology Workshop",
     price: "₹500",
     date: "11/10/2025 (Saturday)",
-    time: "Forenoon (4 Hours)",
+    time: "9:00 AM to 12:30 PM (Forenoon session)",
     incharges: "Swadhi T, Cindhujaa",
     prerequisites: "Medical students"
   };
@@ -96,7 +96,7 @@ export default function OcculexPage() {
             📅 11/10/2025 (Saturday)
           </div>
           <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-            ⏰ Forenoon (4 Hours)
+            ⏰ 9:00 AM to 12:30 PM (Forenoon session)
           </div>
         </div>
         <div className="text-white/60 mb-2">Incharges: Swadhi T, Cindhujaa</div>

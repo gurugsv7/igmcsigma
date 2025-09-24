@@ -14,21 +14,21 @@ const EVENT_INFO: Record<string, { name: string; price: string; prize: string; d
     name: "Poster Presentation: Axon Alley",
     price: "₹300 (Single) / ₹400 (Team of 2)",
     prize: "₹3,000",
-    delegateRequired: true,
+    delegateRequired: false,
     teamSize: 2
   },
   CasePulse: {
     name: "Case Presentation: Case Pulse",
     price: "₹300 (Single) / ₹400 (Team of 2)",
     prize: "₹3,000",
-    delegateRequired: true,
+    delegateRequired: false,
     teamSize: 2
   },
   Nexus: {
     name: "Paper Presentation: Nexus",
     price: "₹300 (Single) / ₹400 (Team of 2)",
     prize: "₹3,000",
-    delegateRequired: true,
+    delegateRequired: false,
     teamSize: 2
   },
   PulsatingPalettes: {

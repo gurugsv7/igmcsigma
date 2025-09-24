@@ -30,7 +30,7 @@ export const anastamosDetails = {
   incharge: "Benifer M, Abhinayashree R",
   prerequisites: "Medical students",
   date: "10/10/2025 (Friday)",
-  time: "Forenoon (4 Hours)"
+  time: "9:00 AM to 12:30 PM (Forenoon session)"
 };
 
 export default function AnastamosPage() {
@@ -41,7 +41,7 @@ export default function AnastamosPage() {
     name: "ANASTAMOS • Basic Suturing Skills",
     price: "₹500",
     date: "10/10/2025 (Friday)",
-    time: "Forenoon (4 Hours)",
+    time: "9:00 AM to 12:30 PM (Forenoon session)",
     incharges: "Benifer M, Abhinayashree R",
     prerequisites: "Medical students"
   };
@@ -77,7 +77,7 @@ export default function AnastamosPage() {
             📅 10/10/2025 (Friday)
           </div>
           <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-            ⏰ Forenoon (4 Hours)
+            ⏰ 9:00 AM to 12:30 PM (Forenoon session)
           </div>
         </div>
         <div className="text-white/60 mb-2">Incharges: Benifer M, Abhinayashree R</div>

@@ -76,7 +76,7 @@ const WorkshopsSection = () => {
       prerequisites: 'Medical students',
       capacity: 'N/A',
       date: '09/10/25',
-      time: 'Forenoon'
+      time: '9:00 AM to 12:30 PM (Forenoon session)'
     },
     {
       id: 'disaster-x',
@@ -119,7 +119,7 @@ const WorkshopsSection = () => {
       prerequisites: 'Medical students',
       capacity: 'N/A',
       date: '09/10/25',
-      time: 'Afternoon'
+      time: '2:00 PM to 5:30 PM (Half day, afternoon session)'
     },
     {
       id: 'codewild',
@@ -142,7 +142,7 @@ const WorkshopsSection = () => {
       prerequisites: 'Medical students',
       capacity: 'N/A',
       date: '09/10/25',
-      time: 'Full day'
+      time: '8:00 AM to 4:00 PM (Full day session)'
     },
     {
       id: 'occulex',

@@ -155,7 +155,13 @@ const DelegatePass = () => {
           </li>
         </ul>
         <div className="mb-4 text-white/70">
-          <span className="font-semibold text-cyan-300">Note:</span> Delegate pass is mandatory for all participants except for a few events as mentioned in the event details.
+          <span className="font-semibold text-cyan-300">Note:</span> Delegate pass is mandatory for all participants except for a few events and presentations as mentioned in the event details. Presentations do not require a delegate pass.
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-yellow-300">Important:</span>
+          <span className="text-white"> Delegate registration is </span>
+          <span className="font-semibold text-red-400">not refundable</span>
+          <span className="text-white">.</span>
         </div>
         <div className="mb-4 text-white/70">
           <span className="font-semibold text-cyan-300">How to Buy:</span>

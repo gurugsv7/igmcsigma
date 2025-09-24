@@ -33,7 +33,7 @@ function Vivantia({ onRegister }: { onRegister: () => void }) {
           📅 09/10/2025 (Thursday)
         </div>
         <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg px-4 py-2 text-purple-300 font-medium">
-          ⏰ Afternoon (4 Hours)
+          ⏰ 2:00 PM to 5:30 PM (Half day, afternoon session)
         </div>
       </div>
       <div className="text-white/60 mb-2">Incharges: Sri Yogalakshmi R, Srinidhi Elodie Radjou</div>
@@ -86,5 +86,5 @@ export const vivantiaDetails = {
   incharge: "Sri Yogalakshmi R, Srinidhi Elodie Radjou",
   prerequisites: "Medical students",
   date: "09/10/2025 (Thursday)",
-  time: "Afternoon (4 Hours)"
+  time: "2:00 PM to 5:30 PM (Half day, afternoon session)"
 };
