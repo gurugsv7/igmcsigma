@@ -323,6 +323,28 @@ coupon_applied: form.coupon && form.coupon.trim() !== "" ? "yes" : "no"
   // Helper: is this a workshop? (no prize)
   const isWorkshop = !event.prize || event.prize === "-";
 
+  // Registration closed popup for Anastamos
+  if (eventKey === "Anastamos") {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center pt-16 pb-24 px-6">
+        <div className="bg-gradient-to-r from-gray-700 to-gray-900 border border-gray-400/30 rounded-2xl p-8 max-w-md text-center shadow-lg">
+          <h2 className="text-2xl font-bold text-gray-200 mb-4">Registration Closed</h2>
+          <p className="text-gray-300 mb-4">
+            Sorry, registration for <span className="text-cyan-300 font-semibold">{event.name}</span> is closed.
+          </p>
+          <a
+            href="/"
+            className="bg-gray-400 text-gray-700 font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105 cursor-not-allowed pointer-events-none"
+            tabIndex={-1}
+            aria-disabled="true"
+          >
+            Registration Closed
+          </a>
+        </div>
+      </div>
+    );
+  }
+
   if (submitted) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center pt-16 pb-24 px-6">
