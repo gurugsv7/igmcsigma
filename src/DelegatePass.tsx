@@ -104,8 +104,8 @@ const DelegatePass = () => {
 
     try {
       await emailjs.send(
-        "igmcsigma",
-        "template_207v92k",
+        "service_6r70a0t",
+        "template_p0soq8j",
         {
           name: form.name,
           email: form.email,
@@ -116,7 +116,7 @@ const DelegatePass = () => {
           delegateIdRaw: newDelegateId,
           registrationId: registrationId,
         },
-        "acbz69d146b3J-jEm"
+        "f-VdqHUtV-R0sEPtP"
       );
       setIsSubmitting(false);
       setSubmitted(true);

@@ -294,11 +294,11 @@ coupon_applied: form.coupon && form.coupon.trim() !== "" ? "yes" : "no"
 
     console.log("Sending registration data to EmailJS:", templateParams);
 
-    emailjs.send(
-      "igmcsigma",
-      "template_0uzpwjc",
+emailjs.send(
+      "service_6r70a0t",
+      "template_gulqv0a",
       templateParams,
-      "acbz69d146b3J-jEm"
+      "f-VdqHUtV-R0sEPtP"
     ).then(
       (result) => {
         setIsSubmitting(false);
