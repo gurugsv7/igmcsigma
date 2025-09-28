@@ -55,8 +55,8 @@ const CasePulse = () => {
         <span className="text-white/80">Rs. 3000</span>
       </div>
       <div className="mb-4">
-        <span className="block text-cyan-300 font-semibold">Incharge:</span>
-        <span className="text-white/80">Gopinath S</span>
+<span className="block text-cyan-300 font-semibold">Incharge:</span>
+        <span className="text-white/80">Suyashri</span>
       </div>
       <div className="mb-4">
         <span className="block text-cyan-300 font-semibold">Prerequisites:</span>
@@ -152,7 +152,7 @@ export const casePulseDetails = {
     prize: "Rs. 3000",
     fee: undefined
   },
-  incharge: undefined,
+  incharge: "Suyashri",
   prerequisites: undefined,
   date: undefined,
   time: undefined

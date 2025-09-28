@@ -50,14 +50,13 @@ const OnlineQuiz = () => {
         </div>
       </div>
 <div className="flex flex-col items-center mt-2 mb-4">
-    <div className="font-bold text-cyan-300 mb-2">Inclusive of lunch</div>
-        <button
-          className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+<div className="font-bold text-cyan-300 mb-2">Inclusive of lunch</div>
+        <div
+          className="bg-gradient-to-r from-gray-500 to-gray-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform shadow-xl shadow-gray-400/25 flex items-center justify-center"
           style={{ position: "relative", zIndex: 20 }}
-          onClick={() => navigate('/register?event=OnlineQuiz')}
         >
-          Register Now
-        </button>
+          Registration Closed
+        </div>
       </div>
     </div>
   );
