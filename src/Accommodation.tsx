@@ -135,7 +135,7 @@ const Accommodation: React.FC = () => {
 
     emailjs.send(
       "service_kh999ms",
-      "template_pf3w0ha",
+      "template_a8l2tnc",
       templateParams,
       "aW6oUkDunUsVZD8s8"
     ).then(
