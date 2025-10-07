@@ -17,6 +17,57 @@ const BuyDelegatePassButton = () => {
 import { Home, Calendar, BookOpen, Users, Phone, Heart, Plus, Brain, Stethoscope, Microscope, Award, MessageSquare, MapPin, Mail, Clock, Send, Bot, X, MessageCircle, Wrench, ArrowLeft, CheckCircle, Loader, HeartPulse, TestTube } from 'lucide-react';
 import { Dna } from 'lucide-react';
 import stratiumLogo from './images/stratium.png';
+import adwaitaImg from './images/adwaita.png';
+
+/**
+ * AdwaitaPopup - creative modal for Adwaita 2025 Coming Soon
+ */
+const AdwaitaPopup = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm animate-fade-in">
+      <div className="relative bg-gradient-to-br from-cyan-900/90 via-black/90 to-purple-900/90 border-4 border-cyan-400/40 rounded-3xl shadow-2xl p-0 overflow-hidden w-full max-w-xs sm:max-w-sm md:max-w-md max-h-[60vh] min-h-[200px] overflow-y-auto">
+        {/* Close button */}
+        <button
+          className="absolute top-2 right-2 z-10 bg-black/50 hover:bg-cyan-500/20 text-cyan-200 rounded-full p-2 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400"
+          onClick={onClose}
+          aria-label="Close"
+          style={{ touchAction: 'manipulation' }}
+        >
+          <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="M6 6l12 12M6 18L18 6" />
+          </svg>
+        </button>
+        {/* Popup content */}
+        <div className="flex flex-col items-center justify-center p-0">
+          <div className="w-full aspect-[3/2] sm:aspect-[4/3] md:aspect-[4/3] relative">
+            <img
+              src={adwaitaImg}
+              alt="Adwaita 2025"
+              className="w-full h-full object-cover"
+              style={{ display: 'block' }}
+            />
+          </div>
+          <div className="w-full px-1 py-1 sm:px-8 sm:py-6 text-center overflow-y-auto">
+            <h2 className="text-base sm:text-3xl font-extrabold bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300 bg-clip-text text-transparent mb-1 sm:mb-2 drop-shadow-lg animate-gradient-x">
+              Adwaita 2025
+            </h2>
+            <p className="text-xs sm:text-lg font-semibold text-cyan-200 tracking-wide mb-1 sm:mb-2 animate-pulse">
+              Coming soon
+            </p>
+            <div className="mt-1 sm:mt-2 text-xs sm:text-sm text-purple-200/80 italic">
+              Stay tuned for the grandest celebration of the year!
+            </div>
+          </div>
+        </div>
+        {/* Decorative glow */}
+        <div className="absolute -inset-2 pointer-events-none z-0">
+          <div className="w-full h-full bg-gradient-to-br from-cyan-400/10 via-purple-400/10 to-pink-400/10 blur-2xl rounded-3xl"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
 import EventSection from './Events';
 import WorkshopsSection from './Workshops';
 import Contact from './Contact';
@@ -980,8 +1031,29 @@ const AboutSection = () => (
 );
 
 // Main App Component
+/*
+TODO:
+- [ ] Analyze requirements
+- [ ] Design popup/modal component
+- [ ] Add image and creative text
+- [ ] Integrate popup into homepage (App.tsx)
+- [ ] Style for uniqueness and match site UI
+- [ ] Ensure popup shows on first load and can be closed
+- [ ] Test and verify
+*/
+
 function App() {
   const [activeTab, setActiveTab] = useState('home');
+  // Adwaita popup state
+  const [showAdwaita, setShowAdwaita] = useState(() => {
+    // Only show once per session
+    return typeof window !== "undefined" && !sessionStorage.getItem("adwaita2025_popup_shown");
+  });
+  useEffect(() => {
+    if (showAdwaita) {
+      sessionStorage.setItem("adwaita2025_popup_shown", "1");
+    }
+  }, [showAdwaita]);
   const [showRegistration, setShowRegistration] = useState(false);
   const [registrationItem, setRegistrationItem] = useState<RegistrationItemType | null>(null);
   const [registrationType, setRegistrationType] = useState<string>('');
@@ -1127,6 +1199,7 @@ function App() {
     <HelmetProvider>
       <Router>
         <ScrollToTop />
+        <AdwaitaPopup open={showAdwaita} onClose={() => setShowAdwaita(false)} />
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-x-hidden">
         {/* Animated Background Pattern */}
         <div className="fixed inset-0 opacity-10 pointer-events-none">
