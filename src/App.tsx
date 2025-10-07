@@ -40,7 +40,7 @@ const AdwaitaPopup = ({ open, onClose }: { open: boolean; onClose: () => void })
         </button>
         {/* Popup content */}
         <div className="flex flex-col items-center justify-center p-0">
-          <div className="w-full aspect-[3/2] sm:aspect-[4/3] md:aspect-[4/3] relative">
+          <div className="w-full aspect-[5/4] sm:aspect-[4/3] md:aspect-[4/3] relative">
             <img
               src={adwaitaImg}
               alt="Adwaita 2025"
@@ -100,6 +100,7 @@ import DelegatePass from './DelegatePass';
 import ScrollToTop from './ScrollToTop';
 import AccommodationChatbot from './AccommodationChatbot';
 import Accommodation from './Accommodation';
+import Shop from './Shop';
 
 // Chatbot Component
 interface Message {
@@ -445,6 +446,7 @@ const BottomNav = ({ activeTab, setActiveTab, showNav = true }: BottomNavProps) 
     { id: 'home', label: 'Home', icon: Home, path: '/' },
     { id: 'event', label: 'Events', icon: Calendar, path: '/events' },
     { id: 'workshops', label: 'Workshops', icon: Wrench, path: '/workshops' },
+    { id: 'shop', label: 'Shop', icon: Award, path: '/shop' },
     { id: 'about', label: 'About', icon: Users, path: '/about' },
     { id: 'contact', label: 'Contact', icon: Phone, path: '/contact' },
   ];
@@ -1044,6 +1046,11 @@ TODO:
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
+  // Ensure homepage is shown on first load so popup appears
+  useEffect(() => {
+    setActiveTab('home');
+    sessionStorage.removeItem("adwaita2025_popup_shown");
+  }, []);
   // Adwaita popup state
   const [showAdwaita, setShowAdwaita] = useState(() => {
     // Only show once per session
@@ -1299,6 +1306,7 @@ function App() {
             <Route path="/workshops/paramatrix" element={<Paramatrix onRegister={() => {}} />} />
             <Route path="/delegate-pass" element={<DelegatePass />} />
             <Route path="/accommodation" element={<Accommodation />} />
+            <Route path="/shop" element={<Shop />} />
             {/* Add more event/workshop routes here */}
           </Routes>
         </main>
