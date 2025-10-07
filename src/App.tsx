@@ -18,6 +18,7 @@ import { Home, Calendar, BookOpen, Users, Phone, Heart, Plus, Brain, Stethoscope
 import { Dna } from 'lucide-react';
 import stratiumLogo from './images/stratium.png';
 import adwaitaImg from './images/adwaita.png';
+import tshirtImg from './images/tshirt.png';
 
 /**
  * AdwaitaPopup - creative modal for Adwaita 2025 Coming Soon
@@ -1072,21 +1073,29 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Preload logo image
+  // Preload logo and popup images
   useEffect(() => {
-    // Create a new image and start loading it immediately
-    const img = new Image();
-    img.src = stratiumLogo;
-    
-    // Force the browser to load and cache the image
-    const preloadImage = () => {
+    // Preload stratium logo
+    const img1 = new Image();
+    img1.src = stratiumLogo;
+    // Preload adwaita popup image
+    const img2 = new Image();
+    img2.src = adwaitaImg;
+    // Preload tshirt image
+    const img3 = new Image();
+    img3.src = tshirtImg;
+
+    // Force the browser to load and cache all images
+    const preloadImage = (src: string) => {
       const link = document.createElement('link');
       link.rel = 'preload';
       link.as = 'image';
-      link.href = stratiumLogo;
+      link.href = src;
       document.head.appendChild(link);
     };
-    preloadImage();
+    preloadImage(stratiumLogo);
+    preloadImage(adwaitaImg);
+    preloadImage(tshirtImg);
   }, []);
 
   if (isLoading) {
