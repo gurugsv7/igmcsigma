@@ -39,7 +39,7 @@ export default function SonostrikePage() {
     name: "SONOSTRIKE • Radiology EFAST Workshop",
     price: "₹600",
     date: "09/10/2025 (Thursday)",
-    time: "8:00 AM to 4:00 PM (Full day session)",
+    time: "9:00 AM to 12:30 PM (Forenoon session)",
     incharges: "Kartiyayini, Priyanga R",
     prerequisites: "Medical students"
   };

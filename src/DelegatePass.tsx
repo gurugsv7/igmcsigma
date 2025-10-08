@@ -271,7 +271,7 @@ const DelegatePass = () => {
       {/* Payment Modal */}
       {showPaymentModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-          <div className="bg-gradient-to-br from-gray-900 via-black to-gray-900 border border-cyan-400/30 rounded-2xl shadow-2xl p-8 max-w-md w-full relative">
+          <div className="bg-gradient-to-br from-gray-900 via-black to-gray-900 border border-cyan-400/30 rounded-2xl shadow-2xl p-8 max-w-md w-full relative overflow-y-auto max-h-screen">
             <button
               onClick={() => setShowPaymentModal(false)}
               className="absolute top-3 right-3 text-cyan-300 hover:text-white bg-cyan-900/40 rounded-full p-1"

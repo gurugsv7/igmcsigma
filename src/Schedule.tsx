@@ -24,11 +24,7 @@ const ScheduleSection = () => {
         },
         {
           time: "AFTERNOON",
-          event: "MEDICAL EXPO (SYNAPTIC SPHERE)"
-        },
-        {
-          time: "EVENING",
-          event: null
+          event: "SYNAPTIC SPHERE (MEDICAL EXPO)"
         }
       ]
     },
@@ -37,16 +33,16 @@ const ScheduleSection = () => {
       date: "09/10/25",
       slots: [
         {
-          time: "FORENOON",
-          event: "RADIOLOGY WORKSHOP (SONOSTRIKE)"
+          time: "MORNING",
+          events: [
+            "CODE WILD: Wilderness Medicine",
+            "SMART: AI in Research",
+            "SONOSTRIKE (Forenoon)"
+          ]
         },
         {
           time: "AFTERNOON",
-          event: "OBSTETRIC WORKSHOP (VIVANTIA)"
-        },
-        {
-          time: "EVENING",
-          event: null
+          event: "VIVANTIA (Afternoon)"
         }
       ]
     },
@@ -55,19 +51,16 @@ const ScheduleSection = () => {
       date: "10/10/25",
       slots: [
         {
-          time: "FORENOON",
-          event: "BASIC SUTURING SKILLS (ANASTAMOS)"
+          time: "MORNING",
+          events: [
+            "DISASTER X: Emergency Medicine",
+            "SONIC SHIFT: Anaesthesiology",
+            "ANASTAMOS (Forenoon)"
+          ]
         },
         {
           time: "AFTERNOON",
-          event: "NEONATAL RESUSCITATION PRACTICES (REVIVA)"
-        },
-        {
-          time: "EVENING",
-          events: [
-            "DISASTER MANAGEMENT WORKSHOP (DISASTER X)",
-            "AI FOR RESEARCH (SMART)"
-          ]
+          event: "REVIVA (Afternoon)"
         }
       ]
     },
@@ -78,24 +71,20 @@ const ScheduleSection = () => {
         {
           time: "FORENOON",
           events: [
-            "OPHTHALMOLOGY WORKSHOP (OCCULEX)",
-            "BODY PAINTING (PULSATING PALETTES)",
-            "DENTAL WORKSHOP (EXODONTIA'X')",
-            "PARAMEDICAL WORKSHOP (PARAMATRIX)"
+            "OCCULEX",
+            "CINEPLEXUS",
+            "EXODONTIA X",
+            "PARAMATRIX",
+            "PULSATING PALETTES"
           ]
         },
         {
           time: "AFTERNOON",
-          events: [
-            "SHORT FILM (CINEPLEXUS)"
-          ]
+          event: "PANEL DISCUSSIONS"
         },
         {
           time: "EVENING",
-          events: [
-            "PANEL DISCUSSION (INSIDE THE ICU: WHAT THEY DON'T TEACH YOU IN UNDERGRAD MEDICINE)",
-            "GALA NIGHT"
-          ]
+          event: "GALA NIGHT"
         }
       ]
     },
@@ -104,29 +93,20 @@ const ScheduleSection = () => {
       date: "12/10/25",
       slots: [
         {
+          time: "MORNING",
+          event: "STRIATUM SCHOLAR TROPHY"
+        },
+        {
           time: "FORENOON",
           events: [
-            "ONLINE QUIZ SEMIFINALS",
-            "SENIOR QUIZ (PRELIMS)",
-            "JUNIOR QUIZ (PRELIMS)"
+            "CASE PULSE",
+            "AXON ALLEY",
+            "NEXUS"
           ]
         },
         {
           time: "AFTERNOON",
-          events: [
-            "POSTER PRESENTATION (AXON ALLEY)",
-            "CASE PRESENTATION (CASE PULSE)",
-            "PAPER PRESENTATION (NEXUS)"
-          ]
-        },
-        {
-          time: "EVENING",
-          events: [
-            "SENIOR QUIZ (FINALS)",
-            "JUNIOR QUIZ (FINALS)",
-            "ONLINE QUIZ (FINALS)",
-            "CLOSING CEREMONY AND AWARDS DISTRIBUTION"
-          ]
+          event: "VALEDICTORY CEREMONY"
         }
       ]
     }
