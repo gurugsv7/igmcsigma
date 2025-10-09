@@ -37,13 +37,12 @@ const Cineplexus = () => {
         </div>
       </div>
 <div className="flex flex-col items-center mt-2 mb-4 gap-3">
-  <button
-    className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-6 rounded-full transition-all duration-300"
-    style={{ position: "relative", zIndex: 20 }}
-    onClick={() => navigate('/register?event=Cineplexus')}
+  <div
+    className="w-full bg-gradient-to-r from-gray-500 to-gray-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 flex items-center justify-center opacity-80"
+    style={{ position: "relative", zIndex: 20, pointerEvents: "none" }}
   >
-    Register Now
-  </button>
+    Registration Closed
+  </div>
   <button
     className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300"
     onClick={() => navigate('/accommodation')}
@@ -59,12 +58,12 @@ const RegisterNowButton = () => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center mt-8 gap-3">
-      <a
-        href="/delegate-pass"
-        className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-semibold py-3 px-6 rounded-full transition-all duration-300 text-center"
+      <div
+        className="w-full bg-gradient-to-r from-gray-500 to-gray-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 flex items-center justify-center opacity-80"
+        style={{ position: "relative", zIndex: 20, pointerEvents: "none" }}
       >
-        Register Now
-      </a>
+        Registration Closed
+      </div>
       <button
         className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300"
         onClick={() => navigate('/accommodation')}
